@@ -1,0 +1,285 @@
+{
+  "code": "COM 211",
+  "title": "Programming Language Using Java II",
+  "description": "Java II moves from basic syntax into the construction of larger, object-oriented and event-driven programs. The central idea is to build applications from reusable classes, manage groups of data, respond to user actions, communicate with databases, and understand the structure of a simple enterprise application. The main curriculum areas include arrays and collections, event-driven programs, object-oriented principles, Java web components such as Servlets and JSP, and Java Database Connectivity ",
+  "modules": [
+    {
+      "id": "com-211-1-what-this-course-is-about-module",
+      "title": "1. What this course is about",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-1-what-this-course-is-about",
+          "title": "1. What this course is about",
+          "contentMarkdown": "Java II moves from basic syntax into the construction of larger, object-oriented and event-driven programs. The central idea is to build applications from reusable classes, manage groups of data, respond to user actions, communicate with databases, and understand the structure of a simple enterprise application. The main curriculum areas include arrays and collections, event-driven programs, object-oriented principles, Java web components such as Servlets and JSP, and Java Database Connectivity (JDBC).\n\nBy the end of this course, you should be able to: write programs using one- and two-dimensional arrays; choose suitable collection classes; apply encapsulation, inheritance, polymorphism and abstraction; handle events and exceptions; explain the basic request-response flow of a Java web application; and connect Java programs to a relational database.",
+          "estimatedMinutes": 40,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-2-the-java-platform-and-program-structure-module",
+      "title": "2. The Java platform and program structure",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-2-the-java-platform-and-program-structure",
+          "title": "2. The Java platform and program structure",
+          "contentMarkdown": "Java source code is normally saved in a .java file. The Java compiler (javac) translates source code into bytecode, commonly stored in a .class file. The Java Virtual Machine (JVM) loads and executes bytecode. The Java Development Kit (JDK) contains development tools such as the compiler and runtime tools; the Java Runtime Environment (JRE) historically described the runtime libraries and JVM needed to run Java programs.\n\n| Term | Meaning |\n| --- | --- |\n| JDK | Developer toolkit containing compiler and other development utilities |\n| JVM | Virtual machine that executes Java bytecode |\n| Bytecode | Platform-independent instruction format produced by the Java compiler |\n| Class | Program unit that defines fields, constructors and methods |\n| Object | A runtime instance of a class |\n| Package | A namespace used to organise related classes |\n| API | A documented set of classes and methods available to a programmer |\n\n\nA typical command-line workflow is: create a source file, compile it with javac FileName.java, fix compilation errors, run it with java ClassName, test it with several inputs, and maintain the code. A Java application normally begins execution in a main method with the signature public static void main(String[] args).",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-3-arrays-module",
+      "title": "3. Arrays",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-3-arrays",
+          "title": "3. Arrays",
+          "contentMarkdown": "An array stores a fixed number of values of one declared type. Each element is accessed through an index beginning at zero. If an array has length five, its valid indices are 0 to 4. The length property gives the number of elements.\n\nDeclaration and creation: int[] scores; declares a reference to an integer array. scores = new int[5]; creates an array of five integers. They can be combined as int[] scores = new int[5];. An initializer such as int[] scores = {65, 72, 81, 54, 90}; creates and populates the array in one statement.\n\n| int[] scores = {65, 72, 81, 54, 90}; / int total = 0; / for (int i = 0; i < scores.length; i++) { /     total += scores[i]; / } / double average = (double) total / scores.length; / System.out.println(\"Average: \" + average); |\n| --- |\n\n\nThe cast to double prevents integer division. An enhanced for loop is useful when the index is not needed: for (int score : scores) { total += score; }.\n\nTwo-dimensional arrays represent rows and columns, for example a table of student scores. Java implements them as arrays of arrays, so rows can have different lengths (jagged arrays).\n\n| int[][] marks = { /     {70, 65, 80}, /     {55, 74, 68} / }; / for (int row = 0; row < marks.length; row++) { /     for (int col = 0; col < marks[row].length; col++) { /         System.out.print(marks[row][col] + \" \"); /     } /     System.out.println(); / } |\n| --- |\n\n\nArray of objects: an array can store object references, for example Student[] classList = new Student[30];. Creating the array does not automatically create 30 Student objects; each element must be assigned an object before its methods are called. Attempting to access an invalid index causes ArrayIndexOutOfBoundsException. A null element can cause NullPointerException if dereferenced.\n\nCommon array operations: traversal visits every element; searching finds an element; updating replaces a value at an index; insertion into a fixed array may require shifting elements and tracking the logical size; deletion may shift remaining elements left. Linear search checks elements one by one and works on unsorted data. Binary search is faster on sorted data but requires the array to be sorted first.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-4-collections-and-generics-module",
+      "title": "4. Collections and generics",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-4-collections-and-generics",
+          "title": "4. Collections and generics",
+          "contentMarkdown": "Arrays have a fixed length. The Java Collections Framework provides interfaces and classes for more flexible data structures. A collection stores object references, not primitive values directly; wrapper classes such as Integer and Double allow primitive-like values to be stored. Autoboxing and unboxing convert between primitive values and their wrappers.\n\n| Structure | Typical class | Main behaviour / use |\n| --- | --- | --- |\n| Resizable list | ArrayList<E> | Indexed access; efficient append in typical use |\n| Linked list | LinkedList<E> | Doubly linked structure; can act as list or queue/deque |\n| Unique elements | HashSet<E> | Prevents duplicates; no guaranteed iteration order |\n| Sorted unique elements | TreeSet<E> | Stores unique elements in sorted order |\n| Key-value mapping | HashMap<K,V> | Looks up values by unique keys; no guaranteed iteration order |\n| FIFO queue | Queue<E> / ArrayDeque<E> | First in, first out |\n| Stack behaviour | Deque<E> | Push/pop at one end; last in, first out |\n\n\nGenerics specify the type of data a collection is expected to hold. ArrayList<String> names = new ArrayList<>(); helps the compiler catch attempts to add an incompatible type. The diamond operator <> lets Java infer the generic type from the variable declaration.\n\n| import java.util.ArrayList; / import java.util.Collections; /  / ArrayList<Integer> marks = new ArrayList<>(); / marks.add(64); / marks.add(81); / marks.add(73); / Collections.sort(marks); / for (int mark : marks) { /     System.out.println(mark); / } |\n| --- |\n\n\nChoose List when order and duplicates matter; Set when uniqueness matters; Map when values must be found by keys; and Queue/Deque when processing order matters. Iterators allow safe traversal and controlled removal. Sorting can use natural ordering (Comparable) or a custom Comparator.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-5-object-oriented-programming-oop-module",
+      "title": "5. Object-oriented programming (OOP)",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-5-object-oriented-programming-oop",
+          "title": "5. Object-oriented programming (OOP)",
+          "contentMarkdown": "Object-oriented programming organises software around classes and objects. An object has state (fields/data), behaviour (methods) and identity. A class is a template from which objects are created.\n\n### Encapsulation\n\n\nEncapsulation protects an object's internal state and exposes controlled operations. Fields are often declared private, while public methods provide access or validation. This prevents arbitrary external code from setting an object into an invalid state.\n\n| public class BankAccount { /     private double balance; /  /     public BankAccount(double openingBalance) { /         if (openingBalance < 0) throw new IllegalArgumentException(); /         balance = openingBalance; /     } /     public double getBalance() { return balance; } /     public void deposit(double amount) { /         if (amount <= 0) throw new IllegalArgumentException(\"Amount must be positive\"); /         balance += amount; /     } / } |\n| --- |\n\n\n### Inheritance\n\n\nInheritance allows a subclass to reuse and specialise accessible members of a superclass. Java uses extends for class inheritance. A subclass can call a superclass constructor or method using super. Java supports single inheritance of classes: a class directly extends one superclass, although it can implement multiple interfaces. Inheritance models an is-a relationship and should not be used merely to avoid writing code twice.\n\n### Polymorphism\n\n\nPolymorphism means that a common reference type can refer to objects of different concrete classes and the appropriate overridden method is selected at runtime. For example, a Payment reference may refer to CardPayment or TransferPayment, and each implementation can process payment differently. Dynamic method dispatch makes programs extensible.\n\n### Abstraction\n\n\nAbstraction exposes essential behaviour while hiding implementation detail. An abstract class may contain abstract and concrete methods and cannot be instantiated directly. An interface defines a contract a class agrees to implement; modern Java interfaces may also contain default and static methods. Use an interface when unrelated classes need to promise the same capability.\n\n### Overloading and overriding\n\n\nOverloading uses the same method name with different parameter lists, usually in the same class. The compiler selects the overload from the argument types. Overriding occurs when a subclass supplies a new implementation of an inherited instance method with a compatible signature. Overriding enables runtime polymorphism. Return type alone cannot distinguish overloaded methods.\n\nOther class concepts to know include constructors, default constructors, this, static fields and methods, access modifiers (public, protected, package-private and private), final classes/methods/variables, composition, and the difference between == and .equals() when comparing objects.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-6-exception-handling-module",
+      "title": "6. Exception handling",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-6-exception-handling",
+          "title": "6. Exception handling",
+          "contentMarkdown": "An exception is an object representing an abnormal condition that interrupts normal program flow. Java distinguishes checked exceptions (which must be caught or declared) and unchecked exceptions (subclasses of RuntimeException, often representing programming errors).\n- try contains code that may fail.\n- catch handles a matching exception.\n- finally contains clean-up code that normally runs whether or not an exception occurs.\n- throw explicitly throws an exception; throws declares exceptions that a method may pass to its caller.\n- try-with-resources closes resources that implement AutoCloseable automatically.\n\nDo not catch every exception and silently ignore it. Catch the most specific useful type, give a meaningful message, and recover only when the program can do so safely.",
+          "estimatedMinutes": 38,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-7-event-driven-programming-and-graphical-interfaces-module",
+      "title": "7. Event-driven programming and graphical interfaces",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-7-event-driven-programming-and-graphical-interfaces",
+          "title": "7. Event-driven programming and graphical interfaces",
+          "contentMarkdown": "In a console program, execution commonly follows a sequence written by the programmer. In an event-driven program, the application waits for events such as a button click, key press, menu selection or window close. The source of an event notifies a registered listener; the listener or handler executes the response. Event-driven programming is common in graphical user interfaces (GUIs).\n\nJava GUI toolkits include AWT and Swing. AWT provides platform-dependent GUI components. Swing supplies richer components such as JFrame, JPanel, JButton, JLabel, JTextField and JTable. A layout manager controls component placement. Common layouts include FlowLayout, BorderLayout, GridLayout and BoxLayout.\n\n| import javax.swing.*; /  / public class ClickDemo { /     public static void main(String[] args) { /         SwingUtilities.invokeLater(() -> { /             JFrame frame = new JFrame(\"Event example\"); /             JButton button = new JButton(\"Click me\"); /             button.addActionListener(event -> /                 JOptionPane.showMessageDialog(frame, \"Button clicked\")); /             frame.add(button); /             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); /             frame.pack(); /             frame.setVisible(true); /         }); /     } / } |\n| --- |\n\n\nKnow these terms: event source, event object, listener, event handler, registration, callback, GUI component and event-dispatch thread. Long-running tasks should not block the GUI event-dispatch thread because the interface may freeze.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-8-java-web-applications-servlets-and-jsp-module",
+      "title": "8. Java web applications: Servlets and JSP",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-8-java-web-applications-servlets-and-jsp",
+          "title": "8. Java web applications: Servlets and JSP",
+          "contentMarkdown": "A Java Servlet is a server-side component that receives a request and produces a response, often using HTTP. A servlet container (such as a Jakarta EE-compatible web container) manages servlet creation, lifecycle, request dispatching and resources. The basic request-response cycle is: browser sends an HTTP request; server routes it to a servlet; servlet reads request data, performs application logic, possibly accesses a database, and writes an HTTP response.\n\nThe servlet lifecycle is commonly described as loading/instantiation, init() once, service() for requests (which dispatches to methods such as doGet() or doPost() for HTTP servlets), and destroy() when the container removes the servlet. Do not assume a servlet instance is created separately for every request; concurrent requests may use the same instance, so shared mutable fields need careful thread-safety handling.\n\nGET is normally used to retrieve a resource and may place parameters in the URL. POST is often used to submit data that changes server state. POST does not itself guarantee security; use HTTPS, validation, authorisation and appropriate protections. A JSP page is a server-side view technology that is translated/compiled into a servlet. Modern development often uses JSP mainly for presentation rather than mixing complex business logic into page markup.\n\nHTTP is stateless: each request is independent unless state is managed. Common session techniques include cookies, server-side HttpSession, URL rewriting and hidden form fields. Understand session creation, invalidation, timeouts and why authentication tokens must be protected.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-9-jdbc-and-database-connectivity-module",
+      "title": "9. JDBC and database connectivity",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-9-jdbc-and-database-connectivity",
+          "title": "9. JDBC and database connectivity",
+          "contentMarkdown": "JDBC (Java Database Connectivity) is the Java API used to connect to relational databases. A typical sequence is: load or obtain a JDBC driver; establish a Connection; create a statement; execute SQL; process the ResultSet; and close resources. Modern JDBC drivers are commonly discovered automatically when the driver is on the classpath.\n\n| JDBC item | Purpose |\n| --- | --- |\n| DriverManager / DataSource | Obtain a database connection |\n| Connection | Represents a database session and transaction context |\n| Statement | Executes a basic SQL statement |\n| PreparedStatement | Executes parameterised SQL; preferred for user-supplied values |\n| CallableStatement | Calls a stored procedure |\n| ResultSet | Holds rows returned by a query |\n| SQLException | Represents a database-access error |\n\n\n| String sql = \"SELECT student_id, full_name FROM students WHERE department = ?\"; / try (Connection con = DriverManager.getConnection(url, user, password); /      PreparedStatement ps = con.prepareStatement(sql)) { /     ps.setString(1, \"Computer Science\"); /     try (ResultSet rs = ps.executeQuery()) { /         while (rs.next()) { /             System.out.println(rs.getInt(\"student_id\") + \" \" /                                + rs.getString(\"full_name\")); /         } /     } / } catch (SQLException ex) { /     System.err.println(\"Database operation failed: \" + ex.getMessage()); / } |\n| --- |\n\n\nUse executeQuery() for a query that returns rows and executeUpdate() for insert, update or delete statements. PreparedStatement separates SQL structure from parameter values and helps prevent SQL injection. Never concatenate untrusted text directly into an SQL command. Use transactions for a set of related changes: setAutoCommit(false), perform work, commit() if successful, otherwise rollback().\n\nCRUD means Create, Read, Update and Delete. You should understand how each maps to SQL INSERT, SELECT, UPDATE and DELETE. Also know primary keys, foreign keys, constraints, joins and the difference between database logic and user-interface logic.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-10-designing-a-small-java-application-module",
+      "title": "10. Designing a small Java application",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-10-designing-a-small-java-application",
+          "title": "10. Designing a small Java application",
+          "contentMarkdown": "A simple maintainable application separates responsibilities. A common layered design has a presentation layer (screens or web pages), a service/business layer (rules and operations), a data-access layer (database queries), and a database. The Model-View-Controller (MVC) pattern separates the model/data, view/presentation and controller/request coordination. The aim is to reduce duplication and make each part easier to test.\n\nA sensible build workflow is: define the problem and requirements; sketch the user interface and data model; design classes; implement a small feature at a time; validate inputs; handle failures; test normal, boundary and invalid cases; review security; document and maintain the program.",
+          "estimatedMinutes": 33,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-11-practical-laboratory-checklist-module",
+      "title": "11. Practical/laboratory checklist",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-11-practical-laboratory-checklist",
+          "title": "11. Practical/laboratory checklist",
+          "contentMarkdown": "- Create, compile, run and debug a Java project using a suitable IDE or command-line JDK.\n- Write programs for array traversal, average, maximum/minimum, searching and sorting.\n- Store student objects in a collection and sort them by name or score.\n- Demonstrate encapsulation, inheritance, overriding, overloading, interfaces and polymorphism.\n- Build a small Swing form with at least two event listeners and input validation.\n- Explain the Servlet/JSP request-response cycle and session handling.\n- Connect a Java application to a test database and carry out all four CRUD operations using PreparedStatement.\n- Demonstrate a transaction and explain why rollback may be required.",
+          "estimatedMinutes": 34,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "instructions": "- Create, compile, run and debug a Java project using a suitable IDE or command-line JDK.\n- Write programs for array traversal, average, maximum/minimum, searching and sorting.\n- Store student objects in a collection and sort them by name or score.\n- Demonstrate encapsulation, inheritance, overriding, overloading, interfaces and polymorphism.\n- Build a small Swing form with at least two event listeners and input validation.\n- Explain the Servlet/JSP request-response cycle and session handling.\n- Connect a Java application to a test database and carry out all four CRUD operations using PreparedStatement.\n- Demonstrate a transaction and explain why rollback may be required."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-211-12-revision-questions-module",
+      "title": "12. Revision questions",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-211-12-revision-questions",
+          "title": "12. Revision questions",
+          "contentMarkdown": "1. Differentiate an array from an ArrayList. Give two situations in which each is suitable.\n1. Write a Java method that accepts an integer array and returns the largest value. State how you would handle an empty array.\n1. Explain the difference between List, Set and Map, giving one implementation of each.\n1. Define encapsulation, inheritance, polymorphism and abstraction, with a practical example for each.\n1. Distinguish method overloading from method overriding.\n1. What are an event source, listener and handler? Describe what happens after a Swing button is clicked.\n1. Explain the Servlet lifecycle and the difference between GET and POST.\n1. Describe the JDBC steps for reading records from a database.\n1. Why is PreparedStatement safer than building SQL by string concatenation?\n1. What is a transaction? Explain commit and rollback.\n\nSelf-test answers to check: Arrays have fixed size, while ArrayList can grow; List allows ordered duplicates, Set enforces uniqueness, and Map associates keys with values; overloading changes parameter lists, while overriding replaces inherited behaviour; JDBC uses Connection, statement execution and ResultSet; parameterised statements reduce injection risk.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "prerequisites": []
+}

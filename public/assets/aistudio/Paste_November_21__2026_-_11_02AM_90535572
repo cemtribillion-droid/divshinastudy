@@ -1,0 +1,1017 @@
+# PREPWISE ND2 EXAMINATION PRACTICE BANK
+
+## &#x20;| Six Courses | 360 Questions
+
+**Question distribution per course**
+
+| Section   | Question type   | Number |
+| --------- | --------------- | -----: |
+| A         | Multiple Choice |     20 |
+| B         | True or False   |     20 |
+| C         | Fill in the Gap |     10 |
+| D         | Practical       |      3 |
+| E         | Theory          |      7 |
+| **Total** |                 | **60** |
+
+**Student instruction:** Attempt the questions before requesting answers. In Practice Mode, answers and explanations should be available individually. In Examination Mode, answers should remain hidden until submission.
+
+---
+
+# COURSE 1: COM 211
+
+## Programming Language Using Java II
+
+### SECTION A: MULTIPLE-CHOICE QUESTIONS
+
+Choose the correct answer from options A–D.
+
+1. Which keyword is used to inherit a class in Java?
+
+   - A. implements
+   - B. extends
+   - C. inherits
+   - D. super
+
+2. Which of the following is an example of method overloading?
+
+   - A. Defining methods with the same name but different parameter lists
+   - B. Defining two classes with the same name
+   - C. Replacing a variable's value
+   - D. Creating multiple objects
+
+3. Which keyword prevents a class from being inherited?
+
+   - A. static
+   - B. private
+   - C. final
+   - D. protected
+
+4. Which concept allows a subclass to provide its own implementation of a superclass method?
+
+   - A. Encapsulation
+   - B. Method overriding
+   - C. Method overloading
+   - D. Compilation
+
+5. Which access modifier allows access only within the class where a member is declared?
+
+   - A. public
+   - B. protected
+   - C. private
+   - D. default
+
+6. Which keyword refers to the current object?
+
+   - A. super
+   - B. this
+   - C. current
+   - D. self
+
+7. Which Java construct is used to handle exceptions?
+
+   - A. if-else
+   - B. try-catch
+   - C. switch-case
+   - D. for-loop
+
+8. Which block executes whether an exception occurs or not?
+
+   - A. catch
+   - B. throw
+   - C. finally
+   - D. throws
+
+9. Which of these is an unchecked exception?
+
+   - A. IOException
+   - B. SQLException
+   - C. ArithmeticException
+   - D. FileNotFoundException
+
+10. Which keyword is used to create an interface implementation?
+
+    - A. extends
+    - B. implements
+    - C. interface
+    - D. abstract
+
+11. Which collection does not allow duplicate elements?
+
+    - A. ArrayList
+    - B. LinkedList
+    - C. HashSet
+    - D. Vector
+
+12. Which Java collection stores elements as key-value pairs?
+
+    - A. ArrayList
+    - B. HashMap
+    - C. HashSet
+    - D. Stack
+
+13. Which method returns the number of characters in a String?
+
+    - A. size()
+    - B. count()
+    - C. length()
+    - D. getLength()
+
+14. Which keyword is used to declare a class-level variable shared by all instances?
+
+    - A. final
+    - B. static
+    - C. public
+    - D. transient
+
+15. Which of the following is not a primitive Java data type?
+
+    - A. int
+    - B. boolean
+    - C. char
+    - D. String
+
+16. Which method is the entry point of a standard Java application?
+
+    - A. start()
+    - B. run()
+    - C. main()
+    - D. execute()
+
+17. What is the main purpose of a constructor?
+
+    - A. To destroy an object
+    - B. To initialise an object
+    - C. To compile a program
+    - D. To handle exceptions
+
+18. Which keyword is used to declare a class that cannot be instantiated directly?
+
+    - A. static
+    - B. abstract
+    - C. final
+    - D. private
+
+19. Which Java feature allows the same reference variable to represent objects of different related classes?
+
+    - A. Polymorphism
+    - B. Compilation
+    - C. Iteration
+    - D. Recursion
+
+20. Which class is commonly used to read text input from the keyboard?
+
+    - A. Scanner
+    - B. FileWriter
+    - C. PrintWriter
+    - D. StringBuilder
+
+### SECTION B: TRUE OR FALSE
+
+Write TRUE if the statement is correct and FALSE if it is incorrect.
+
+21. Java supports object-oriented programming.
+
+22. A Java class can directly extend more than one class.
+
+23. A constructor has the same name as its class.
+
+24. Method overloading requires methods to have different names.
+
+25. Method overriding is associated with inheritance.
+
+26. A private member can be accessed directly from any class in the same package.
+
+27. An interface can be implemented by a Java class.
+
+28. The `finally` block is commonly used for cleanup operations.
+
+29. An exception is an event that disrupts the normal flow of program execution.
+
+30. An ArrayList can grow dynamically.
+
+31. A HashSet permits duplicate elements.
+
+32. The `static` keyword can be used with methods.
+
+33. Java is a case-sensitive programming language.
+
+34. The `break` statement can terminate a loop.
+
+35. The `continue` statement terminates the entire program.
+
+36. A String object is immutable in Java.
+
+37. An abstract class can contain both abstract and concrete methods.
+
+38. The `this` keyword refers to the immediate superclass.
+
+39. A Java application must always contain a constructor written by the programmer.
+
+40. Encapsulation involves restricting direct access to an object's internal data.
+
+### SECTION C: FILL IN THE GAP
+
+Complete each statement with the correct word or expression.
+
+41. The process of creating a new class from an existing class is called \_\_\_\_\_\_\_\_\_\_.
+
+42. The keyword used to refer to a superclass is \_\_\_\_\_\_\_\_\_\_.
+
+43. A method with the same name but different parameter lists demonstrates \_\_\_\_\_\_\_\_\_\_.
+
+44. The process of hiding internal data and controlling access through methods is called \_\_\_\_\_\_\_\_\_\_.
+
+45. The Java keyword used to generate an exception manually is \_\_\_\_\_\_\_\_\_\_.
+
+46. A collection that stores unique elements is called a \_\_\_\_\_\_\_\_\_\_.
+
+47. The method used to compare the contents of two String objects is \_\_\_\_\_\_\_\_\_\_.
+
+48. The Java keyword used to declare an interface is \_\_\_\_\_\_\_\_\_\_.
+
+49. A special method called automatically when an object is created is a \_\_\_\_\_\_\_\_\_\_.
+
+50. The Java package commonly used for input and output operations is \_\_\_\_\_\_\_\_\_\_.
+
+### SECTION D: PRACTICAL QUESTIONS
+
+**51. Student Management Program**
+
+Write a Java program that defines a `Student` class with the following attributes:
+
+- Student name
+- Matriculation number
+- Three examination scores
+
+The program should:
+
+- Accept student details.
+- Calculate the total score.
+- Calculate the average score.
+- Display the student's details and average.
+- Display a grade based on the average.
+
+**52. Inheritance and Method Overriding**
+
+Create a superclass named `Employee` with a method called `calculateSalary()`.
+
+Create two subclasses:
+
+- `FullTimeEmployee`
+- `PartTimeEmployee`
+
+Override `calculateSalary()` in both subclasses. The full-time employee should receive a fixed monthly salary, while the part-time employee should receive payment based on hours worked and hourly rate.
+
+Demonstrate polymorphism by calling the method through an `Employee` reference.
+
+**53. Exception Handling and File Processing**
+
+Write a Java program that:
+
+- Requests two numbers from the user.
+- Divides the first number by the second.
+- Handles division by zero using exception handling.
+- Displays an appropriate error message.
+- Uses a `finally` block to display a completion message.
+
+### SECTION E: THEORY QUESTIONS
+
+54. Explain the four major principles of object-oriented programming. Give a practical example of each.
+
+55. Differentiate between method overloading and method overriding. Provide Java code examples.
+
+56. Explain inheritance in Java. Discuss its advantages and the different forms of inheritance that can be represented in Java.
+
+57. What is exception handling? Explain the functions of `try`, `catch`, `finally`, `throw`, and `throws`.
+
+58. Differentiate between an abstract class and an interface in Java.
+
+59. Explain Java collections. Discuss ArrayList, LinkedList, HashSet, and HashMap.
+
+60. Explain constructors in Java. Differentiate between default constructors, no-argument constructors, and parameterised constructors.
+
+### COM 211: ANSWER KEY AND EXPLANATIONS
+
+**Multiple Choice**
+
+| No. | Answer | Explanation                                                           |
+| --: | ------ | --------------------------------------------------------------------- |
+|   1 | B      | `extends` establishes class inheritance.                              |
+|   2 | A      | Overloaded methods share a name but have different parameter lists.   |
+|   3 | C      | A final class cannot be extended.                                     |
+|   4 | B      | Overriding allows a subclass to redefine an inherited method.         |
+|   5 | C      | Private members are accessible within their declaring class.          |
+|   6 | B      | `this` refers to the current object.                                  |
+|   7 | B      | `try-catch` handles exceptions.                                       |
+|   8 | C      | `finally` normally executes after the try/catch process.              |
+|   9 | C      | ArithmeticException is unchecked.                                     |
+|  10 | B      | A class uses `implements` to implement an interface.                  |
+|  11 | C      | HashSet stores unique elements.                                       |
+|  12 | B      | HashMap stores key-value pairs.                                       |
+|  13 | C      | `length()` returns the number of characters.                          |
+|  14 | B      | Static members belong to the class.                                   |
+|  15 | D      | String is a class, not a primitive type.                              |
+|  16 | C      | `main()` is the standard application entry point.                     |
+|  17 | B      | Constructors initialise newly created objects.                        |
+|  18 | B      | Abstract classes cannot be instantiated directly.                     |
+|  19 | A      | Polymorphism allows related objects to be used through a common type. |
+|  20 | A      | Scanner can read keyboard input.                                      |
+
+**True or False**
+
+21. TRUE
+22. FALSE
+23. TRUE
+24. FALSE
+25. TRUE
+26. FALSE
+27. TRUE
+28. TRUE
+29. TRUE
+30. TRUE
+31. FALSE
+32. TRUE
+33. TRUE
+34. TRUE
+35. FALSE
+36. TRUE
+37. TRUE
+38. FALSE
+39. FALSE
+40. TRUE
+
+**Fill in the Gap**
+
+41. Inheritance
+42. `super`
+43. Method overloading
+44. Encapsulation
+45. `throw`
+46. Set
+47. `equals()`
+48. `interface`
+49. Constructor
+50. `java.io`
+
+### MODEL ANSWERS: PRACTICAL QUESTIONS
+
+**51. Student Management Program**
+
+```java
+import java.util.Scanner;
+
+class Student {
+    String name;
+    String matricNo;
+    double score1, score2, score3;
+
+    void calculateResult() {
+        double total = score1 + score2 + score3;
+        double average = total / 3;
+
+        System.out.println("Name: " + name);
+        System.out.println("Matric Number: " + matricNo);
+        System.out.println("Total: " + total);
+        System.out.println("Average: " + average);
+
+        if (average >= 70)
+            System.out.println("Grade: A");
+        else if (average >= 60)
+            System.out.println("Grade: B");
+        else if (average >= 50)
+            System.out.println("Grade: C");
+        else if (average >= 45)
+            System.out.println("Grade: D");
+        else
+            System.out.println("Grade: F");
+    }
+}
+
+public class StudentManagement {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Student student = new Student();
+
+        System.out.print("Enter name: ");
+        student.name = input.nextLine();
+
+        System.out.print("Enter matric number: ");
+        student.matricNo = input.nextLine();
+
+        System.out.print("Enter three scores: ");
+        student.score1 = input.nextDouble();
+        student.score2 = input.nextDouble();
+        student.score3 = input.nextDouble();
+
+        student.calculateResult();
+        input.close();
+    }
+}
+```
+
+**52. Inheritance and Method Overriding**
+
+```java
+class Employee {
+    double calculateSalary() {
+        return 0;
+    }
+}
+
+class FullTimeEmployee extends Employee {
+    double monthlySalary;
+
+    FullTimeEmployee(double salary) {
+        monthlySalary = salary;
+    }
+
+    @Override
+    double calculateSalary() {
+        return monthlySalary;
+    }
+}
+
+class PartTimeEmployee extends Employee {
+    double hours;
+    double hourlyRate;
+
+    PartTimeEmployee(double hours, double rate) {
+        this.hours = hours;
+        this.hourlyRate = rate;
+    }
+
+    @Override
+    double calculateSalary() {
+        return hours * hourlyRate;
+    }
+}
+
+public class Payroll {
+    public static void main(String[] args) {
+        Employee first = new FullTimeEmployee(150000);
+        Employee second = new PartTimeEmployee(80, 1500);
+
+        System.out.println(first.calculateSalary());
+        System.out.println(second.calculateSalary());
+    }
+}
+```
+
+**53. Exception Handling**
+
+```java
+import java.util.Scanner;
+
+public class DivisionProgram {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter first number: ");
+            int first = input.nextInt();
+
+            System.out.print("Enter second number: ");
+            int second = input.nextInt();
+
+            int result = first / second;
+            System.out.println("Result: " + result);
+        }
+        catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero is not allowed.");
+        }
+        finally {
+            System.out.println("Program execution completed.");
+            input.close();
+        }
+    }
+}
+```
+
+### THEORY: MODEL ANSWER POINTS
+
+**54. Four principles of OOP**
+
+- Encapsulation: combining data and methods while controlling access to internal data.
+- Inheritance: allowing a class to acquire properties and methods from another class.
+- Polymorphism: allowing one interface or reference type to represent different object behaviours.
+- Abstraction: exposing essential functionality while hiding implementation details.
+
+**55. Overloading versus overriding**
+
+- Overloading: same method name with different parameter lists, usually within the same class.
+- Overriding: a subclass provides a replacement implementation of an inherited method.
+- Overloading is resolved using the method's parameter signature.
+- Overriding supports runtime polymorphism.
+
+**56. Inheritance**
+
+- Inheritance enables code reuse and hierarchical class relationships.
+- Java supports single, multilevel and hierarchical class inheritance.
+- Java does not support multiple inheritance through classes, but a class can implement multiple interfaces.
+- Example: `class Dog extends Animal`.
+
+**57. Exception handling**
+
+- `try`: contains code that may cause an exception.
+- `catch`: handles a matching exception.
+- `finally`: performs cleanup operations.
+- `throw`: explicitly throws an exception.
+- `throws`: declares possible exceptions in a method signature.
+
+**58. Abstract class versus interface**
+
+- An abstract class is declared using `abstract`.
+- An interface is declared using `interface`.
+- Abstract classes can have instance fields and constructors.
+- Interfaces define contracts and may include abstract, default, static and private methods under modern Java.
+- A class can extend one class but implement multiple interfaces.
+
+**59. Java collections**
+
+- ArrayList: resizable array implementation.
+- LinkedList: linked structure that supports efficient insertion and removal at suitable positions.
+- HashSet: stores unique elements.
+- HashMap: stores key-value mappings with unique keys.
+
+**60. Constructors**
+
+- A constructor initialises an object.
+- A no-argument constructor takes no parameters.
+- A parameterised constructor accepts values for initialisation.
+- If no constructor is declared, Java may provide a default no-argument constructor.
+- A programmer-written no-argument constructor is not technically the compiler-generated default constructor.
+
+---
+
+# COURSE 2: COM 212
+
+## Introduction to Systems Programming
+
+### SECTION A: MULTIPLE-CHOICE QUESTIONS
+
+1. Systems programming primarily involves developing software that:
+
+   - A. Designs posters
+   - B. Manages and supports computer system operations
+   - C. Creates animations
+   - D. Edits photographs
+
+2. Which software acts as an intermediary between users and computer hardware?
+
+   - A. Operating system
+   - B. Spreadsheet
+   - C. Presentation software
+   - D. Web browser
+
+3. Which component manages the execution of processes?
+
+   - A. Printer
+   - B. CPU scheduler
+   - C. Monitor
+   - D. Keyboard
+
+4. What is a process?
+
+   - A. A program stored permanently on a disk
+   - B. A program currently executing
+   - C. A computer network
+   - D. A programming language
+
+5. Which of the following is a low-level programming language?
+
+   - A. Python
+   - B. Java
+   - C. Assembly language
+   - D. HTML
+
+6. Which program translates assembly language into machine code?
+
+   - A. Compiler
+   - B. Assembler
+   - C. Linker
+   - D. Loader
+
+7. Which component is responsible for allocating CPU time to processes?
+
+   - A. Scheduler
+   - B. Text editor
+   - C. File explorer
+   - D. Database
+
+8. What is a system call?
+
+   - A. A request made by a program for an operating system service
+   - B. A telephone call
+   - C. A computer virus
+   - D. A hardware upgrade
+
+9. Which memory is volatile?
+
+   - A. ROM
+   - B. RAM
+   - C. Hard disk
+   - D. Flash drive
+
+10. Which of the following is an example of an operating system?
+
+    - A. Microsoft Word
+    - B. Linux
+    - C. Adobe Photoshop
+    - D. PowerPoint
+
+11. What is the main purpose of a device driver?
+
+    - A. To create documents
+    - B. To enable communication with hardware devices
+    - C. To browse websites
+    - D. To compress files
+
+12. Which process state indicates that a process is waiting for an event?
+
+    - A. Running
+    - B. Ready
+    - C. Waiting
+    - D. Terminated
+
+13. What is multitasking?
+
+    - A. Running or managing multiple tasks over the same period
+    - B. Using multiple keyboards
+    - C. Printing multiple documents
+    - D. Installing multiple monitors
+
+14. Which of these is a common file system?
+
+    - A. NTFS
+    - B. HTTP
+    - C. SMTP
+    - D. HTML
+
+15. What is deadlock?
+
+    - A. A computer shutting down normally
+    - B. Processes waiting indefinitely for resources held by one another
+    - C. A successful program execution
+    - D. A deleted file
+
+16. Which of the following is a command-line shell?
+
+    - A. Bash
+    - B. Excel
+    - C. PowerPoint
+    - D. Photoshop
+
+17. What does a linker do?
+
+    - A. Combines object files and libraries into an executable
+    - B. Deletes source code
+    - C. Controls the monitor
+    - D. Formats a hard disk
+
+18. Which memory management technique divides memory into fixed-size blocks?
+
+    - A. Paging
+    - B. Spooling
+    - C. Scheduling
+    - D. Compilation
+
+19. What is the kernel?
+
+    - A. The core component of an operating system
+    - B. A word-processing application
+    - C. A network cable
+    - D. A type of printer
+
+20. Which of the following is a function of an operating system?
+
+    - A. Process management
+    - B. Designing buildings
+    - C. Manufacturing processors
+    - D. Creating electricity
+
+### SECTION B: TRUE OR FALSE
+
+21. Systems programming deals with software closely related to computer hardware and operating systems.
+
+22. An operating system manages computer resources.
+
+23. A process and a program are exactly the same thing.
+
+24. RAM retains its contents permanently after power is switched off.
+
+25. A compiler translates source code into another form, often machine or intermediate code.
+
+26. An assembler translates assembly instructions into machine code.
+
+27. The kernel is a central component of an operating system.
+
+28. A device driver helps the operating system communicate with hardware.
+
+29. Deadlock can occur when processes compete for resources.
+
+30. A scheduler helps determine which process gets CPU time.
+
+31. Paging is a memory management technique.
+
+32. A system call allows a program to request operating system services.
+
+33. Linux is an operating system kernel.
+
+34. A linker is responsible for translating every high-level language statement directly into machine code.
+
+35. A process in the ready state is waiting for CPU allocation.
+
+36. An interrupt can signal an event that requires processor attention.
+
+37. Multitasking means a computer can only execute one program during its lifetime.
+
+38. File permissions can control access to files.
+
+39. Virtual memory can allow programs to use an address space larger than available physical RAM.
+
+40. A loader places a program into memory for execution.
+
+### SECTION C: FILL IN THE GAP
+
+41. The core component of an operating system is called the \_\_\_\_\_\_\_\_\_\_.
+
+42. A program that is currently executing is known as a \_\_\_\_\_\_\_\_\_\_.
+
+43. The software that translates assembly language into machine code is an \_\_\_\_\_\_\_\_\_\_.
+
+44. The process of assigning CPU time to processes is called CPU \_\_\_\_\_\_\_\_\_\_.
+
+45. A request made by an application for an operating system service is called a system \_\_\_\_\_\_\_\_\_\_.
+
+46. The memory that loses its contents when power is removed is \_\_\_\_\_\_\_\_\_\_.
+
+47. A software component that controls communication between an operating system and a hardware device is a device \_\_\_\_\_\_\_\_\_\_.
+
+48. The condition in which processes wait indefinitely for resources is called \_\_\_\_\_\_\_\_\_\_.
+
+49. The process of dividing memory into fixed-size pages is called \_\_\_\_\_\_\_\_\_\_.
+
+50. A program that combines object files and libraries is called a \_\_\_\_\_\_\_\_\_\_.
+
+### SECTION D: PRACTICAL QUESTIONS
+
+**51. Linux File and Directory Management**
+
+Using a Linux terminal, write the commands to:
+
+- Display the current working directory.
+- Create a directory named `COM212`.
+- Enter the directory.
+- Create a file named `notes.txt`.
+- Display the file's contents.
+- Copy the file to `backup.txt`.
+- Rename `backup.txt` to `final_notes.txt`.
+- List all files in the directory.
+
+**52. C Program for Process Information**
+
+Write a simple C program that displays:
+
+- A process identification number using `getpid()`.
+- The parent process identification number using `getppid()`.
+- A message indicating that the program is running.
+
+**53. Basic Shell Script**
+
+Write a shell script that:
+
+- Accepts a user's name.
+- Displays a welcome message.
+- Accepts two numbers.
+- Calculates and displays their sum.
+- Displays whether the sum is even or odd.
+
+### SECTION E: THEORY QUESTIONS
+
+54. Define systems programming and explain five areas in which it is applied.
+
+55. Explain the functions of an operating system and discuss its major components.
+
+56. Differentiate between a program and a process. Explain the common states of a process.
+
+57. Explain the functions of a compiler, assembler, linker and loader.
+
+58. Discuss process scheduling and explain First Come First Served, Shortest Job First and Round Robin scheduling.
+
+59. Explain memory management and discuss paging, segmentation and virtual memory.
+
+60. Define deadlock. Explain its four necessary conditions and describe ways of preventing or avoiding it.
+
+### COM 212: ANSWER KEY AND EXPLANATIONS
+
+**Multiple Choice**
+
+| No. | Answer | Explanation                                                              |
+| --: | ------ | ------------------------------------------------------------------------ |
+|   1 | B      | Systems programming supports system-level operations.                    |
+|   2 | A      | The operating system manages hardware and provides services to programs. |
+|   3 | B      | The CPU scheduler selects processes for execution.                       |
+|   4 | B      | A process is an executing instance of a program.                         |
+|   5 | C      | Assembly language is a low-level language.                               |
+|   6 | B      | An assembler converts assembly code into machine code.                   |
+|   7 | A      | The scheduler allocates CPU time.                                        |
+|   8 | A      | System calls request operating system services.                          |
+|   9 | B      | RAM is volatile memory.                                                  |
+|  10 | B      | Linux is an operating system.                                            |
+|  11 | B      | Drivers enable hardware communication.                                   |
+|  12 | C      | Waiting processes are awaiting an event or resource.                     |
+|  13 | A      | Multitasking manages multiple tasks over time.                           |
+|  14 | A      | NTFS is a file system.                                                   |
+|  15 | B      | Deadlock involves processes waiting on one another's resources.          |
+|  16 | A      | Bash is a command-line shell.                                            |
+|  17 | A      | A linker combines object files and libraries.                            |
+|  18 | A      | Paging uses fixed-size memory blocks.                                    |
+|  19 | A      | The kernel is the operating system's core.                               |
+|  20 | A      | Process management is an OS function.                                    |
+
+**True or False**
+
+21. TRUE
+22. TRUE
+23. FALSE
+24. FALSE
+25. TRUE
+26. TRUE
+27. TRUE
+28. TRUE
+29. TRUE
+30. TRUE
+31. TRUE
+32. TRUE
+33. TRUE
+34. FALSE
+35. TRUE
+36. TRUE
+37. FALSE
+38. TRUE
+39. TRUE
+40. TRUE
+
+**Fill in the Gap**
+
+41. Kernel
+42. Process
+43. Assembler
+44. Scheduling
+45. Call
+46. RAM
+47. Driver
+48. Deadlock
+49. Paging
+50. Linker
+
+### MODEL ANSWERS: PRACTICAL QUESTIONS
+
+**51. Linux Commands**
+
+```bash
+pwd
+mkdir COM212
+cd COM212
+touch notes.txt
+cat notes.txt
+cp notes.txt backup.txt
+mv backup.txt final_notes.txt
+ls -l
+```
+
+**52. C Program for Process Information**
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    printf("Process ID: %d\n", getpid());
+    printf("Parent Process ID: %d\n", getppid());
+    printf("The program is running.\n");
+
+    return 0;
+}
+```
+
+**53. Shell Script**
+
+```bash
+#!/bin/bash
+
+echo "Enter your name:"
+read name
+
+echo "Welcome, $name"
+
+echo "Enter first number:"
+read a
+
+echo "Enter second number:"
+read b
+
+sum=$((a + b))
+
+echo "Sum = $sum"
+
+if [ $((sum % 2)) -eq 0 ]; then
+    echo "The sum is even"
+else
+    echo "The sum is odd"
+fi
+```
+
+### THEORY: MODEL ANSWER POINTS
+
+**54. Systems programming**
+
+- Developing software that manages or supports computer system resources.
+- Examples include operating systems, device drivers, compilers, assemblers and system utilities.
+- It requires knowledge of memory, processors, files, processes and hardware interaction.
+
+**55. Operating system functions**
+
+- Process management.
+- Memory management.
+- File management.
+- Device and input/output management.
+- Security and access control.
+- User interface and system services.
+- Major components include the kernel, shell, file system, drivers and system utilities.
+
+**56. Program versus process**
+
+- A program is a passive set of instructions stored in a file.
+- A process is an executing instance of a program.
+- Common states include new, ready, running, waiting or blocked, and terminated.
+
+**57. Compiler, assembler, linker and loader**
+
+- Compiler: translates high-level source code.
+- Assembler: translates assembly instructions.
+- Linker: combines object files and libraries.
+- Loader: loads an executable into memory for execution.
+
+**58. Process scheduling**
+
+- FCFS: processes are served in arrival order.
+- SJF: the process with the shortest estimated CPU burst is selected.
+- Round Robin: processes receive fixed time slices in rotation.
+- Scheduling aims to improve CPU utilisation, throughput, response time and waiting time.
+
+**59. Memory management**
+
+- Paging divides logical memory into fixed-size pages and physical memory into frames.
+- Segmentation divides memory into logical variable-sized sections.
+- Virtual memory provides a logical address space that may exceed available physical memory.
+
+**60. Deadlock**
+Four necessary conditions:
+
+1. Mutual exclusion: a resource can be held by only one process at a time.
+2. Hold and wait: a process holds resources while requesting more.
+3. No preemption: resources cannot be forcibly taken away under the relevant model.
+4. Circular wait: processes form a circular chain of resource dependencies.
+
+Prevention breaks at least one necessary condition. Avoidance uses resource-allocation information to avoid unsafe states. Detection and recovery identify deadlocks and resolve them.
+
+---
+
+# COURSES 3–6: REMAINING EXAMINATION PAPERS
+
+The same 60-question structure applies to each of the following courses. The remaining papers should be added using the same question numbering, answer separation and model-solution arrangement:
+
+- COM 213: Unified Modelling Language (UML)
+- COM 215: Computer Application Packages II
+- COM 216: Statistics for Computing II
+- COM 226: File Organisation and Management
+
+**PrepWise implementation specification**
+
+Each question should be stored with these fields:
+
+| Field              | Purpose                                          |
+| ------------------ | ------------------------------------------------ |
+| `question_id`      | Unique question identifier                       |
+| `course_code`      | Course the question belongs to                   |
+| `section`          | MCQ, TRUE_FALSE, FILL_GAP, PRACTICAL or THEORY   |
+| `question_text`    | The actual question                              |
+| `options`          | A–D choices for MCQs                             |
+| `correct_answer`   | Answer used for automatic marking                |
+| `accepted_answers` | Alternative valid answers for fill-in questions  |
+| `explanation`      | Explanation shown when the answer is revealed    |
+| `model_solution`   | Full solution for practical and theory questions |
+| `difficulty`       | Easy, Medium or Hard                             |
+| `marks`            | Score allocated to the question                  |
+
+**Answer-reveal behaviour**
+
+1. Practice Mode: display a **Show Answer** control beside each question. On selection, show the correct answer and explanation. For practical and theory questions, show the model solution.
+2. Examination Mode: hide all answers and explanations while the examination is active. Reveal them only after submission.
+3. Automatic marking: mark MCQs, True/False and fill-in-the-gap questions automatically where the answer is unambiguous.
+4. Manual or rubric-based marking: use marking guides for practical and theory questions.
+5. Progress tracking: record attempted questions, correct answers, incorrect answers, marks and time spent.
+6. Do not expose answer keys in the student-facing examination interface before submission.
+
+**Important:** The answer key must be stored separately from the question presentation layer. Hiding an answer with CSS or simply placing it below the question is not sufficient protection for an examination system.

@@ -1,0 +1,354 @@
+{
+  "code": "COM 216",
+  "title": "Statistics for Computing II",
+  "description": "Statistics is the science of collecting, organising, analysing, interpreting and presenting data. Computing professionals use statistics to evaluate software performance, analyse user behaviour, detect anomalies, compare algorithms, plan capacity, test systems, interpret surveys and support evidence-based decisions. The goal is not merely to calculate a number; it is to draw a justified conclusion from data while recognising uncertainty and limitations.\n\nThis chapter covers descriptive statistic",
+  "modules": [
+    {
+      "id": "com-216-1-why-statistics-matters-in-computing-module",
+      "title": "1. Why statistics matters in computing",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-1-why-statistics-matters-in-computing",
+          "title": "1. Why statistics matters in computing",
+          "contentMarkdown": "Statistics is the science of collecting, organising, analysing, interpreting and presenting data. Computing professionals use statistics to evaluate software performance, analyse user behaviour, detect anomalies, compare algorithms, plan capacity, test systems, interpret surveys and support evidence-based decisions. The goal is not merely to calculate a number; it is to draw a justified conclusion from data while recognising uncertainty and limitations.\n\nThis chapter covers descriptive statistics, probability, sampling, estimation, hypothesis testing, parametric and non-parametric methods, correlation and regression, and the use of statistical software such as SPSS and spreadsheets. The NBTE course outline specifically emphasises descriptive analysis using SPSS/Excel, parametric and non-parametric tests, simple regression and multivariate analysis.",
+          "estimatedMinutes": 36,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-2-key-statistical-vocabulary-module",
+      "title": "2. Key statistical vocabulary",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-2-key-statistical-vocabulary",
+          "title": "2. Key statistical vocabulary",
+          "contentMarkdown": "| Term | Meaning |\n| --- | --- |\n| Population | Entire group about which a study seeks information |\n| Sample | Subset selected from the population |\n| Census | Data collected from every member of the population |\n| Parameter | Numerical characteristic of a population, e.g. population mean μ |\n| Statistic | Numerical characteristic calculated from a sample, e.g. sample mean x̄ |\n| Variable | Characteristic measured for each observation |\n| Observation | One recorded case or unit in a dataset |\n| Descriptive statistics | Methods that summarise the data collected |\n| Inferential statistics | Methods that use sample data to make conclusions about a population |\n| Bias | Systematic distortion in sampling, measurement or analysis |\n| Outlier | Observation unusually far from the rest of the data |\n\n\nA quantitative variable is numeric. It may be discrete (countable values, such as number of bugs) or continuous (measurements, such as response time). A categorical variable describes groups or labels, such as operating system or department. Measurement scales include nominal (categories without order), ordinal (ordered categories), interval (equal intervals but no meaningful absolute zero) and ratio (equal intervals with a meaningful zero).",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-3-sampling-and-data-collection-module",
+      "title": "3. Sampling and data collection",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-3-sampling-and-data-collection",
+          "title": "3. Sampling and data collection",
+          "contentMarkdown": "A sample should represent the population relevant to the research question. Simple random sampling gives each population member a known equal chance of selection. Systematic sampling selects every kth item after a random start. Stratified sampling divides the population into meaningful groups and samples within each group. Cluster sampling selects groups or clusters, then measures the members of selected clusters. Convenience sampling uses readily available respondents; it is easy but may produce substantial bias.\n\nSampling error arises because only a sample is studied. Non-sampling errors include poor questions, faulty instruments, missing data, non-response and data-entry mistakes. A larger sample usually reduces random sampling variability, but it does not automatically remove bias. Record how data was selected and measured.",
+          "estimatedMinutes": 39,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-4-frequency-distributions-and-visual-presentation-module",
+      "title": "4. Frequency distributions and visual presentation",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-4-frequency-distributions-and-visual-presentation",
+          "title": "4. Frequency distributions and visual presentation",
+          "contentMarkdown": "A frequency table lists possible values or class intervals and the number of observations in each. Relative frequency is frequency divided by total observations; cumulative frequency is the running total. For grouped data, class intervals should be clearly defined, non-overlapping and cover the observed range.\n\nChoose charts according to the variable and question: bar charts compare categorical groups; pie charts show parts of a whole when categories are few and mutually exclusive; histograms display the distribution of continuous numeric data; line charts show changes over ordered time; scatterplots show relationships between two quantitative variables; boxplots summarise median, quartiles and potential outliers. Avoid misleading scales, decorative 3D effects and missing labels.",
+          "estimatedMinutes": 37,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-5-measures-of-central-tendency-module",
+      "title": "5. Measures of central tendency",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-5-measures-of-central-tendency",
+          "title": "5. Measures of central tendency",
+          "contentMarkdown": "Central tendency describes the centre of a distribution.\n\nMean: add all observations and divide by the number of observations.\n\nMean (x̄) = Σx / n\n\nMedian: arrange observations in order. For an odd number of values, select the middle value; for an even number, average the two middle values. Mode is the most frequently observed value; a dataset may have one mode, more than one mode, or no repeated mode. A weighted mean assigns different importance/weights to observations.\n\nWorked example: data = 4, 6, 6, 8, 11. Sum = 35 and n = 5, so mean = 35/5 = 7. The middle value is 6, so median = 6. The most frequent value is 6, so mode = 6. The mean is affected by extreme values more than the median is.\n\nFor a frequency table, multiply each value (or class midpoint for grouped data) by its frequency, add the products and divide by total frequency. For a weighted average, divide the sum of value × weight by the sum of weights.",
+          "estimatedMinutes": 57,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-6-measures-of-dispersion-module",
+      "title": "6. Measures of dispersion",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-6-measures-of-dispersion",
+          "title": "6. Measures of dispersion",
+          "contentMarkdown": "Dispersion indicates how spread out values are. The range is maximum minus minimum. The interquartile range (IQR) is Q3 − Q1 and describes the middle half of the data. Variance is the average squared distance from the mean; standard deviation is the square root of variance and is expressed in the original units.\n\nFor a population:\n\nPopulation variance (σ²) = Σ(xᵢ − μ)² / N; population standard deviation (σ) = √σ².\n\nFor a sample:\n\nSample variance (s²) = Σ(xᵢ − x̄)² / (n − 1); sample standard deviation (s) = √s².\n\nThe denominator n − 1 is Bessel's correction and is commonly used when estimating population variance from a sample. Always decide whether the observations represent the full population or a sample before choosing the formula.\n\nWorked example: using 4, 6, 6, 8, 11, the mean is 7. Squared deviations are 9, 1, 1, 1 and 16; their sum is 28. Sample variance is 28/(5−1) = 7, and sample standard deviation is √7 ≈ 2.65. Population variance for those same five values would be 28/5 = 5.6 and population standard deviation ≈ 2.37.\n\nA standard deviation is not the same as a standard error. Standard deviation describes spread among observations; standard error describes the sampling variability of a statistic, for example the standard error of the mean SE = s/√n under common assumptions.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-7-probability-foundations-module",
+      "title": "7. Probability foundations",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-7-probability-foundations",
+          "title": "7. Probability foundations",
+          "contentMarkdown": "Probability quantifies uncertainty and ranges from 0 (impossible) to 1 (certain). The complement rule is P(not A) = 1 − P(A). The addition rule is P(A or B) = P(A) + P(B) − P(A and B). For mutually exclusive events, the intersection is zero. The multiplication rule is P(A and B) = P(A)P(B|A); if A and B are independent, this becomes P(A)P(B).\n\nConditional probability is P(A|B) = P(A and B) / P(B) when P(B) is positive. Independent events are not the same as mutually exclusive events: mutually exclusive events with positive probabilities cannot be independent. A tree diagram or contingency table can help organise multi-stage probabilities.\n\n### Common probability distributions\n\n\n| Distribution | Typical use / properties |\n| --- | --- |\n| Bernoulli | One trial with success/failure; parameter p |\n| Binomial | Number of successes in n independent trials with fixed success probability p |\n| Poisson | Count of events in a fixed interval under a constant-rate, independent-event model |\n| Normal | Continuous bell-shaped distribution described by mean μ and standard deviation σ |\n| Uniform | Equal probability density across an interval (continuous case) |\n| t distribution | Inference about a mean when population standard deviation is unknown, especially with smaller samples under assumptions |\n| Chi-square | Distribution used in tests of categorical association/goodness-of-fit and variance inference under conditions |\n\n\nFor a normal distribution, standardise an observation using z = (x − μ)/σ. A z-score shows how many standard deviations an observation lies above or below the mean. The empirical 68–95–99.7 rule is an approximation: about 68% of normal observations lie within 1 SD, 95% within 2 SD and 99.7% within 3 SD.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-8-estimation-and-confidence-intervals-module",
+      "title": "8. Estimation and confidence intervals",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-8-estimation-and-confidence-intervals",
+          "title": "8. Estimation and confidence intervals",
+          "contentMarkdown": "A point estimate uses one sample statistic to estimate a population parameter. An interval estimate gives a range of plausible values with a stated confidence level. A confidence interval does not mean that the fixed population parameter has a 95% probability of lying in this one interval; rather, the method would capture the parameter in about 95% of repeated samples under its assumptions.\n\nFor a mean with known population standard deviation under appropriate conditions, a common interval is x̄ ± z* × σ/√n. When σ is unknown, a t critical value and sample standard deviation are commonly used: x̄ ± t* × s/√n. The choice of distribution depends on design, assumptions, sample size and the question being asked.",
+          "estimatedMinutes": 39,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-9-hypothesis-testing-module",
+      "title": "9. Hypothesis testing",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-9-hypothesis-testing",
+          "title": "9. Hypothesis testing",
+          "contentMarkdown": "Hypothesis testing evaluates evidence against a null hypothesis. The null hypothesis (H₀) usually represents no effect, no difference or a specified value. The alternative hypothesis (H₁ or Hₐ) represents the effect or difference being investigated. The significance level α (often 0.05 by convention) is the long-run probability of a Type I error under the null when the test assumptions hold.\n\nA typical process is:\n1. State H₀ and Hₐ clearly, including whether the test is one-tailed or two-tailed.\n1. Choose α before examining the final test result.\n1. Select a test appropriate to the design, variable types and assumptions.\n1. Calculate the test statistic and p-value (or compare against a critical value).\n1. If p ≤ α, reject H₀; if p > α, fail to reject H₀.\n1. State the conclusion in the context of the problem and report effect size/intervals where relevant.\n\nA p-value is the probability, assuming H₀ and the model assumptions are true, of observing a test statistic at least as extreme as the one obtained. It is not the probability that H₀ is true, not the size of the effect, and not proof of practical importance.\n\nA Type I error rejects a true null hypothesis (false positive); a Type II error fails to reject a false null hypothesis (false negative). Statistical power is the probability of rejecting H₀ when a specified alternative is true. Power generally rises with a larger sample, a larger true effect, lower variability and a larger α, although design trade-offs matter.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-10-parametric-and-non-parametric-tests-module",
+      "title": "10. Parametric and non-parametric tests",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-10-parametric-and-non-parametric-tests",
+          "title": "10. Parametric and non-parametric tests",
+          "contentMarkdown": "Parametric tests make assumptions about population distributions or model parameters. Non-parametric methods often use ranks or counts and can be useful for ordinal data or when parametric assumptions are not reasonable. Do not choose a test solely by whether a normality test is significant; consider the design, graphs, sample size, robustness and measurement scale.\n\n| Research situation | Common parametric test | Common non-parametric alternative / related test |\n| --- | --- | --- |\n| One sample mean vs a reference value | One-sample t-test | One-sample Wilcoxon signed-rank or sign test (depending on assumptions/question) |\n| Two independent groups | Independent-samples t-test | Mann–Whitney U test |\n| Two paired measurements | Paired-samples t-test | Wilcoxon signed-rank test |\n| Three or more independent group means | One-way ANOVA | Kruskal–Wallis test |\n| Association between two categorical variables | — | Chi-square test of independence (or Fisher's exact test in suitable small tables) |\n| Observed categorical counts vs expected proportions | — | Chi-square goodness-of-fit test |\n| Linear association between quantitative variables | Pearson correlation | Spearman rank correlation for monotonic rank association |\n\n\nt-tests: compare means. Independent-samples tests compare separate groups; paired tests compare linked measurements such as pre-test and post-test scores from the same participants. Check independence, outliers and distributional assumptions. Equal-variance and unequal-variance versions may be relevant; Welch's t-test does not assume equal population variances.\n\nANOVA: compares means across three or more groups. A significant result indicates that not all means are equal; it does not identify which groups differ. Post-hoc comparisons, with appropriate control of multiple testing, help identify differences. Check independence, residual behaviour and variance assumptions.\n\nChi-square: compares observed categorical counts with expected counts. For independence, expected count in a cell is (row total × column total) / grand total. A common condition is that expected counts should not be too small; when they are, consider Fisher's exact test or an appropriate exact method.\n\nMann–Whitney U compares the rank distributions of two independent groups; Wilcoxon signed-rank analyses paired differences; Kruskal–Wallis compares rank distributions across independent groups; Spearman's rho measures monotonic association based on ranks. Be precise about what each test assesses; they are not always simple tests of medians.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-11-correlation-and-regression-module",
+      "title": "11. Correlation and regression",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-11-correlation-and-regression",
+          "title": "11. Correlation and regression",
+          "contentMarkdown": "Correlation measures strength and direction of association between two variables. Pearson's correlation coefficient r ranges from −1 to +1. Positive r indicates that higher values of one variable tend to occur with higher values of the other; negative r indicates an inverse relationship; values near zero indicate little linear association. A zero Pearson correlation does not rule out a nonlinear relationship. Correlation does not establish causation.\n\nSimple linear regression models an outcome variable Y using one predictor X:\n\nPredicted outcome (Ŷ) = intercept (a) + slope (b) × predictor (X).\n\nHere, a is the intercept (predicted Y when X = 0, if meaningful) and b is the slope (predicted change in Y for one unit increase in X). Residuals are observed minus predicted values. R² is the proportion of variation in the outcome explained by the fitted model in the sample; it is not the proportion caused by the predictor. A useful analysis checks residual plots, linearity, independence, constant variance, influential observations and the plausibility of prediction outside the observed range.\n\nMultiple regression includes two or more predictors. Multivariate analysis is a broader family of methods for analysing several variables or outcomes, such as multiple regression, MANOVA, principal component analysis and factor analysis. Your lecturer's exact coverage determines which of these you need to calculate or interpret.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-12-using-spss-and-excel-module",
+      "title": "12. Using SPSS and Excel",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-12-using-spss-and-excel",
+          "title": "12. Using SPSS and Excel",
+          "contentMarkdown": "SPSS is a statistical software package with a graphical interface and command syntax. In SPSS, Data View displays observations (rows) and variables (columns); Variable View defines variable names, types, labels, value labels, missing values, measurement levels and other properties. A codebook documents what each variable means and how values are represented.\n\nA careful SPSS workflow is:\n1. Define the research question and identify the unit of analysis.\n1. Create a codebook and define variables in Variable View.\n1. Enter/import data and verify cases, labels, missing values and ranges.\n1. Screen data for duplicates, impossible values, missingness and outliers.\n1. Produce frequencies, descriptive statistics and charts.\n1. Choose a test based on variable type, design and assumptions.\n1. Run the test and inspect the relevant output tables.\n1. Report the statistic, degrees of freedom where applicable, p-value, effect size and confidence interval where appropriate.\n1. Save both the dataset and syntax/output, and document any data cleaning.\n\nIn Excel, common functions include AVERAGE, MEDIAN, MODE.SNGL, STDEV.S, STDEV.P, VAR.S, VAR.P, COUNT, COUNTIF, CORREL and regression tools in the Analysis ToolPak (availability depends on installation). In exams, understand the formula and meaning, not just the menu clicks.\n\n### Reading a statistical output table\n\n\nIdentify the variable or comparison being reported. Check N (sample size), mean and standard deviation for descriptive output. For tests, find the test statistic, degrees of freedom, p-value or significance column, and confidence interval if reported. Check which row to read when an equal-variance assumption is not met. Translate the result into plain language and avoid claiming causation from observational association.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-13-choosing-a-test-a-quick-decision-process-module",
+      "title": "13. Choosing a test: a quick decision process",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-13-choosing-a-test-a-quick-decision-process",
+          "title": "13. Choosing a test: a quick decision process",
+          "contentMarkdown": "Ask: What is the research question? Are variables categorical, ordinal or numeric? Are groups independent or paired? Are you comparing a mean, comparing distributions, testing category counts or measuring association? Are assumptions reasonable? Then select a method and report limitations. For example, comparing the average response time of two independent server configurations suggests an independent-samples or Welch t-test if assumptions are acceptable; if comparing before-and-after response times on the same machine instances, a paired test is more appropriate.",
+          "estimatedMinutes": 26,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-14-worked-practice-examples-module",
+      "title": "14. Worked practice examples",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-14-worked-practice-examples",
+          "title": "14. Worked practice examples",
+          "contentMarkdown": "Example A: average response time. Five measurements are 4, 6, 6, 8 and 11 milliseconds. Mean = 7 ms; median = 6 ms; sample variance = 7 ms²; sample SD = 2.65 ms. Explain why the median may better represent a typical result if a few unusually slow responses are present.\n\nExample B: selecting a test. A lecturer measures the same 20 students' typing speed before and after training. Observations are paired, so the relevant mean comparison is a paired-samples t-test if the assumptions on paired differences are reasonable; otherwise consider a suitable non-parametric paired method.\n\nExample C: relationship. A researcher records study hours and examination scores. A positive correlation suggests that higher study time tends to be associated with higher scores in the sample. It does not prove that study time alone caused higher marks; prior ability, resources and other variables may affect both.",
+          "estimatedMinutes": 48,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "instructions": "Example A: average response time. Five measurements are 4, 6, 6, 8 and 11 milliseconds. Mean = 7 ms; median = 6 ms; sample variance = 7 ms²; sample SD = 2.65 ms. Explain why the median may better represent a typical result if a few unusually slow responses are present.\n\nExample B: selecting a test. A lecturer measures the same 20 students' typing speed before and after training. Observations are paired, so the relevant mean comparison is a paired-samples t-test if the assumptions on paired differences are reasonable; otherwise consider a suitable non-parametric paired method.\n\nExample C: relationship. A researcher records study hours and examination scores. A positive correlation suggests that higher study time tends to be associated with higher scores in the sample. It does not prove that study time alone caused higher marks; prior ability, resources and other variables may affect both."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-216-15-revision-questions-module",
+      "title": "15. Revision questions",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-216-15-revision-questions",
+          "title": "15. Revision questions",
+          "contentMarkdown": "1. Differentiate population, sample, parameter and statistic.\n1. Distinguish nominal, ordinal, interval and ratio measurement scales.\n1. Compare simple random, systematic, stratified, cluster and convenience sampling.\n1. Calculate the mean, median and mode of 3, 5, 5, 7, 10, 12.\n1. Using the same data, calculate the range and sample variance/standard deviation.\n1. Explain the difference between standard deviation and standard error.\n1. State the addition, complement and multiplication rules of probability.\n1. Describe the binomial, Poisson and normal distributions.\n1. Define H₀, Hₐ, α, p-value, Type I error and Type II error.\n1. Differentiate independent and paired t-tests.\n1. When would a chi-square test of independence be appropriate?\n1. Explain Pearson correlation and why correlation does not prove causation.\n1. Interpret the slope and R² in a simple linear regression model.\n1. Describe the SPSS Data View and Variable View and list a good analysis workflow.\n\nCalculation discipline: write the formula; define symbols; substitute values; show arithmetic; state the answer with units and sensible rounding; then interpret the answer in context. A correct number without a contextual interpretation may not earn full marks.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "prerequisites": []
+}

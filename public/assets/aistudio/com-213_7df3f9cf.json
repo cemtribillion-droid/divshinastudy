@@ -1,0 +1,308 @@
+{
+  "code": "COM 213",
+  "title": "Unified Modelling Language (UML)",
+  "description": "The Unified Modelling Language (UML) is a standard visual modelling language used to describe, design and communicate the structure and behaviour of software-intensive systems. UML diagrams help analysts, developers, testers and clients discuss a system before and during implementation. UML is a language of models and notation; it is not a programming language and it is not a complete development method by itself.\n\nA model is a simplified representation of a real or proposed system. It deliberat",
+  "modules": [
+    {
+      "id": "com-213-1-what-uml-is-and-why-it-is-used-module",
+      "title": "1. What UML is and why it is used",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-1-what-uml-is-and-why-it-is-used",
+          "title": "1. What UML is and why it is used",
+          "contentMarkdown": "The Unified Modelling Language (UML) is a standard visual modelling language used to describe, design and communicate the structure and behaviour of software-intensive systems. UML diagrams help analysts, developers, testers and clients discuss a system before and during implementation. UML is a language of models and notation; it is not a programming language and it is not a complete development method by itself.\n\nA model is a simplified representation of a real or proposed system. It deliberately leaves out details that are not important to the question being studied. A good model is consistent, readable, appropriately detailed and traceable to requirements. Models may be conceptual (understanding the problem), design-level (planning software components), or implementation-level (showing more technical details).\n\nUML has two broad diagram families: structural diagrams, which describe what elements exist and how they relate, and behavioural diagrams, which describe what happens over time or in response to events. Interaction diagrams are a behavioural subgroup focused on messages and communication.",
+          "estimatedMinutes": 53,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-2-core-notation-and-relationships-module",
+      "title": "2. Core notation and relationships",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-2-core-notation-and-relationships",
+          "title": "2. Core notation and relationships",
+          "contentMarkdown": "A UML diagram uses named elements and standard connectors. The meaning comes from the symbol, its labels, multiplicities and direction—not from artistic appearance. Use a consistent system boundary and give diagrams meaningful titles.\n\n| Notation / relationship | Meaning |\n| --- | --- |\n| Actor (stick figure) | External role that interacts with the system; may be a person or another system |\n| Use case (oval) | A goal or service the system provides to an actor |\n| Class (rectangle compartments) | A type describing attributes and operations |\n| Association (solid line) | A structural relationship between classifiers/objects |\n| Multiplicity (1, 0..1, *, 1..*) | Number of related instances allowed |\n| Generalisation (solid line with hollow triangle) | Inheritance / “is-a” relationship; triangle points to the parent |\n| Dependency (dashed arrow) | One element uses or depends on another |\n| Realisation (dashed line with hollow triangle) | A class or component implements a specification/interface |\n| Aggregation (hollow diamond) | Whole-part relationship with parts that may exist independently |\n| Composition (filled diamond) | Strong whole-part ownership; part lifetime is tied to the whole in the model |\n\n\nA role name describes an end of an association. A multiplicity of 1 means exactly one; 0..1 means optional; * means zero or more; 1..* means one or more. Multiplicity is read at the opposite end of the association: for example, one department may have many students, while each student may be associated with one department in a simplified model.\n\nAggregation and composition can be easy to confuse. Use composition only when the whole strongly owns the part and the part is not meaningfully shared or independently owned in the model. Do not use diamonds merely to decorate an association.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-3-use-case-diagrams-module",
+      "title": "3. Use-case diagrams",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-3-use-case-diagrams",
+          "title": "3. Use-case diagrams",
+          "contentMarkdown": "A use-case diagram represents functional goals from the viewpoint of external actors. It is useful early in requirements analysis because it gives a simple overview of who expects what from the system. Draw a rectangle for the system boundary, place actors outside it, use ovals for use cases inside it, and connect actors to the use cases they participate in.\n\nInclude means one use case always incorporates the behaviour of another use case as part of its flow. It is drawn as a dashed dependency arrow labelled <<include>> pointing towards the included use case. Extend means optional or conditional behaviour may be inserted into a base use case under a defined condition; the dashed arrow labelled <<extend>> points towards the base use case. Generalisation can also be used between actors or use cases when one is a specialised form of another.\n\nExample: in a student portal, actors might be Student, Lecturer and Administrator. Use cases might include Log In, Register for Course, View Results, Upload Material and Manage Student Records. Register for Course may include Validate Student Status and Check Course Capacity. An optional Add Course to Waitlist use case could extend a failed registration flow when a course is full.\n\nA use case is more than an oval. A textual use-case description normally records its name, goal, primary actor, preconditions, trigger, main success flow, alternative/exception flows and postconditions. This is important because a diagram alone may not explain validation rules or error conditions.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-4-activity-diagrams-module",
+      "title": "4. Activity diagrams",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-4-activity-diagrams",
+          "title": "4. Activity diagrams",
+          "contentMarkdown": "An activity diagram models workflow or the sequence of activities needed to complete a process. The initial node is a filled circle; actions are rounded rectangles; control flows are arrows; decision and merge nodes are diamonds; fork and join nodes show parallel paths; the final node indicates completion. Guard conditions appear in square brackets beside outgoing decision flows, for example [payment approved] and [payment rejected].\n\nSwimlanes (activity partitions) show which role or department is responsible for each action. They help identify hand-offs and delays. A decision node represents alternative paths; a merge brings alternatives together. A fork starts concurrent activities; a join synchronises them. Do not use a fork when only one of several alternative paths is selected.\n\nExample: course registration workflow\n1. Student signs in and selects a semester.\n1. System displays available courses.\n1. Student selects a course and submits registration.\n1. System validates prerequisites and outstanding holds.\n1. If validation fails, the system displays the reason and returns the student to course selection.\n1. If validation passes, the system checks capacity.\n1. If a place is available, the system creates the registration and displays confirmation; otherwise it offers a waitlist or reports that the course is full.\n\nWhen drawing this example, use Student and System swimlanes, show the validation and capacity decisions explicitly, label guards, and include a clear end state.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-5-class-diagrams-module",
+      "title": "5. Class diagrams",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-5-class-diagrams",
+          "title": "5. Class diagrams",
+          "contentMarkdown": "A class diagram is a core structural model. A class is normally drawn as a rectangle with compartments for the class name, attributes and operations. The class name begins with a capital letter by convention. Attribute notation commonly looks like visibility name: Type; operation notation looks like visibility operation(parameter: Type): ReturnType.\n\nVisibility symbols are: + public, - private, # protected, and ~ package. Underlining may indicate a static member in UML notation. Italics may indicate an abstract class or operation, depending on the modelling context.\n\nExample textual model:\n\n| Student / -------------------------------- / -studentId: String / -fullName: String / -email: String / -------------------------------- / +register(course: Course): boolean / +viewResult(): Result /  / Course / -------------------------------- / -courseCode: String / -title: String / -creditUnit: int / -------------------------------- / +checkCapacity(): boolean |\n| --- |\n\n\nA Student may be associated with many Courses through a Registration class. Registration can hold attributes such as semester, date and status. This is an example of an association class or an explicit domain class, depending on the model. A student and course relationship is usually many-to-many over time; modelling Registration explicitly makes the relationship's own data visible.\n\nClass diagrams help uncover missing data, responsibilities and relationships. They do not show the sequence of messages at runtime; use sequence diagrams for that. A class is a type, while an object diagram shows particular instances of classes at a moment.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-6-object-diagrams-module",
+      "title": "6. Object diagrams",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-6-object-diagrams",
+          "title": "6. Object diagrams",
+          "contentMarkdown": "An object diagram is a snapshot of object instances and their links. The object label is commonly underlined and written as objectName:ClassName. Attribute values may be shown in the object compartment. Object diagrams help explain a complex class relationship with concrete examples and can check whether a proposed class model makes sense.\n\nFor example, student42:Student may have fullName = \"Ada Okafor\"; courseCOM213:Course may have title = \"Systems Modelling\"; a link between a registration instance and these objects illustrates an actual registration. Use object diagrams to show example data, not as a substitute for a complete class model.",
+          "estimatedMinutes": 32,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-7-interaction-diagrams-sequence-and-communication-module",
+      "title": "7. Interaction diagrams: sequence and communication",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-7-interaction-diagrams-sequence-and-communication",
+          "title": "7. Interaction diagrams: sequence and communication",
+          "contentMarkdown": "An interaction diagram explains how objects collaborate to achieve a task. A sequence diagram emphasises time order. Participants appear across the top; each participant has a vertical lifeline; messages are arrows; activation bars show periods when a participant is executing. Time generally flows downward. A return message may be drawn as a dashed arrow. A self-message shows an object calling one of its own operations.\n\nA communication diagram emphasises object links and message numbering rather than vertical time. Both diagrams can model the same interaction from different perspectives. Other interaction diagram forms include interaction overview and timing diagrams.\n\nSequence example: registration\n- Student UI sends submitRegistration(studentId, courseCode) to RegistrationController.\n- Controller asks RegistrationService to validate the request.\n- Service asks StudentRepository for student status and CourseRepository for course capacity.\n- Service records the registration through RegistrationRepository if all checks pass.\n- Controller returns success or a meaningful rejection message to the UI.\n\nWhen preparing a sequence diagram, identify participants first, write each message as an operation or meaningful event, order messages from top to bottom, show conditions with combined fragments such as alt, and avoid adding every minor database or framework detail unless it serves the model's purpose.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-8-state-machine-statechart-diagrams-module",
+      "title": "8. State-machine (statechart) diagrams",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-8-state-machine-statechart-diagrams",
+          "title": "8. State-machine (statechart) diagrams",
+          "contentMarkdown": "A state-machine diagram shows the states of an object or system and the events or conditions that cause transitions. It is useful where an entity has a meaningful lifecycle. A transition may be written as event [guard] / action.\n\nExample: a course-registration request may move through states Draft, Submitted, Under Review, Approved, Rejected and Cancelled. The transition from Submitted to Approved may occur after checksPassed; a request in Approved may later move to Cancelled if the student withdraws within allowed rules. State-machine diagrams clarify which actions are legal in each state and prevent contradictory lifecycle behaviour.\n\nDistinguish a state from an activity: a state describes the condition of an object; an activity describes work or a workflow step. A state diagram is appropriate when event-driven changes and lifecycle rules are central.",
+          "estimatedMinutes": 44,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-9-other-important-uml-diagrams-module",
+      "title": "9. Other important UML diagrams",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-9-other-important-uml-diagrams",
+          "title": "9. Other important UML diagrams",
+          "contentMarkdown": "| Diagram | Purpose |\n| --- | --- |\n| Package | Groups model elements into namespaces and shows dependencies between packages |\n| Component | Shows replaceable software components and their provided/required interfaces |\n| Deployment | Shows hardware or execution nodes and the software artefacts deployed on them |\n| Composite structure | Shows internal parts, ports and connectors of a classifier |\n| Activity | Shows control/data flow through a process |\n| Use case | Shows external roles and functional goals |\n| State machine | Shows states and event-driven transitions |\n| Sequence / communication | Shows object interactions and messages |\n\n\nUML 2 includes multiple diagram types, and textbooks sometimes group or count them differently. For an examination, follow the diagram families and examples taught in your lecturer's notes. At a minimum, be able to recognise, draw and explain use-case, activity, class, object, sequence/interaction and state-machine diagrams, as well as component and deployment diagrams.",
+          "estimatedMinutes": 54,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-10-turning-a-system-model-into-implementation-module",
+      "title": "10. Turning a system model into implementation",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-10-turning-a-system-model-into-implementation",
+          "title": "10. Turning a system model into implementation",
+          "contentMarkdown": "A practical modelling workflow is: understand the problem; identify stakeholders and actors; collect and validate requirements; draw use cases; describe important use-case flows; model workflow with activity diagrams; identify domain classes and relationships; model key interactions with sequence diagrams; model important object lifecycles with state machines; then refine the design into components and deployment nodes.\n\nModels should remain consistent. If a use case says that a Student can register for a Course, the class model should contain suitable student, course and registration concepts, and the interaction model should show which object handles the request. Traceability connects requirements to use cases, design elements and test cases.",
+          "estimatedMinutes": 35,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-11-practical-case-study-a-student-registration-system-module",
+      "title": "11. Practical case study: a student registration system",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-11-practical-case-study-a-student-registration-system",
+          "title": "11. Practical case study: a student registration system",
+          "contentMarkdown": "Problem statement: Students need an online system to select semester courses, check eligibility, submit registrations and view confirmations. Lecturers need course lists, while administrators maintain student and course records.\n\nActors: Student, Lecturer, Administrator and possibly an external identity service. Use cases: Authenticate, Browse Courses, Register Course, Drop Course, View Timetable, View Class List and Maintain Course. Candidate classes: Student, Lecturer, Course, Registration, Semester, Timetable and UserAccount. Important rules: a student must be active; prerequisites must be satisfied; registration must be within the permitted period; duplicate registration is not allowed; capacity must be checked; and the system must record the outcome.\n\nPrepare at least four views: a use-case diagram for goals, an activity diagram for registration workflow, a class diagram for data and relationships, and a sequence diagram for the register-course interaction. A state machine for Registration can show Draft, Submitted, Confirmed, Rejected and Dropped.",
+          "estimatedMinutes": 48,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-12-common-modelling-mistakes-module",
+      "title": "12. Common modelling mistakes",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-12-common-modelling-mistakes",
+          "title": "12. Common modelling mistakes",
+          "contentMarkdown": "- Drawing a use-case diagram as a flowchart. Use cases represent goals; activity diagrams represent workflow.\n- Placing actors inside the system boundary. Actors are external roles or systems.\n- Forgetting multiplicities on important associations.\n- Confusing inheritance with composition or aggregation.\n- Treating every noun in a requirements paragraph as a class without checking its responsibility.\n- Showing method calls in a class diagram as though they were sequence messages.\n- Drawing unlabelled or ambiguous arrows, omitting guard conditions, or using an incorrect direction for include and extend.\n- Creating diagrams that contradict one another or include implementation details too early.",
+          "estimatedMinutes": 34,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-213-13-revision-questions-module",
+      "title": "13. Revision questions",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-213-13-revision-questions",
+          "title": "13. Revision questions",
+          "contentMarkdown": "1. Define UML and explain three reasons for modelling a system before coding.\n1. Distinguish structural diagrams from behavioural diagrams.\n1. Explain actors, use cases and system boundaries.\n1. Differentiate <<include>> and <<extend>>, including the direction of their arrows.\n1. Draw an activity diagram for an online payment process with approved and rejected paths.\n1. Explain association, multiplicity, generalisation, dependency, aggregation and composition.\n1. Draw a class diagram for Student, Course and Registration, showing suitable attributes and relationships.\n1. Distinguish a class diagram from an object diagram.\n1. Explain how a sequence diagram represents message order and lifelines.\n1. Model the lifecycle of a library book loan using a state-machine diagram.\n1. What information does a component diagram show? How is it different from a deployment diagram?\n1. Describe how use cases, class diagrams and sequence diagrams can be traced to one requirement.\n\nExam practice: Choose a familiar system such as a library, clinic, hostel allocation or online shopping platform. Produce a use-case diagram, one fully described use case, an activity diagram for its main workflow, a class diagram of at least five classes and a sequence diagram for one successful interaction. Label every diagram and explain your modelling decisions.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "prerequisites": []
+}

@@ -1,0 +1,285 @@
+{
+  "code": "COM 212",
+  "title": "Introduction to Systems Programming",
+  "description": "Systems programming is the development of software that supports the operation of a computer system or provides facilities used by other programs. Examples include operating systems, device drivers, assemblers, compilers, linkers, loaders, file-system utilities, system libraries and diagnostic tools. Application software helps a user perform a task; systems software manages resources, connects hardware to software, or translates and supports other programs.\n\nSystems programs often work close to ",
+  "modules": [
+    {
+      "id": "com-212-1-meaning-and-purpose-module",
+      "title": "1. Meaning and purpose",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-1-meaning-and-purpose",
+          "title": "1. Meaning and purpose",
+          "contentMarkdown": "Systems programming is the development of software that supports the operation of a computer system or provides facilities used by other programs. Examples include operating systems, device drivers, assemblers, compilers, linkers, loaders, file-system utilities, system libraries and diagnostic tools. Application software helps a user perform a task; systems software manages resources, connects hardware to software, or translates and supports other programs.\n\nSystems programs often work close to the hardware and must consider memory, registers, processor instructions, timing, input/output devices, errors and security. The course introduces the relationship between computer architecture and software, assembly language and translation, operating-system functions, system utilities and libraries, and I/O device handlers.",
+          "estimatedMinutes": 35,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-2-computer-system-organisation-module",
+      "title": "2. Computer-system organisation",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-2-computer-system-organisation",
+          "title": "2. Computer-system organisation",
+          "contentMarkdown": "A computer system combines hardware and software. The Central Processing Unit (CPU) executes instructions. Its Arithmetic Logic Unit (ALU) performs arithmetic and logical operations; the control unit coordinates instruction execution; registers provide very fast storage inside the processor. Main memory (RAM) stores active instructions and data. Secondary storage retains data when power is off. Input/output devices allow communication with the external environment.\n\n| Component | Role |\n| --- | --- |\n| CPU | Fetches, decodes and executes instructions |\n| ALU | Performs arithmetic, comparison and logical operations |\n| Control unit | Directs movement of data and control signals |\n| Registers | Small, high-speed storage locations within the CPU |\n| RAM | Volatile working memory for active programs and data |\n| ROM / firmware storage | Holds persistent startup or device instructions |\n| Secondary storage | Stores programs and data persistently, e.g. SSD or HDD |\n| I/O controller | Coordinates communication with a device |\n| System bus/interconnect | Carries data, address and control information |\n\n\nThe fetch-decode-execute cycle is the basic instruction process. The processor fetches an instruction from memory, decodes what it means, obtains operands, executes the operation, and stores the result or updates control flow. A program counter (PC) tracks the next instruction address; an instruction register may hold the current instruction. Real processor designs use more advanced pipelines, caches, prediction and multiple execution units, but the simple cycle is the essential teaching model.\n\nA bit is a binary digit (0 or 1); a byte is commonly eight bits. Memory addresses identify locations. The size of an addressable unit and the architecture's word size affect how a processor accesses data. Know the distinction between RAM, cache, registers and persistent storage: registers are closest to the execution units, cache reduces average access time to memory, RAM stores working data, and secondary storage is persistent but generally slower.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-3-levels-of-programming-language-module",
+      "title": "3. Levels of programming language",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-3-levels-of-programming-language",
+          "title": "3. Levels of programming language",
+          "contentMarkdown": "| Level | Characteristics | Example / role |\n| --- | --- | --- |\n| Machine language | Binary or encoded instructions executed by the processor | Native instruction set |\n| Assembly language | Mnemonic names and symbolic operands corresponding closely to machine instructions | MOV, ADD, JMP (syntax depends on processor) |\n| High-level language | More abstract and portable; hides many hardware details | Java, C, Python |\n| Scripting / interpreted environment | Often executed by a runtime or interpreter, sometimes with compilation internally | Shell scripts, Python runtime |\n\n\nAn assembly program is processor-specific. A high-level program may be compiled or interpreted, and modern language systems frequently combine both approaches. For example, Java source is compiled to bytecode and then executed by the JVM, which may interpret and just-in-time compile code.",
+          "estimatedMinutes": 46,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-4-core-system-programming-tools-module",
+      "title": "4. Core system-programming tools",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-4-core-system-programming-tools",
+          "title": "4. Core system-programming tools",
+          "contentMarkdown": "- Assembler: translates assembly-language mnemonics into machine code or object code. It resolves labels and addresses, and may produce a symbol table and relocation information.\n- Compiler: translates source code into another form, often machine code or intermediate code. It detects errors and may optimise the program.\n- Interpreter: reads and executes program instructions through an interpreter runtime. It may execute statements directly or use an intermediate representation.\n- Linker: combines object files and libraries, resolves external symbols and creates an executable or shared library.\n- Loader: places an executable into memory, prepares the process environment, loads required libraries and transfers control to the program's entry point.\n- Debugger: helps inspect execution, set breakpoints, step through instructions, examine variables and diagnose faults.\n- Build system: automates compilation, linking, testing and packaging.\n\nDo not confuse compilation with linking or loading. Compilation/assembly translates source units. Linking combines separately compiled units. Loading prepares the executable for execution in memory.",
+          "estimatedMinutes": 52,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-5-assembly-language-foundations-module",
+      "title": "5. Assembly-language foundations",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-5-assembly-language-foundations",
+          "title": "5. Assembly-language foundations",
+          "contentMarkdown": "Assembly syntax depends on the processor and assembler. A line may contain a label, instruction mnemonic, operands and a comment. An instruction normally performs a small operation such as moving data, adding numbers, comparing values, accessing memory or branching. Directives (also called assembler pseudo-operations) guide the assembler but are not necessarily executed by the CPU.\n\nCommon instruction categories include:\n\n| Category | Purpose | Illustrative mnemonics (architecture-specific) |\n| --- | --- | --- |\n| Data transfer | Move values between registers and memory | MOV, LOAD, STORE |\n| Arithmetic | Add, subtract, multiply, divide | ADD, SUB, MUL, DIV |\n| Logical/bitwise | AND, OR, XOR, NOT, shifts | AND, OR, XOR, SHL |\n| Compare/test | Set condition information based on values | CMP, TEST |\n| Branch/control | Change the next instruction address | JMP, conditional branch, CALL, RET |\n| Stack | Push/pop values or manage stack pointer | PUSH, POP |\n| I/O or system | Access device or operating-system services | Architecture/OS-specific |\n\n\nRegisters may hold general data, addresses, counters, stack pointers or status flags. Addressing modes specify how an instruction obtains its operand: immediate (constant embedded in instruction), register, direct memory, indirect through a register, indexed or base-plus-offset. The exact names differ across processor families.\n\nA stack is a last-in, first-out (LIFO) data structure often used for function calls, return addresses, saved registers and local variables. A function call typically saves a return address and may establish a stack frame; the function returns to the saved location. The calling convention defines how arguments, return values and registers are managed.\n\nPseudocode for a simple loop is often easier to understand before translating into an architecture's assembly language:\n\n| SET total = 0 / SET index = 0 / WHILE index < number_of_values /     total = total + values[index] /     index = index + 1 / END WHILE / STORE total |\n| --- |\n\n\nWhen tracing assembly, make a table of register values, memory locations, flags and the program counter after each instruction. This is more reliable than attempting to hold the entire state in your head.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-6-the-compilation-and-translation-process-module",
+      "title": "6. The compilation and translation process",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-6-the-compilation-and-translation-process",
+          "title": "6. The compilation and translation process",
+          "contentMarkdown": "A conventional compiler can be explained in stages. Not every compiler uses exactly the same internal design, and stages may be combined, but the sequence below is useful for exams.\n1. Preprocessing (where applicable): expands macros, includes files and handles conditional compilation.\n1. Lexical analysis (scanning): groups characters into tokens such as identifiers, keywords, literals, operators and punctuation.\n1. Syntax analysis (parsing): checks token order against the language grammar and builds a parse tree or abstract syntax tree.\n1. Semantic analysis: checks meaning, including declarations, types, scope, function calls and valid operations.\n1. Intermediate representation (IR): creates a form that is easier to analyse and translate.\n1. Optimisation: improves code while preserving its intended behaviour, e.g. removing redundant calculations or unreachable code.\n1. Code generation: maps the intermediate form to target instructions.\n1. Assembly: converts assembly output into object code when a separate assembler is used.\n1. Linking and loading: resolves external references, prepares the executable and starts it.\n\nLexical errors include invalid character sequences. Syntax errors violate grammar. Semantic errors may involve an undeclared variable or incompatible types. A program may still compile but produce a logic error (incorrect result) or fail at runtime due to an exception or invalid memory/device operation.\n\nA single-pass assembler processes source once and is most straightforward when addresses and symbols can be resolved immediately. A two-pass assembler commonly uses pass one to assign addresses and build a symbol table, then pass two to generate machine code using resolved addresses. Some assemblers and compilers use more passes or more complex approaches.\n\nA symbol table stores information about identifiers, such as names, types, scope, sizes and addresses. A relocation record helps the linker adjust addresses when object code is placed in a final memory layout. An object file contains machine code plus metadata needed for linking and relocation.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-7-operating-system-functions-and-services-module",
+      "title": "7. Operating-system functions and services",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-7-operating-system-functions-and-services",
+          "title": "7. Operating-system functions and services",
+          "contentMarkdown": "An operating system (OS) manages hardware resources and provides services to application programs. Its main responsibilities include:\n- Process management: creating, scheduling, suspending and terminating processes.\n- Memory management: allocating and protecting memory, managing virtual memory and address spaces.\n- File management: naming, storing, retrieving and protecting files and directories.\n- Device management: coordinating device access through drivers and I/O subsystems.\n- Security and protection: authentication, permissions, isolation and auditing.\n- Networking: providing communication facilities and protocol support.\n- User interface: command-line shells and graphical environments.\n- Error handling/accounting: detecting faults, logging events and monitoring resource use.\n\nA program is a passive set of instructions stored on a device; a process is a program in execution with state and allocated resources. A process may contain one or more threads, which are execution paths sharing some process resources. A scheduler selects which ready process or thread receives CPU time. A context switch saves the state of one execution context and restores another, allowing multitasking but adding overhead.\n\nA system call is a controlled interface through which a user-mode program requests a service from the operating-system kernel, such as file access, process creation or device communication. A system call is not the same as an ordinary library function, although a library function may make a system call.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-8-system-utilities-and-libraries-module",
+      "title": "8. System utilities and libraries",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-8-system-utilities-and-libraries",
+          "title": "8. System utilities and libraries",
+          "contentMarkdown": "A system utility is a program used to configure, inspect, maintain or protect a computer system. Examples include file-copy and directory tools, backup programs, disk-checking tools, process monitors, compression tools, package managers, user-management commands and network diagnostic utilities. Utilities are generally invoked by users or scripts; libraries provide reusable functions that programs call.\n\nA library is a collection of reusable code. A static library's required object code is copied into the executable at link time. A dynamic/shared library is loaded or linked at runtime, allowing code sharing and independent updates but introducing dependency and version-management concerns. Know the terms API, header/interface, dependency, version, shared object/DLL and runtime linking.",
+          "estimatedMinutes": 36,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-9-input-output-i-o-handling-module",
+      "title": "9. Input/output (I/O) handling",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-9-input-output-i-o-handling",
+          "title": "9. Input/output (I/O) handling",
+          "contentMarkdown": "I/O moves information between a computer and devices such as keyboards, displays, disks, printers, sensors and network adapters. Device-specific details are often managed by controllers and drivers. A device driver is software that provides an interface between the operating system and a hardware device.\n\n| Method | How it works | Strength / limitation |\n| --- | --- | --- |\n| Polling (programmed I/O) | CPU repeatedly checks device status and services it when ready | Simple, but can waste CPU time while waiting |\n| Interrupt-driven I/O | Device interrupts the CPU when it needs service or completes work | CPU can do other work, but interrupt handling adds complexity |\n| Direct Memory Access (DMA) | A DMA controller transfers a block between device and memory with limited CPU involvement | Efficient for large transfers; setup and coordination are needed |\n\n\nAn interrupt is a signal that causes the processor to pause the current flow and execute an interrupt service routine. A trap/exception is commonly generated by an instruction or an internal condition, such as a system-call request or a fault; exact terminology varies by architecture. Buffering temporarily holds data while producer and consumer operate at different speeds. Single buffering uses one buffer; double buffering allows one buffer to be filled while another is processed; multiple buffering may further smooth transfers. Spooling queues work, such as print jobs, for a device that processes requests sequentially.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-10-systems-programming-reliability-and-security-module",
+      "title": "10. Systems-programming reliability and security",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-10-systems-programming-reliability-and-security",
+          "title": "10. Systems-programming reliability and security",
+          "contentMarkdown": "Low-level software has a high impact because it can affect the whole system. Validate sizes and inputs; check return values and error codes; handle resource ownership carefully; avoid memory corruption; use appropriate permissions; log useful diagnostic information; and test failure cases. In languages that expose manual memory management, incorrect allocation or release can cause leaks, dangling pointers or buffer overflows. Even when a language manages memory automatically, incorrect resource handling can still exhaust files, sockets or memory.",
+          "estimatedMinutes": 26,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-11-practical-laboratory-checklist-module",
+      "title": "11. Practical/laboratory checklist",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-11-practical-laboratory-checklist",
+          "title": "11. Practical/laboratory checklist",
+          "contentMarkdown": "- Draw and explain a block diagram of the CPU, main memory, storage and I/O system.\n- Trace a fetch-decode-execute example and explain the role of registers.\n- Identify the stages from source program to executable file.\n- Use a compiler to build a small program and distinguish compile-time from runtime errors.\n- Read a simple assembly example and trace register changes, branches and stack operations.\n- Explain what a linker and loader do using a multi-file program as an example.\n- Use basic OS utilities to inspect files, processes, storage and network status.\n- Compare polling, interrupts and DMA; explain buffering and spooling.",
+          "estimatedMinutes": 35,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "instructions": "- Draw and explain a block diagram of the CPU, main memory, storage and I/O system.\n- Trace a fetch-decode-execute example and explain the role of registers.\n- Identify the stages from source program to executable file.\n- Use a compiler to build a small program and distinguish compile-time from runtime errors.\n- Read a simple assembly example and trace register changes, branches and stack operations.\n- Explain what a linker and loader do using a multi-file program as an example.\n- Use basic OS utilities to inspect files, processes, storage and network status.\n- Compare polling, interrupts and DMA; explain buffering and spooling."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-212-12-revision-questions-module",
+      "title": "12. Revision questions",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-212-12-revision-questions",
+          "title": "12. Revision questions",
+          "contentMarkdown": "1. Define systems programming and distinguish it from application programming.\n1. Explain the functions of the ALU, control unit, registers and RAM.\n1. Distinguish machine language, assembly language and a high-level language.\n1. What is the difference between an assembler, compiler, linker and loader?\n1. Explain lexical, syntax and semantic analysis in a compiler.\n1. Why might an assembler use two passes? What does a symbol table contain?\n1. Differentiate a program, process and thread.\n1. Explain five major functions of an operating system.\n1. Differentiate a system call from a library function.\n1. Compare polling, interrupt-driven I/O and DMA.\n1. Explain buffering, double buffering and spooling.\n\nKey distinctions to remember: compilation translates source; linking resolves references between units; loading prepares an executable to run. A process is executing, while a program is stored instructions. Polling repeatedly checks status; interrupt-driven I/O responds to a signal; DMA transfers blocks with reduced CPU involvement.",
+          "estimatedMinutes": 51,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "prerequisites": []
+}

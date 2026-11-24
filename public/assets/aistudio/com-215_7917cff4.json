@@ -1,0 +1,170 @@
+{
+  "code": "COM 215",
+  "title": "Computer Application Packages II",
+  "description": "This course is about applying specialised software packages to solve practical information-processing and design problems. The NBTE Computer Science outline places emphasis on graphics applications, desktop publishing (DTP), computer-aided design (CAD) and database management system (DBMS) packages. The exact brands available in your laboratory may differ, but the concepts and workflows transfer between packages.\n\nA package is application software designed to perform a particular class of tasks.",
+  "modules": [
+    {
+      "id": "com-215-1-course-scope-module",
+      "title": "1. Course scope",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-215-1-course-scope",
+          "title": "1. Course scope",
+          "contentMarkdown": "This course is about applying specialised software packages to solve practical information-processing and design problems. The NBTE Computer Science outline places emphasis on graphics applications, desktop publishing (DTP), computer-aided design (CAD) and database management system (DBMS) packages. The exact brands available in your laboratory may differ, but the concepts and workflows transfer between packages.\n\nA package is application software designed to perform a particular class of tasks. A graphics package creates or edits visual material; a DTP package arranges text and images for publication; CAD software supports precise technical drawing and modelling; a DBMS package stores, queries and manages structured information.",
+          "estimatedMinutes": 34,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-215-2-graphics-packages-module",
+      "title": "2. Graphics packages",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-215-2-graphics-packages",
+          "title": "2. Graphics packages",
+          "contentMarkdown": "Graphics software is used to create, edit and prepare images for screen or print. Understand the difference between two broad image types:\n\n| Type | How it represents an image | Strengths | Limitations |\n| --- | --- | --- | --- |\n| Raster / bitmap | A grid of pixels, each storing colour information | Good for photographs and detailed textures | Enlarging too much causes visible pixelation; file size can be large |\n| Vector | Mathematical paths, shapes, strokes and fills | Scales cleanly; suitable for logos, icons and diagrams | Less natural for photographic texture; effects may need rasterisation |\n\n\nImportant terms include pixel (smallest addressable picture element), resolution (image detail or pixel dimensions; print resolution is often expressed in pixels/dots per inch), aspect ratio (width-to-height relationship), colour depth (bits used to represent colour), layer (independent visual element), mask (controls which parts of a layer are visible), path (editable vector outline), selection (chosen area for editing), and transparency (degree to which content is see-through).\n\n### Colour models and formats\n\n\nRGB (red, green, blue) is an additive colour model used for screens. CMYK (cyan, magenta, yellow, black) is a subtractive process model used in many print workflows. A design that looks bright on a screen may reproduce differently in print because the colour gamut and output device differ. Choose the colour profile and export settings for the intended medium.\n\n| Format | Typical use | Important characteristic |\n| --- | --- | --- |\n| JPEG/JPG | Photographs | Lossy compression; small files; does not preserve transparency in common use |\n| PNG | Web graphics, screenshots, transparent graphics | Lossless compression; supports transparency |\n| GIF | Simple short animations and limited-colour graphics | Palette-limited; transparency/animation support with limitations |\n| TIFF | High-quality imaging and print workflows | Can preserve high-quality image data; often large |\n| SVG | Logos, icons and scalable diagrams | Vector format based on XML |\n| PDF | Sharing final artwork and print-ready layouts | Can preserve page geometry, fonts and vector/raster content, depending on export |\n\n\n### Design principles\n\n\nA strong design has contrast to establish differences, alignment to create order, proximity to show related items, and repetition/consistency to create unity. Visual hierarchy directs attention through size, weight, colour and placement. Use whitespace deliberately. Keep typography readable; limit unnecessary font changes; check contrast; maintain margins; and avoid overcrowding. A graphic should communicate a clear message to its intended audience.\n\n### Typical editing workflow\n\n1. Identify audience, purpose, medium and final dimensions.\n1. Create or import source material and save an editable master file.\n1. Crop and resize proportionally; correct exposure/colour as required.\n1. Use layers, masks and selections for non-destructive editing.\n1. Add typography and vector elements with consistent alignment and contrast.\n1. Check image quality, colour mode, spelling, rights to use the assets and accessibility.\n1. Export a copy in the correct format and resolution for print or digital use.\n\nPractical assignment: design a simple departmental event poster. Use a clear title, date, venue, contact information, one strong image or illustration, consistent typography, adequate contrast, and a balanced layout. Save the editable source and export a print version and a smaller web version.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-215-3-desktop-publishing-dtp-module",
+      "title": "3. Desktop publishing (DTP)",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-215-3-desktop-publishing-dtp",
+          "title": "3. Desktop publishing (DTP)",
+          "contentMarkdown": "Desktop publishing combines text, graphics and page layout to produce publications such as flyers, newsletters, brochures, reports, magazines and books. A word processor is optimised for editing text; a DTP package gives more precise control over page composition, text flow, frames, columns, typography and print output.\n\n### Essential page-layout terms\n\n- Page size: final width and height of a publication (e.g. A4 or A5).\n- Margins: space between page edges and the main content area.\n- Gutter: extra space near a binding edge so content is not lost in the fold.\n- Bleed: artwork extended beyond the trim edge so no unprinted sliver appears after cutting.\n- Trim size: final size after cutting.\n- Columns: vertical divisions used to structure text.\n- Text frame: container that holds a block of text; linked frames can continue text across pages.\n- Image frame: container for an image.\n- Text wrap: controls how text flows around an image or object.\n- Drop cap: enlarged first letter at the start of a paragraph.\n- Master/parent page: reusable page elements such as headers, footers and page numbers.\n- Grid and guides: alignment aids that help create a consistent layout.\n- Preflight: final check for missing fonts, overset text, low-resolution images, colour issues and other print problems.\n\n### Publication workflow\n\n\nPlan the document and gather approved text/images. Set page size, margins, columns and master pages. Create text and image frames. Import text and flow it through linked frames; style headings and body text using paragraph and character styles rather than formatting each line manually. Place images, set text wrap and captions, and use consistent grids. Add page numbers and running headers/footers. Proofread on screen and on a printed proof. Run preflight and export to PDF using the printer's specifications when a print-ready file is required.\n\n### Common DTP errors\n\n\nOverset text (text that does not fit in its frame), missing linked images, unembedded fonts, inconsistent paragraph spacing, widows/orphans, poor image resolution, text too close to the trim edge, incorrect bleed, weak contrast and inconsistent alignment. Always check the exported PDF; the exported file is the actual deliverable, not just the editable layout.\n\nPractical assignment: create a two-page newsletter with a title masthead, two or three columns, at least two images, captions, a pull quote, consistent heading styles and page numbers. Export a PDF and inspect every page.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-215-4-computer-aided-design-cad-module",
+      "title": "4. Computer-aided design (CAD)",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-215-4-computer-aided-design-cad",
+          "title": "4. Computer-aided design (CAD)",
+          "contentMarkdown": "CAD software supports precise technical drawings and models. It is used in engineering, architecture, manufacturing, product design and construction. A CAD drawing can contain 2D geometry, 3D surfaces or 3D solid models. CAD improves precision, repeatability, editing, dimensioning and documentation; the result still depends on correct assumptions and professional review.\n\n### 2D drafting concepts\n\n- Coordinate systems: Cartesian coordinates use X and Y (and Z in 3D); polar input uses distance and angle.\n- Units and scale: set correct drawing units and understand whether the drawing is full size or plotted to a scale.\n- Layers: organise related objects and control visibility, colour, line type and line weight.\n- Object snaps (OSNAP): locate exact geometric points such as endpoint, midpoint, centre, intersection and perpendicular.\n- Ortho mode: constrains cursor movement to horizontal/vertical directions in many CAD tools.\n- Polar tracking: guides drawing at specified angles.\n- Grid and snap: help position objects consistently.\n- Dimensions: communicate lengths, radii, angles and tolerances.\n- Blocks/components: reusable groups of drawing objects.\n- Hatching: fills a bounded region with a pattern to indicate section or material.\n\nCommon commands across CAD systems include line, polyline, circle, arc, rectangle, offset, trim, extend, fillet, chamfer, mirror, array, move, copy, rotate, scale, dimension and layer controls. Command names and shortcuts vary by software.\n\n### Drawing views and 3D concepts\n\n\nAn orthographic projection uses separate views such as front, top and side to communicate exact shape and dimensions. An isometric view presents three principal axes in one view for visual understanding; it is not automatically a substitute for a dimensioned orthographic drawing. In 3D, understand coordinate axes, work planes, extrude, revolve, sweep, loft, Boolean union/subtract/intersect, solids, surfaces and materials/rendering.\n\n### CAD workflow\n\n\nSet units and drawing limits; create layers and line properties; establish reference geometry; construct objects with coordinates and snaps; apply editing tools; add dimensions and annotations; check constraints and geometry; arrange views/layouts; set plot scale and page size; then export or print. Keep a clean layer structure and use meaningful filenames and versions.\n\nPractical assignment: draw a dimensioned simple object such as a desk plan, room outline or mechanical plate. Use layers for outline, dimensions and annotations; show appropriate dimensions; then produce a layout/print output. For 3D work, create a simple solid using an extrusion or revolve and demonstrate a Boolean operation.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-215-5-database-management-packages-module",
+      "title": "5. Database management packages",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-215-5-database-management-packages",
+          "title": "5. Database management packages",
+          "contentMarkdown": "A Database Management System (DBMS) is software used to define, create, maintain, query and control a database. Examples include Microsoft Access, LibreOffice Base, MySQL, PostgreSQL, SQL Server and Oracle. A DBMS provides storage, querying, integrity constraints, access control, concurrency control, backup and recovery features.\n\n### Data hierarchy and relational concepts\n\n\nA field is one named data item; a record/row is a group of related fields; a table stores records about one entity; a database contains related tables and other objects. In a relational database, tables are connected using keys.\n- Primary key: uniquely identifies each row; must be unique and not null.\n- Foreign key: references a candidate/primary key in another table and helps enforce referential integrity.\n- Candidate key: a minimal field or field combination that uniquely identifies a row.\n- Composite key: a key made from more than one field.\n- Unique constraint: enforces uniqueness where appropriate.\n- Validation rule: restricts acceptable data.\n- Relationship: one-to-one, one-to-many or many-to-many. Many-to-many is normally implemented with a junction table.\n\nExample database for a small college: Students(StudentID, FullName, DepartmentID), Departments(DepartmentID, DepartmentName), Courses(CourseCode, Title, CreditUnit) and Registrations(StudentID, CourseCode, Semester, Status). The Registrations table resolves the many-to-many relationship between students and courses and may use a composite key.\n\n### Database design and normalisation\n\n\nGood design reduces duplicate information and prevents anomalies. First Normal Form (1NF) requires atomic values and no repeating groups in each row. Second Normal Form (2NF) requires 1NF and that every non-key attribute depends on the whole candidate key (no partial dependency on part of a composite key). Third Normal Form (3NF) requires 2NF and removes transitive dependencies of non-key attributes on keys. Normalisation is a design technique, not simply splitting tables as far as possible; practical systems may selectively denormalise for performance after correctness is understood.\n\n### SQL essentials\n\n\nSQL (Structured Query Language) is used to define, manipulate and query relational data. Know the difference between DDL (data definition), DML (data manipulation), DQL (querying, commonly grouped with DML in some texts), DCL (permissions) and transaction control.\n\n| CREATE TABLE Students ( /     StudentID INTEGER PRIMARY KEY, /     FullName VARCHAR(100) NOT NULL, /     Department VARCHAR(60) NOT NULL / ); /  / INSERT INTO Students (StudentID, FullName, Department) / VALUES (1001, 'Ada Okafor', 'Computer Science'); /  / SELECT StudentID, FullName / FROM Students / WHERE Department = 'Computer Science' / ORDER BY FullName; /  / UPDATE Students / SET Department = 'Software Engineering' / WHERE StudentID = 1001; /  / DELETE FROM Students / WHERE StudentID = 1001; |\n| --- |\n\n\nThe WHERE clause is critical in UPDATE and DELETE; leaving it out can affect every row. A JOIN combines related rows from two or more tables. An INNER JOIN returns matching rows; a LEFT JOIN keeps all rows from the left table and matches from the right where available. Aggregate functions include COUNT, SUM, AVG, MIN and MAX; GROUP BY creates groups, and HAVING filters groups after aggregation.\n\n### Forms, queries and reports in a DBMS package\n\n\nA form provides a user-friendly way to enter or view data. A query retrieves, filters, calculates or combines data. A report formats data for presentation or printing. In Microsoft Access, tables store the data, queries retrieve it, forms support interaction, and reports support formatted output. Learn to set field data types, primary keys, relationships and validation rules; create select and parameter queries; build forms with controls; and generate grouped reports.\n\n### Integrity, transactions and security\n\n\nEntity integrity requires each row to have a valid unique key. Referential integrity prevents invalid references. Domain integrity limits values to valid types and ranges. Transactions follow the principles commonly summarised as ACID: atomicity, consistency, isolation and durability. Security includes user accounts, role-based permissions, strong authentication, encryption and safe backups. Do not expose sensitive student or customer data in a report or shared file without permission.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-215-6-integrated-practical-tasks-module",
+      "title": "6. Integrated practical tasks",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-215-6-integrated-practical-tasks",
+          "title": "6. Integrated practical tasks",
+          "contentMarkdown": "1. Produce a departmental event poster in a graphics package and export to PNG/PDF.\n1. Create a two-page newsletter with master-page elements, columns, flowing text and image captions.\n1. Produce a CAD drawing with layers, accurate dimensions and a plotted layout.\n1. Build a small student database with at least three related tables, a primary key in each table, foreign keys, a form, two queries and a report.\n1. Demonstrate how a record is inserted, searched, updated and deleted, and explain the integrity rules used.",
+          "estimatedMinutes": 28,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-215-7-revision-questions-module",
+      "title": "7. Revision questions",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-215-7-revision-questions",
+          "title": "7. Revision questions",
+          "contentMarkdown": "1. Differentiate raster and vector graphics and give two uses of each.\n1. Explain RGB and CMYK and state when each is commonly used.\n1. What are layers, masks, resolution, aspect ratio and transparency?\n1. State the four core design principles of contrast, alignment, proximity and repetition.\n1. Define DTP, bleed, gutter, margin, master page, text wrap and preflight.\n1. Explain the difference between orthographic and isometric drawings.\n1. Describe the roles of layers, object snaps and dimensions in CAD.\n1. Define a DBMS and explain the roles of tables, forms, queries and reports.\n1. Differentiate primary, foreign, candidate and composite keys.\n1. Explain 1NF, 2NF and 3NF using an example.\n1. Write SQL to select, insert, update and delete a record safely.\n1. What are entity, referential and domain integrity?\n\nPractical exam reminder: The examiner may ask you to create an output rather than simply define a tool. Save an editable source file, use meaningful names, include the requested features, export correctly and be ready to explain the choices you made.",
+          "estimatedMinutes": 57,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "prerequisites": []
+}

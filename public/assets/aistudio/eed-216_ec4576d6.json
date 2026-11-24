@@ -1,0 +1,423 @@
+{
+  "code": "EED 216",
+  "title": "Practice of Entrepreneurship",
+  "description": "Entrepreneurship is the process of identifying an opportunity, organising resources, accepting calculated risk and creating value through a new or improved product, service or business. An entrepreneur is a person who organises and manages an enterprise, makes decisions under uncertainty and pursues value creation. An enterprise is the organised business activity or undertaking through which goods or services are produced or supplied.\n\nEntrepreneurship matters because it can create employment, i",
+  "modules": [
+    {
+      "id": "eed-216-1-meaning-and-importance-of-entrepreneurship-module",
+      "title": "1. Meaning and importance of entrepreneurship",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-1-meaning-and-importance-of-entrepreneurship",
+          "title": "1. Meaning and importance of entrepreneurship",
+          "contentMarkdown": "Entrepreneurship is the process of identifying an opportunity, organising resources, accepting calculated risk and creating value through a new or improved product, service or business. An entrepreneur is a person who organises and manages an enterprise, makes decisions under uncertainty and pursues value creation. An enterprise is the organised business activity or undertaking through which goods or services are produced or supplied.\n\nEntrepreneurship matters because it can create employment, increase income, introduce innovation, encourage competition, improve the use of local resources, solve community problems and contribute to national economic development. It is not limited to owning a large company. A small repair service, digital design studio, food-processing business, farm, tutoring service or software venture can be entrepreneurial when it identifies a customer need and delivers value sustainably.",
+          "estimatedMinutes": 42,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-2-types-of-entrepreneurs-and-enterprises-module",
+      "title": "2. Types of entrepreneurs and enterprises",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-2-types-of-entrepreneurs-and-enterprises",
+          "title": "2. Types of entrepreneurs and enterprises",
+          "contentMarkdown": "| Type / category | Description |\n| --- | --- |\n| Small-business entrepreneur | Builds a business intended to provide a sustainable income and serve a defined market |\n| Scalable-start-up entrepreneur | Develops a model intended for rapid expansion into larger markets |\n| Social entrepreneur | Uses an enterprise model to address a social or environmental problem while managing financial sustainability |\n| Corporate entrepreneur / intrapreneur | Develops new products, services or processes within an existing organisation |\n| Necessity entrepreneur | Starts a business because suitable employment or income options are limited |\n| Opportunity entrepreneur | Starts a business after identifying an attractive market opportunity |\n| Technology entrepreneur | Uses or develops technology as a major part of the value proposition |\n\n\nA business can also be classified by sector (primary, secondary or tertiary), size, ownership and legal form. These categories describe different dimensions and should not be treated as mutually exclusive. For example, one enterprise could be a small, privately owned technology service and also qualify as a social enterprise.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-3-entrepreneurial-mindset-and-competencies-module",
+      "title": "3. Entrepreneurial mindset and competencies",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-3-entrepreneurial-mindset-and-competencies",
+          "title": "3. Entrepreneurial mindset and competencies",
+          "contentMarkdown": "Useful entrepreneurial qualities include initiative, creativity, problem-solving, customer awareness, resilience, adaptability, willingness to learn, responsible risk-taking, integrity, communication, negotiation, planning and financial discipline. These are developable skills, not guarantees of success. Successful entrepreneurs test assumptions and learn from feedback rather than relying on confidence alone.\n\nA calculated risk is based on evidence and an understanding of possible outcomes. Reckless risk-taking ignores downside consequences. An entrepreneur should identify what could go wrong, estimate likelihood and impact, set limits on possible loss and prepare a response.",
+          "estimatedMinutes": 28,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-4-generating-and-screening-business-ideas-module",
+      "title": "4. Generating and screening business ideas",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-4-generating-and-screening-business-ideas",
+          "title": "4. Generating and screening business ideas",
+          "contentMarkdown": "Business ideas may arise from personal experience, customer complaints, local shortages, inefficient processes, new technologies, changes in lifestyle, environmental problems or gaps in existing services. A useful idea addresses a real problem for a defined group of people. “I like this idea” is not evidence that customers will pay for it.\n\n### Opportunity screening questions\n\n- What specific problem or unmet need exists?\n- Who experiences it, and how often?\n- How do people solve it now? What is unsatisfactory about existing options?\n- Who would pay for the solution, and how much might they pay?\n- How many potential customers are realistically reachable?\n- What skills, equipment, suppliers, licences and capital are needed?\n- Who are the competitors or substitutes?\n- Can the business make enough money after all costs?\n- What legal, ethical, environmental or social risks could arise?\n\nA simple opportunity scorecard can rate customer need, market size, willingness to pay, competition, founder capability, start-up cost, likely margin, risk and social value. Use ratings as a decision aid, not as a substitute for evidence.",
+          "estimatedMinutes": 59,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-5-market-research-module",
+      "title": "5. Market research",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-5-market-research",
+          "title": "5. Market research",
+          "contentMarkdown": "Market research gathers information about customers, competitors, demand, pricing, suppliers and wider market conditions. Primary research is collected directly, for example through interviews, observation, questionnaires, prototypes or pilot sales. Secondary research uses information already collected, such as official statistics, reports, trade publications, competitor websites and published studies.\n\nA good questionnaire has clear questions, one idea per question, neutral wording and suitable response options. Avoid leading questions such as “Would you agree that our excellent product is the best?” A better question is “Which of these factors most affects your choice of provider?” A small pilot helps reveal confusing wording.\n\nKnow the basic terms:\n- Target market: the group of customers the business chooses to serve.\n- Market segmentation: dividing a broad market into groups with shared characteristics or needs.\n- Customer persona/profile: a research-based description of a typical target customer.\n- Competitor: a business offering a similar solution or competing for the same customer spending.\n- Substitute: a different product or method that meets the same need.\n- Value proposition: the clear reason customers should choose the offer; it explains the problem solved and the value delivered.\n- Positioning: the place a business aims to occupy in customers' minds relative to alternatives.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-6-feasibility-study-module",
+      "title": "6. Feasibility study",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-6-feasibility-study",
+          "title": "6. Feasibility study",
+          "contentMarkdown": "A feasibility study tests whether the proposed enterprise is practical and likely to be viable before substantial resources are committed. It is broader than a business idea and more evidence-based than enthusiasm.\n\n| Feasibility area | Questions to investigate |\n| --- | --- |\n| Market | Is there a real target market? Is demand sufficient? What are prices and competitors? |\n| Technical | Can the product/service be produced or delivered with available technology and skills? |\n| Operational | What premises, equipment, suppliers, processes, staff and logistics are needed? |\n| Management | Does the founder/team have the skills and capacity to run the venture? What gaps need filling? |\n| Financial | What are start-up costs, running costs, cash needs, sales assumptions, margins and break-even point? |\n| Legal/regulatory | What registration, permits, standards, contracts, tax and employment obligations apply? |\n| Environmental/social | What effects may the business have on people, communities, resources and the environment? |\n\n\nThe outcome may be to proceed, modify the idea, run a smaller pilot, obtain more evidence or stop. A feasibility study should state its assumptions and uncertainties explicitly.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-7-business-models-and-the-business-plan-module",
+      "title": "7. Business models and the business plan",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-7-business-models-and-the-business-plan",
+          "title": "7. Business models and the business plan",
+          "contentMarkdown": "A business model explains how an enterprise creates, delivers and captures value. It identifies customers, value proposition, channels, customer relationships, key activities, resources, partners, revenue streams and cost structure. A business plan is a more detailed written document describing the venture, market, operations, management, marketing, finances, risks and implementation steps. The business model can be summarised using a Business Model Canvas or similar framework.\n\n### Typical business-plan structure\n\n1. Executive summary: concise overview of the business, customer problem, solution, market, team, finances and funding need. It is often written last.\n1. Business description: name, location, ownership, mission, objectives, product/service and current stage.\n1. Problem and value proposition: the customer need and why the offer is useful or distinct.\n1. Market analysis: target segments, demand evidence, competitors, substitutes, industry conditions and pricing.\n1. Marketing and sales plan: product, price, place, promotion, distribution, customer acquisition and retention.\n1. Operations plan: process, suppliers, facilities, equipment, quality control, staffing and delivery.\n1. Management and organisation: founders, responsibilities, experience, advisers and staffing needs.\n1. Financial plan: start-up budget, sales forecast, cash-flow forecast, projected income statement, balance sheet assumptions, break-even analysis and funding requirements.\n1. Risk analysis: key operational, financial, market, regulatory and technology risks with mitigation plans.\n1. Implementation schedule: milestones, responsibilities, dates and measurable indicators.\n\nAvoid unsupported claims such as “everyone will buy”. Show the research and assumptions behind sales forecasts. Separate personal money from business funds and make the financial projections internally consistent.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-8-forms-of-business-ownership-module",
+      "title": "8. Forms of business ownership",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-8-forms-of-business-ownership",
+          "title": "8. Forms of business ownership",
+          "contentMarkdown": "| Form | Advantages | Limitations / considerations |\n| --- | --- | --- |\n| Sole proprietorship | Simple to establish and manage; owner controls decisions | Owner may bear personal liability; continuity and funding may be limited |\n| Partnership | Combines skills, contacts and capital | Requires a clear agreement; disagreements and liability depend on legal form and applicable law |\n| Limited liability company | Separate legal entity; liability generally limited subject to law and conduct | More formal compliance, record-keeping and reporting responsibilities |\n| Cooperative | Owned and governed by members for shared benefit | Requires participation and agreed governance; decisions may be slower |\n| Incorporated trustee / not-for-profit structure | May suit charitable, educational or public-benefit objectives | Not designed for distributing profit to owners; specific legal rules apply |\n\n\nThe choice depends on ownership, liability, capital, governance, tax, continuity, compliance and the purpose of the venture. Do not assume all partnerships or companies have identical liability or filing rules; legal form matters.",
+          "estimatedMinutes": 57,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-9-starting-and-registering-a-business-in-nigeria-module",
+      "title": "9. Starting and registering a business in Nigeria",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-9-starting-and-registering-a-business-in-nigeria",
+          "title": "9. Starting and registering a business in Nigeria",
+          "contentMarkdown": "A founder should investigate the current requirements of the Corporate Affairs Commission (CAC) for the chosen legal structure and confirm whether sector-specific permits, professional approvals, local-government requirements, tax registrations, product standards or environmental approvals also apply. A business may need additional authorisation depending on whether it works in finance, food, health, education, transport, telecommunications, manufacturing or another regulated field.\n\nFor exam purposes, understand the general sequence: choose a business name and ownership form; check availability and naming rules; prepare required particulars and documents; complete the appropriate registration process with the responsible authority; obtain relevant tax and sector registrations/permits; set up proper records and business banking; and maintain required annual or periodic filings. Exact fees, forms, portals and procedures can change, so consult the official regulator at the time of registration rather than relying on old notes or unofficial agents.",
+          "estimatedMinutes": 46,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-10-marketing-and-customer-development-module",
+      "title": "10. Marketing and customer development",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-10-marketing-and-customer-development",
+          "title": "10. Marketing and customer development",
+          "contentMarkdown": "Marketing is the process of understanding customer needs, creating value, communicating an offer and building customer relationships. The traditional 4 Ps are:\n- Product: the good or service, its quality, features, design, packaging, warranty and after-sales support.\n- Price: the amount customers pay and the pricing method used, considering cost, competition, value and willingness to pay.\n- Place: where and how customers access the offer, including physical location, delivery, online channels and distribution partners.\n- Promotion: how the business informs and persuades customers, including advertising, public relations, sales promotion, personal selling and digital communication.\n\nA service-focused extension often includes people, process and physical evidence. Customer acquisition attracts new customers; retention keeps existing customers through value and reliable service. Measure practical indicators such as enquiries, conversion rate, repeat purchase, complaints, referrals and cost to acquire a customer. Do not confuse likes or views with actual sales.\n\nA simple sales process is: identify a target customer; understand their need; present a suitable solution; respond honestly to questions; agree terms; deliver as promised; collect payment; request feedback; and follow up. Trust and consistent service are important long-term business assets.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-11-operations-and-management-module",
+      "title": "11. Operations and management",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-11-operations-and-management",
+          "title": "11. Operations and management",
+          "contentMarkdown": "Management involves planning, organising, leading and controlling resources. Planning sets objectives and actions; organising assigns tasks and resources; leading motivates and coordinates people; controlling compares actual results with targets and corrects deviations. These functions apply even to a one-person business.\n\nOperations management concerns how goods or services are produced and delivered. It includes supplier selection, purchasing, stock control, scheduling, workflow, quality, maintenance, customer service and waste reduction. A process map can show the steps from customer request to delivery and payment.\n\nQuality means consistently meeting defined requirements and customer expectations. Establish measurable standards, inspect outputs, record defects and use feedback to improve. For a service business, reliability, response time, accuracy and communication may be key quality dimensions.",
+          "estimatedMinutes": 39,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-12-business-finance-and-accounting-basics-module",
+      "title": "12. Business finance and accounting basics",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-12-business-finance-and-accounting-basics",
+          "title": "12. Business finance and accounting basics",
+          "contentMarkdown": "Start-up capital is the finance needed to establish the business. Working capital supports routine operations, such as buying stock, paying transport and meeting short-term obligations. Fixed assets are resources used over time, such as equipment or furniture. A business must plan for cash timing, not only whether a sale appears profitable on paper.\n\nPossible sources of finance include personal savings, retained earnings, contributions from co-founders, family/friends (with clear written terms), bank or microfinance loans, supplier credit, grants, angel investment, venture capital for suitable high-growth ventures and development-finance programmes. Each source has costs, obligations, eligibility conditions and risks. A loan must be repaid regardless of whether the business performs well; equity finance usually involves sharing ownership or control.\n\n### Cost concepts\n\n\n| Cost type | Meaning | Example |\n| --- | --- | --- |\n| Fixed cost | Does not change directly with output in the relevant range and period | Monthly rent |\n| Variable cost | Changes with the number of units/jobs | Material used for each product |\n| Direct cost | Can be traced to a specific product/job | Fabric used in one garment |\n| Indirect cost / overhead | Supports operations but is not easily traced to one unit | General electricity, administration |\n| Start-up cost | One-off or initial cost of establishing the venture | Initial equipment purchase |\n| Operating cost | Recurring cost of running the business | Transport, data, wages, utilities |\n\n\nTotal cost = fixed costs + variable costs for the chosen output level. Unit cost = total cost divided by units produced or services delivered, if the output is reasonably comparable. Contribution per unit = selling price per unit − variable cost per unit. Contribution first covers fixed costs; after fixed costs are covered, additional contribution contributes to profit (before other unmodelled costs/taxes).\n\n### Worked costing and break-even example\n\n\nSuppose a small printing service has monthly fixed costs of ₦120,000. Each job incurs an average variable cost of ₦350 and is sold for ₦800. Contribution per job = ₦800 − ₦350 = ₦450. Break-even quantity = fixed costs / contribution per unit = ₦120,000 / ₦450 = 266.67, so the business must complete at least 267 jobs in the period to cover these modelled costs. At 400 jobs, variable cost = 400 × ₦350 = ₦140,000; total cost = ₦120,000 + ₦140,000 = ₦260,000; sales revenue = 400 × ₦800 = ₦320,000; operating surplus before other costs/tax = ₦60,000.\n\nThis example assumes a stable selling price, stable variable cost per job and a fixed-cost total that does not change within the relevant output range. Real businesses should include payment fees, taxes, spoilage, bad debts, maintenance and other relevant costs where applicable.\n\nBreak-even analysis is a planning tool, not a guarantee of sales. If contribution per unit is zero or negative, the business cannot cover fixed costs through additional sales at that price/cost structure.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-13-bookkeeping-and-financial-statements-module",
+      "title": "13. Bookkeeping and financial statements",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-13-bookkeeping-and-financial-statements",
+          "title": "13. Bookkeeping and financial statements",
+          "contentMarkdown": "Bookkeeping records business transactions accurately and consistently. Keep receipts, invoices, sales records, purchase records, payroll information, bank statements, inventory records and evidence of payments. Reconcile the cashbook and bank statement regularly. Record business and personal transactions separately.\n- Cash book: records cash and bank receipts and payments.\n- Sales record: records products/services sold, quantities, dates, customers and amounts.\n- Purchases record: records stock/materials and other purchases.\n- Income statement / profit and loss statement: summarises revenue and expenses over a period to show profit or loss.\n- Statement of financial position / balance sheet: shows assets, liabilities and owner's equity at a point in time.\n- Cash-flow statement: summarises cash generated and used by operating, investing and financing activities.\n\nThe accounting equation is Assets = Liabilities + Equity. Profit is not identical to cash flow: a sale made on credit may increase revenue before cash is received; buying an asset may use cash without becoming a full expense immediately. Know the difference between revenue, expense, profit, cash, debtor/receivable, creditor/payable, asset and liability.",
+          "estimatedMinutes": 57,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-14-product-costing-job-costing-and-pricing-module",
+      "title": "14. Product costing, job costing and pricing",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-14-product-costing-job-costing-and-pricing",
+          "title": "14. Product costing, job costing and pricing",
+          "contentMarkdown": "Product costing determines the cost of producing a unit or batch of a product. Job costing tracks costs for a specific customer order or job, which is useful for printing, construction, repairs, tailoring and consultancy. Direct materials, direct labour and an appropriate share of overhead may be included. A pricing decision should consider costs, customer value, competitor alternatives, demand, positioning and long-term sustainability.\n\nA common mistake is to set a price by adding a small amount to materials only. A viable price should consider labour, overheads, delivery, fees, losses, replacement of equipment and a reasonable margin. Keep separate estimates for one-off set-up work and recurring per-unit work.",
+          "estimatedMinutes": 36,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-15-risk-business-ethics-and-legal-awareness-module",
+      "title": "15. Risk, business ethics and legal awareness",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-15-risk-business-ethics-and-legal-awareness",
+          "title": "15. Risk, business ethics and legal awareness",
+          "contentMarkdown": "A risk register lists risks, their likelihood, impact, owner, early warning signs and mitigation. Examples include low demand, price increases, supplier failure, equipment breakdown, cybercrime, data loss, fraud, regulatory change, workplace injury and customer complaints. Mitigations may include more than one supplier, insurance, maintenance, cash reserves, written procedures, secure backups, access control and staff training.\n\nEthical business behaviour includes honesty in advertising, fair treatment of staff, respect for customers, accurate records, responsible use of data, safe products, fair competition and avoiding bribery or conflicts of interest. Do not mislead customers about product quality, delivery time, accreditation or likely results.\n\nBusiness owners should understand relevant rules relating to contracts, consumer protection, tax, labour/employment, health and safety, environmental duties, data protection, intellectual property and sector regulation. A trademark protects signs used to distinguish goods/services; copyright protects qualifying original expression such as written, artistic and software works; a patent may protect a qualifying invention subject to legal requirements. These rights are not interchangeable. Use written agreements for co-founders, employees, suppliers and customers where appropriate, and seek qualified advice for high-stakes legal questions.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-16-growth-and-sustainability-module",
+      "title": "16. Growth and sustainability",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-16-growth-and-sustainability",
+          "title": "16. Growth and sustainability",
+          "contentMarkdown": "A business may grow by increasing repeat purchases, reaching a new segment, improving distribution, adding products/services, partnering with other organisations, improving productivity or adopting technology. Growth increases complexity and may require stronger systems, skilled staff, reliable working capital and quality control. Scaling means growing output or reach without costs rising at the same rate; it is not the same as merely increasing sales.\n\nMonitor performance using a small set of useful measures: revenue, gross margin, cash balance, debt, customer acquisition, repeat purchases, delivery time, defect/complaint rate and stock turnover. Review actual performance against the plan and update assumptions when conditions change. A business can be socially useful but financially unsustainable; it can also be profitable while creating harmful effects. Responsible entrepreneurship considers both.",
+          "estimatedMinutes": 41,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-17-practical-assignment-prepare-a-mini-business-plan-module",
+      "title": "17. Practical assignment: prepare a mini business plan",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-17-practical-assignment-prepare-a-mini-business-plan",
+          "title": "17. Practical assignment: prepare a mini business plan",
+          "contentMarkdown": "Choose a realistic business idea that could operate in your community or online. Prepare a concise business plan containing: problem and target customer; value proposition; competitor overview; product/service and pricing; marketing/sales channels; equipment and suppliers; registration/permit issues to investigate; start-up budget; monthly operating costs; 12-month sales assumptions; break-even calculation; risks and mitigation; and an implementation timetable. Interview or survey a small number of potential customers and show what you learned. Clearly label assumptions rather than inventing facts.",
+          "estimatedMinutes": 26,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "instructions": "Choose a realistic business idea that could operate in your community or online. Prepare a concise business plan containing: problem and target customer; value proposition; competitor overview; product/service and pricing; marketing/sales channels; equipment and suppliers; registration/permit issues to investigate; start-up budget; monthly operating costs; 12-month sales assumptions; break-even calculation; risks and mitigation; and an implementation timetable. Interview or survey a small number of potential customers and show what you learned. Clearly label assumptions rather than inventing facts."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "eed-216-18-revision-questions-module",
+      "title": "18. Revision questions",
+      "description": "",
+      "lessons": [
+        {
+          "id": "eed-216-18-revision-questions",
+          "title": "18. Revision questions",
+          "contentMarkdown": "1. Define entrepreneurship and explain five contributions it can make to an economy.\n1. Differentiate an entrepreneur, enterprise and intrapreneur.\n1. Explain how to identify and screen a business opportunity.\n1. Differentiate primary and secondary market research.\n1. What is a feasibility study? Discuss its main dimensions.\n1. Explain the main sections of a business plan.\n1. Compare sole proprietorship, partnership, limited liability company and cooperative.\n1. Explain the 4 Ps of marketing and give an example for each.\n1. Differentiate fixed, variable, direct and indirect costs.\n1. Calculate contribution and break-even point when fixed cost is ₦90,000, selling price is ₦600 and variable cost is ₦300 per unit.\n1. Differentiate profit from cash flow.\n1. Explain the accounting equation and name three basic financial records/statements.\n1. What should be included in a risk register?\n1. Distinguish copyright, trademark and patent.\n1. Why is market research necessary before investing heavily in a business?\n\nKey formulae: Total cost = fixed cost + total variable cost. Contribution per unit = selling price − variable cost per unit. Break-even units = fixed cost / contribution per unit. Revenue = selling price × quantity sold. Profit in a simplified model = revenue − total expenses. Always state the assumptions behind a calculation.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "prerequisites": []
+}

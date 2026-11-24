@@ -1,0 +1,285 @@
+{
+  "code": "GNS 201",
+  "title": "Use of English II",
+  "description": "Use of English develops the ability to understand, analyse and communicate ideas clearly in spoken and written English. At ND level, students need language competence for academic assignments, reports, presentations, workplace communication and examinations. The course should strengthen grammar and sentence structure, essay writing, comprehension, summary writing, vocabulary and the understanding of literary/dramatic forms.\n\nEffective English is not about using the longest words. It is about cho",
+  "modules": [
+    {
+      "id": "gns-201-1-purpose-of-the-course-module",
+      "title": "1. Purpose of the course",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-1-purpose-of-the-course",
+          "title": "1. Purpose of the course",
+          "contentMarkdown": "Use of English develops the ability to understand, analyse and communicate ideas clearly in spoken and written English. At ND level, students need language competence for academic assignments, reports, presentations, workplace communication and examinations. The course should strengthen grammar and sentence structure, essay writing, comprehension, summary writing, vocabulary and the understanding of literary/dramatic forms.\n\nEffective English is not about using the longest words. It is about choosing accurate words, arranging ideas logically, adapting tone to the audience and purpose, and removing ambiguity. Correct grammar supports meaning, but organisation and evidence are equally important.",
+          "estimatedMinutes": 31,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-2-parts-of-speech-module",
+      "title": "2. Parts of speech",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-2-parts-of-speech",
+          "title": "2. Parts of speech",
+          "contentMarkdown": "| Part of speech | Function | Examples |\n| --- | --- | --- |\n| Noun | Names a person, place, thing, idea or quality | student, Lagos, computer, honesty |\n| Pronoun | Replaces or refers to a noun | he, she, it, they, who, them |\n| Verb | Expresses action, occurrence or state | write, think, become, is |\n| Adjective | Describes or limits a noun/pronoun | clear, several, difficult |\n| Adverb | Modifies a verb, adjective, another adverb or clause | quickly, very, carefully |\n| Preposition | Shows relationships such as place, time or direction | in, at, under, between |\n| Conjunction | Connects words, phrases or clauses | and, but, because, although |\n| Interjection | Expresses a sudden feeling or reaction | Oh!, Wow! |\n\n\nA word's part of speech depends on its use in a sentence. For example, record is a noun in “Keep a record” and a verb in “Record the result”. Learn function, not merely word lists.",
+          "estimatedMinutes": 57,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-3-phrases-clauses-and-sentence-structure-module",
+      "title": "3. Phrases, clauses and sentence structure",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-3-phrases-clauses-and-sentence-structure",
+          "title": "3. Phrases, clauses and sentence structure",
+          "contentMarkdown": "A phrase is a group of related words that functions as a unit but does not contain a complete subject–finite verb relationship. Examples include noun phrase (“the new computer”), prepositional phrase (“in the laboratory”) and verb phrase (“has been working”).\n\nA clause contains a subject and a predicate. An independent/main clause can stand as a complete sentence; a dependent/subordinate clause cannot stand alone in the intended meaning. Dependent clauses may function as noun clauses, adjective/relative clauses or adverbial clauses.\n\n| Sentence type | Structure | Example |\n| --- | --- | --- |\n| Simple | One independent clause | The students revised. |\n| Compound | Two or more independent clauses joined correctly | The students revised, and the lecturer explained the topic. |\n| Complex | One independent clause and at least one dependent clause | The students revised because the examination was near. |\n| Compound-complex | At least two independent clauses and at least one dependent clause | The students revised because the examination was near, and the lecturer gave them a practice test. |\n\n\nA sentence fragment lacks a complete independent clause. A run-on sentence joins independent clauses incorrectly. Correct joining methods include a full stop, a semicolon between closely related independent clauses, or a comma plus a coordinating conjunction. Do not join two complete sentences with a comma alone (comma splice).",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-4-grammar-and-usage-module",
+      "title": "4. Grammar and usage",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-4-grammar-and-usage",
+          "title": "4. Grammar and usage",
+          "contentMarkdown": "### Subject–verb agreement\n\n\nThe verb agrees with the grammatical subject, not simply the nearest noun. A singular subject normally takes a singular verb; a plural subject takes a plural verb. Words between the subject and verb do not change the subject's number. With compound subjects joined by and, the verb is usually plural; with or/nor, agreement often follows the nearer subject. Collective nouns may be treated as singular or plural depending on whether the group is viewed as one unit or as individuals, and on the variety of English being used.\n\nExamples: “The list of topics is ready.” “The students are ready.” “Neither the lecturer nor the students were late.”\n\n### Tense and aspect\n\n\nTense locates an action in time; aspect shows how the action is viewed (completed, ongoing or repeated). Be consistent unless a change in time justifies a change. Common forms include present simple (“she writes”), present continuous (“she is writing”), past simple (“she wrote”), past continuous (“she was writing”), present perfect (“she has written”), past perfect (“she had written”) and future forms (“she will write”).\n\n### Pronoun agreement and reference\n\n\nA pronoun should clearly refer to an identifiable antecedent and agree appropriately in number/person. Avoid ambiguous references such as “When John met David, he was angry” where the reader cannot tell who he refers to. Use singular they when appropriate for a person whose gender is unknown or when a person uses that pronoun; maintain consistency.\n\n### Parallel structure\n\n\nItems in a series or paired construction should have matching grammatical forms. Incorrect: “The course teaches writing, to speak and reading.” Better: “The course teaches writing, speaking and reading.” Parallelism improves clarity and rhythm.\n\n### Modifiers\n\n\nPlace descriptive words near the words they modify. A dangling modifier appears to describe the wrong subject. Incorrect: “Walking to class, the rain started.” Better: “While I was walking to class, the rain started.”\n\n### Punctuation and capitalisation\n\n\nKnow the full stop, comma, semicolon, colon, apostrophe, quotation marks, question mark, exclamation mark, dash and brackets. Use commas to separate introductory phrases, items in a series and non-essential information; do not use a comma to separate a subject from its verb. Apostrophes mark possession or omitted letters, not ordinary plurals. Capitalise sentence beginnings, proper nouns, days/months and official names. Use quotation marks to identify exact quoted words and give a source when required.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-5-vocabulary-meaning-and-register-module",
+      "title": "5. Vocabulary, meaning and register",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-5-vocabulary-meaning-and-register",
+          "title": "5. Vocabulary, meaning and register",
+          "contentMarkdown": "Denotation is a word's basic dictionary meaning. Connotation is the emotional or cultural association a word carries. For example, “home” denotes a place where someone lives but may connote comfort, belonging or safety. “Slim” and “skinny” can have related denotations but different connotations.\n\nSynonyms are words with similar meanings; antonyms have opposite meanings; homophones sound alike but differ in meaning/spelling; homonyms share form or sound but differ in meaning. Context determines meaning. A word may be literal or figurative; figurative language includes metaphor, simile, personification, hyperbole and irony.\n\nRegister is the level/style of language suited to a situation. Academic or formal writing generally avoids slang, unexplained abbreviations and casual expressions. Jargon is specialised vocabulary used by a profession or group; it is appropriate when the audience understands it. Colloquial language is informal everyday language. Choose register based on purpose, audience and medium.",
+          "estimatedMinutes": 47,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-6-reading-and-comprehension-skills-module",
+      "title": "6. Reading and comprehension skills",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-6-reading-and-comprehension-skills",
+          "title": "6. Reading and comprehension skills",
+          "contentMarkdown": "Read actively. Skimming means reading quickly to understand the overall idea and structure. Scanning means searching for a particular fact, number, name or keyword. Intensive reading examines a text closely for details and implications. Extensive reading builds fluency and broad understanding through longer texts.\n\nWhen answering comprehension questions:\n1. Read the questions before or after the passage according to the task; identify what information is required.\n1. Read the passage for the main idea, then locate the relevant paragraph or sentence.\n1. Distinguish an explicit statement from an inference. An inference is a reasonable conclusion supported by clues in the text.\n1. Identify the writer's purpose, tone and attitude. Tone may be critical, persuasive, humorous, reflective, objective, sarcastic or concerned.\n1. Answer in clear language and stay within the requested scope. Avoid adding unsupported personal opinions.\n1. For vocabulary-in-context questions, consider how the word functions in that particular sentence.\n\nCommon question types ask for the main idea, supporting details, meaning of a word in context, reference of a pronoun, inference, writer's purpose, tone, fact versus opinion, or the best title.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-7-summary-writing-module",
+      "title": "7. Summary writing",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-7-summary-writing",
+          "title": "7. Summary writing",
+          "contentMarkdown": "A summary presents the essential ideas of a longer passage in fewer words without changing the author's meaning. It should be concise, accurate, coherent and written in your own words unless exact wording is necessary for a technical term.\n\nA useful process is: read the passage fully; identify its central idea; mark only points directly relevant to the question; remove examples, repetition, illustrations and minor details; combine related points; write in clear sentences; check grammar and meaning; then count words if a limit is specified. Do not introduce new arguments or personal opinion. Do not copy whole sentences from the passage unless instructed to quote.\n\nA summary is not a list of every paragraph's first sentence. It should capture the passage's central message and key supporting ideas. Follow the examiner's instruction on whether to write in continuous prose, use a particular number of sentences or stay within a word limit.",
+          "estimatedMinutes": 50,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-8-essay-writing-module",
+      "title": "8. Essay writing",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-8-essay-writing",
+          "title": "8. Essay writing",
+          "contentMarkdown": "An essay is a connected piece of writing developed around a central topic or argument. A standard essay has an introduction, body and conclusion. The introduction establishes the topic and direction; the body develops ideas in organised paragraphs; the conclusion draws the discussion together without introducing a major new argument.\n\n### Main essay types\n\n\n| Type | Purpose and features |\n| --- | --- |\n| Narrative | Tells a sequence of events; uses people, setting, conflict and a clear order |\n| Descriptive | Creates a vivid picture using precise details and sensory language |\n| Expository | Explains a subject or process clearly and logically |\n| Argumentative | Defends a position with reasons/evidence and addresses objections |\n| Reflective | Examines an experience or idea and explains its significance or lessons |\n\n\n### Planning an essay\n\n\nUnderstand the question's command words and limits. Brainstorm relevant points, select the strongest, group them logically and arrange them in an outline. Write a thesis statement that identifies the central idea or position. Each body paragraph should normally have one main point, supporting explanation/evidence and a link to the overall argument. Use transitions to show relationships between ideas.\n\n### Paragraph quality\n\n\nA good paragraph has unity (one controlling idea), coherence (logical connection between sentences), adequate development (sufficient explanation or evidence) and an appropriate link to the next paragraph. Topic sentences introduce the paragraph's main point. Supporting sentences explain, illustrate or justify it. Avoid paragraphs that contain unrelated points or consist of only one undeveloped sentence.\n\n### Formal letter and report writing\n\n\nA formal letter usually includes the sender's address, date, recipient's address, salutation, subject (where suitable), clear body paragraphs, complimentary close and signature/name. Use a respectful, direct tone and state the purpose early. A report is usually more structured and may include title, purpose, background, method, findings, discussion, conclusion and recommendations. Use headings, numbered sections, tables or appendices where appropriate. Reports should distinguish observed facts from recommendations.\n\n### Editing checklist\n\n\nCheck whether you answered the exact question; whether your argument is clear; whether paragraphs are logically ordered; whether tense and point of view are consistent; whether verbs agree with subjects; whether pronouns have clear antecedents; whether punctuation and spelling are correct; and whether the conclusion follows from the discussion. Remove unnecessary repetition and vague expressions.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-9-oral-communication-and-presentation-module",
+      "title": "9. Oral communication and presentation",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-9-oral-communication-and-presentation",
+          "title": "9. Oral communication and presentation",
+          "contentMarkdown": "Effective speaking requires preparation, audience awareness, organisation, clarity and confidence. Begin by stating the topic and purpose. Present ideas in a logical sequence, use examples, speak at a manageable pace, articulate words and maintain appropriate eye contact. Visual aids should support, not replace, the speaker. Avoid reading every word from slides. Listen actively, wait for others to finish, ask relevant questions and respond respectfully.\n\nNon-verbal communication includes facial expression, posture, gestures, eye contact and personal space. Tone, pitch, pace and volume influence meaning. In professional communication, be polite, concise and specific, especially when writing emails, minutes, memos and reports.",
+          "estimatedMinutes": 33,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-10-introduction-to-literature-and-drama-module",
+      "title": "10. Introduction to literature and drama",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-10-introduction-to-literature-and-drama",
+          "title": "10. Introduction to literature and drama",
+          "contentMarkdown": "Literature uses language creatively to explore human experience. Common literary genres include prose, poetry and drama. Drama is written to be performed, so stage action, dialogue, performance and audience response are important. A play may be divided into acts and scenes. Dialogue is conversation between characters. A soliloquy is a speech in which a character expresses thoughts aloud, often while alone; an aside is a remark understood by the audience or selected characters but not by everyone on stage.\n\nImportant dramatic terms:\n\n| Term | Meaning |\n| --- | --- |\n| Plot | Arrangement of events in a dramatic work |\n| Exposition | Background information needed to understand the action |\n| Conflict | Struggle between opposing forces, interests or ideas |\n| Climax | Point of greatest tension or decisive turning point |\n| Falling action | Events following the climax that move towards the ending |\n| Resolution / denouement | The outcome or settling of the central conflict |\n| Characterisation | The way a writer presents a character's personality and development |\n| Stage direction | Instruction about movement, setting, sound, lighting or delivery |\n\n\n### Forms of drama\n\n- Comedy: generally aims to entertain and often ends positively; it may expose human foolishness through humour.\n- Tragedy: presents serious conflict and suffering, often involving the downfall of a central character.\n- Tragicomedy: combines serious and comic elements.\n- Farce: uses exaggerated situations, improbable events and physical or situational humour.\n- Burlesque: uses imitation, exaggeration or parody to make a comic effect.\n- Opera: a dramatic performance in which singing and music are central to the storytelling.\n- Radio drama: relies on dialogue, sound effects, music and narration because the audience cannot see the action.\n- Television drama: uses dialogue together with visual performance, setting, camera work, editing, sound and lighting.\n\nWhen studying a play, identify the setting, major and minor characters, central conflict, plot stages, themes, language, dramatic techniques and the writer's purpose. Support interpretations with specific moments or lines rather than giving unsupported opinions.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-11-practice-exercises-module",
+      "title": "11. Practice exercises",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-11-practice-exercises",
+          "title": "11. Practice exercises",
+          "contentMarkdown": "Grammar correction: Correct these sentences and explain the rule.\n1. The list of equipment are on the table.\n1. Neither the lecturer nor the students was present.\n1. Walking into the hall, the examination paper was seen by Alex.\n1. She enjoys reading, to write and speaking.\n1. The students completed the work, they submitted it late.\n\nComprehension method: Read a newspaper editorial or a short academic passage. State its main idea, identify three supporting points, explain the writer's tone, infer one idea not directly stated and suggest an appropriate title.\n\nSummary practice: Reduce a 250–300-word passage to a concise paragraph. Remove repeated examples and minor details while retaining the central message and the essential supporting ideas.\n\nEssay practice: Write 450–600 words on one of these topics: “The role of digital skills in the modern workplace”; “How students can manage academic pressure”; or “The benefits and risks of social media for young adults”. Plan before writing and edit after completing the first draft.",
+          "estimatedMinutes": 54,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "gns-201-12-revision-questions-module",
+      "title": "12. Revision questions",
+      "description": "",
+      "lessons": [
+        {
+          "id": "gns-201-12-revision-questions",
+          "title": "12. Revision questions",
+          "contentMarkdown": "1. Identify the parts of speech in a sentence of your choice.\n1. Differentiate a phrase, an independent clause and a dependent clause.\n1. Explain simple, compound, complex and compound-complex sentences.\n1. What is subject–verb agreement? Correct three common agreement errors.\n1. Differentiate denotation and connotation with examples.\n1. Explain register, jargon and colloquial language.\n1. Distinguish skimming from scanning and intensive reading.\n1. List the steps involved in writing a good summary.\n1. Describe the structure of an argumentative essay.\n1. Explain unity, coherence and paragraph development.\n1. Distinguish a formal letter from a report.\n1. Define soliloquy, aside, conflict, climax and resolution.\n1. Differentiate comedy, tragedy, tragicomedy and farce.\n1. State two ways radio drama differs from television drama.\n\nExam reminder: Use standard, clear English. A brilliant idea can lose value when grammar, paragraphing or organisation makes it difficult to understand. Answer what was asked, support your points and observe the required length.",
+          "estimatedMinutes": 52,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "prerequisites": []
+}

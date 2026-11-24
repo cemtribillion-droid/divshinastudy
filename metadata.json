@@ -1,0 +1,6 @@
+{
+  "name": "PrepWise",
+  "description": "AI-powered ND2 academic preparation platform for past examination practice, CBT and theory testing, performance analytics, and grounded AI tutoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

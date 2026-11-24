@@ -1,0 +1,331 @@
+{
+  "code": "COM 226",
+  "title": "File Organisation and Management",
+  "description": "File organisation and management concerns how data is represented, stored, arranged, retrieved, updated, protected and maintained on secondary storage. A file is a named collection of related data. File organisation describes the logical or physical arrangement of records and how they can be accessed. File management concerns operations and controls such as creating, opening, reading, writing, updating, deleting, securing, backing up and reorganising files.\n\nThe course connects data structures w",
+  "modules": [
+    {
+      "id": "com-226-1-meaning-and-scope-module",
+      "title": "1. Meaning and scope",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-1-meaning-and-scope",
+          "title": "1. Meaning and scope",
+          "contentMarkdown": "File organisation and management concerns how data is represented, stored, arranged, retrieved, updated, protected and maintained on secondary storage. A file is a named collection of related data. File organisation describes the logical or physical arrangement of records and how they can be accessed. File management concerns operations and controls such as creating, opening, reading, writing, updating, deleting, securing, backing up and reorganising files.\n\nThe course connects data structures with storage devices and operating-system services. It covers basic file concepts, file operations, storage media, access methods, organisation structures, buffering, performance, updating, protection and security. You should be able to explain the trade-offs between different organisations and perform simple calculations about record sizes and storage blocks.",
+          "estimatedMinutes": 38,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-2-the-data-hierarchy-module",
+      "title": "2. The data hierarchy",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-2-the-data-hierarchy",
+          "title": "2. The data hierarchy",
+          "contentMarkdown": "A useful conceptual hierarchy is:\n\nBit → Byte → Character → Field → Record → File → Database.\n\nA bit is a binary digit. A byte is commonly eight bits. A character represents a letter, digit or symbol using an encoding such as UTF-8 or UTF-16. A field stores one attribute, such as StudentID or Surname. A record groups fields describing one entity, such as one student. A file stores a collection of records. A database contains related data structures, metadata and relationships managed together.\n\nIn physical storage, data is transferred in units such as blocks, sectors or pages. A block is a unit of data transferred between storage and memory by the file or storage subsystem. A page is a common unit of memory management and database I/O, though exact meanings depend on the system. Metadata describes the data or file, such as name, type, size, timestamps, ownership, permissions and location information.\n\nExample student record:\n\n| Field | Example value | Illustrative storage size |\n| --- | --- | --- |\n| Student ID | FND223210125 | 12 bytes (if stored as 12 single-byte characters) |\n| Name | Ada Okafor | 10 bytes (illustrative) |\n| Department code | COM | 3 bytes |\n| Level | ND2 | 3 bytes |\n| GPA | 3.75 | 4 bytes (if stored as a 32-bit float) |\n| Total | Illustrative record size | 32 bytes |\n\n\nThe size above is only an illustrative simplified record. Real sizes depend on character encoding, field types, alignment, nullable fields, variable-length records and file-format overhead. Never assume that every character always occupies exactly one byte.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-3-files-and-common-file-operations-module",
+      "title": "3. Files and common file operations",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-3-files-and-common-file-operations",
+          "title": "3. Files and common file operations",
+          "contentMarkdown": "The operating system normally provides file operations through a file-system interface. A typical sequence is open a file, read or write, optionally seek to another position, flush buffered output when necessary, and close the file. Other operations include create, rename, copy, move, truncate, delete, fetch, insert, update, append and reorganise.\n\n| Operation | Meaning |\n| --- | --- |\n| Create | Establish a new file and its metadata |\n| Open | Obtain a handle/descriptor for access and establish a mode |\n| Read | Transfer data from the file into a program buffer |\n| Write | Transfer data from a program to the file |\n| Append | Add new data at the end of the file |\n| Seek | Move the current file position to a specified offset or record location |\n| Fetch | Retrieve a particular record or item, often by key or position |\n| Insert | Add a new record |\n| Update | Change one or more existing fields/records |\n| Delete | Remove or mark a record as deleted |\n| Close | Release the file handle and associated resources |\n| Reorganise | Rearrange data to improve access or reclaim unused space |\n\n\nFile modes may include read-only, write, read/write, append, create or truncate; exact modes vary by programming language and OS. A file handle or descriptor is a reference used by a program to access an open file. Check whether an operation succeeded and handle errors such as missing file, permission denied, full storage and I/O failure.\n\nLogical deletion marks a record as deleted or inactive but may leave its bytes in the file until reorganisation. Physical deletion removes or overwrites stored content or releases its storage location. A logical deletion can support recovery or audit history, but the record must be excluded from normal results. Secure deletion is more complex because copies may remain in backups, caches, snapshots or flash-storage remapping layers.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-4-storage-devices-and-media-module",
+      "title": "4. Storage devices and media",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-4-storage-devices-and-media",
+          "title": "4. Storage devices and media",
+          "contentMarkdown": "| Medium | Characteristics | Typical considerations |\n| --- | --- | --- |\n| Hard Disk Drive (HDD) | Magnetic platters and moving read/write heads | High capacity and cost-effective; mechanical latency and shock sensitivity |\n| Solid-State Drive (SSD) | Flash memory with electronic controllers | Low latency and no moving parts; finite program/erase endurance; controller manages wear and remapping |\n| USB flash / memory card | Portable flash storage | Convenient; performance and durability vary; easy to lose |\n| Optical disc | Laser-readable media such as CD/DVD/Blu-ray | Removable and useful for distribution/archival in some contexts; limited capacity and speed compared with modern storage |\n| Magnetic tape | Sequential magnetic storage | Very useful for large-scale backup/archive; slower random access |\n| Network/cloud storage | Data accessed over a network from remote storage infrastructure | Convenient sharing and scale; depends on connectivity, provider controls, latency and access policy |\n\n\nPrimary memory (registers, cache and RAM) is used during active processing; secondary storage retains files beyond normal power loss. The hierarchy balances speed, capacity, cost and persistence. Frequently used data may be cached in faster storage. A system's effective performance depends not only on the device, but also on access pattern, file organisation, block size, buffering, queue depth, concurrency and workload.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-5-file-access-methods-module",
+      "title": "5. File access methods",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-5-file-access-methods",
+          "title": "5. File access methods",
+          "contentMarkdown": "An access method describes how a program locates and retrieves records.\n\n| Access method | How it works | Advantages | Limitations / suitable use |\n| --- | --- | --- | --- |\n| Sequential | Records are processed in physical/logical order, often from beginning to end | Efficient for reading the whole file; simple | Slow for locating one distant record; suitable for batch processing |\n| Direct / random | Program calculates or specifies a position and accesses it directly | Quick access when record location is known | Requires address/position knowledge; often easiest with fixed-length records |\n| Indexed | An index maps a search key to record locations or blocks | Fast key-based retrieval and range searches, depending on index | Index requires storage and maintenance; updates add overhead |\n| Indexed-sequential | Records are stored in key order and an index assists retrieval | Supports both sequential and indexed access | More complex; overflow areas and periodic reorganisation may be needed |\n| Hashed | A hash function maps a key to a storage bucket/address | Very fast equality lookups when collisions are managed | Not naturally suited to range searches; collisions and overflow must be handled |\n\n\nSequential access: to find a record, the system may examine records one by one until the target is found. This is acceptable for a payroll run or a report that processes all records. Direct access: with fixed-size records, the position can be calculated from a record number. Indexed access: a separate index makes it possible to search by key without scanning the entire data file. Hashed access: a hash function calculates a bucket, and collision handling locates the correct record when multiple keys map to the same bucket.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-6-physical-file-organisation-structures-module",
+      "title": "6. Physical file organisation structures",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-6-physical-file-organisation-structures",
+          "title": "6. Physical file organisation structures",
+          "contentMarkdown": "### Heap (pile) organisation\n\n\nRecords are placed wherever space is available, often by appending new records. Insertion is simple and can be fast. Searching for a particular key may require a linear scan unless an additional index is used. Heap files can suit workloads dominated by insertions or full-file scans.\n\n### Sequential organisation\n\n\nRecords are stored in a specified order, commonly by key. Sequential processing is efficient when records are read in that order, but inserting a record into the correct place may require shifting records, using an overflow area or rebuilding the file. Updating a key can disturb the order.\n\n### Indexed organisation\n\n\nA separate index contains search-key values and pointers to records or data blocks. An index may be sparse (one entry for a block/range) or dense (entries for each record/key, depending on design). A tree-based index such as a B-tree or B+ tree supports efficient search, insertion and deletion while maintaining order. Indexes speed up selected searches but consume storage and must be updated as records change.\n\n### Indexed-sequential organisation\n\n\nThe main records are stored in key order and an index provides quicker access to a range or section. New records may be placed in an overflow area when insertion into the ordered main area is inconvenient. As overflow grows, sequential processing and access may become slower, so periodic reorganisation is needed.\n\n### Hashed organisation\n\n\nA hash function maps a key to a bucket address. If two keys map to the same location, a collision occurs. Collision strategies include chaining (linking records in an overflow list/bucket) and open addressing/probing, where another available slot is sought. A good hash function distributes keys evenly; poor distribution creates long collision chains and slower searches. Hash organisation is generally good for exact-key searches, not for retrieving records in sorted order or searching key ranges.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-7-blocking-and-storage-calculations-module",
+      "title": "7. Blocking and storage calculations",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-7-blocking-and-storage-calculations",
+          "title": "7. Blocking and storage calculations",
+          "contentMarkdown": "A block groups one or more records for transfer. The blocking factor is the number of records stored in one block when fixed-length records are used.\n\nFor unspanned fixed-length records:\n\nBlocking factor (bfr) = floor(block size / record size).\n\nNumber of blocks = ceiling(number of records / blocking factor).\n\nThe floor operation ensures a record does not cross a block boundary. The ceiling operation allows the final block to contain fewer than a full block of records. These simple calculations ignore block headers, index overhead, deleted-record markers, variable-length records and file-system metadata unless the question specifies them.\n\nWorked example: suppose each record is 100 bytes and each block is 4,096 bytes. Blocking factor = floor(4,096 / 100) = 40 records per block, using 4,000 bytes and leaving 96 bytes unused. If the file contains 1,000 records, number of blocks = 1,000 / 40 = 25 blocks. If a record size is 120 bytes, the blocking factor becomes floor(4,096/120) = 34 records per block, and 1,000 records require ceiling(1,000/34) = 30 blocks.\n\nIn a spanned organisation, a record may cross a block boundary; the calculations differ and require additional information about record spanning and overhead. Read the question carefully to see whether records may span blocks.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-8-buffering-and-performance-module",
+      "title": "8. Buffering and performance",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-8-buffering-and-performance",
+          "title": "8. Buffering and performance",
+          "contentMarkdown": "A buffer is a temporary memory area used during data transfer. It helps absorb differences between the speed or timing of a data producer and consumer. Without buffering, the CPU or device may wait more often. A cache retains copies of frequently or recently used data to improve later access; a buffer primarily smooths or stages data transfer, although implementations can overlap these functions.\n- Single buffering: one buffer temporarily holds data. The producer and consumer may need to take turns using it.\n- Double buffering: two buffers alternate. While one is filled, the other can be processed, reducing idle time when timing overlaps well.\n- Multiple buffering: several buffers can queue data and smooth a wider range of speed differences, at the cost of more memory and management.\n- Spooling: stores queued jobs on disk or another storage area for a device or process to handle later, e.g. print spooling.\n\nPerformance is affected by seek time, rotational latency (for HDDs), transfer rate, I/O operations per second, queue length, cache hit ratio, block size, record size, index design and workload. Sequential access often reduces mechanical seek overhead on HDDs. Random access patterns may be handled differently by SSDs, which do not have moving heads but still have controller, queue and flash-management costs.\n\nA bigger block may reduce the number of I/O operations for large sequential reads but can waste space or transfer unnecessary data for small random reads. More indexes may speed up queries but slow writes and consume space. Performance decisions depend on the application's actual access pattern.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-9-file-updating-and-transaction-safety-module",
+      "title": "9. File updating and transaction safety",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-9-file-updating-and-transaction-safety",
+          "title": "9. File updating and transaction safety",
+          "contentMarkdown": "Updating a file means modifying the data while preserving consistency. A basic operation might search for a record by key, check that it exists, validate the new values, write the updated record and confirm the change. If a file is updated in place, an interruption may leave a partially written file. A safer approach may write changes to a temporary file, validate it and then replace the original atomically where the operating system and file system support that operation.\n\nA master file stores relatively stable, current information about entities (such as students, customers or stock). A transaction file stores events or changes to be applied to the master file (such as registrations, payments or stock movements). In batch updating, a group of transactions is collected and processed together; in online updating, changes are applied as transactions arrive. Batch processing can be efficient for large volumes; online processing gives more immediate results but requires careful concurrency and recovery control.\n\nExample pseudocode for a safe simplified student-record update:\n\n| OPEN original file FOR reading / OPEN temporary file FOR writing / SET found = false / FOR each record in original file /     IF record.StudentID equals target ID /         VALIDATE new values /         WRITE updated record to temporary file /         SET found = true /     ELSE /         WRITE original record to temporary file /     END IF / END FOR / IF found is false /     REPORT \"Record not found\" /     DISCARD temporary file / ELSE /     FLUSH and CLOSE both files /     VERIFY temporary file /     REPLACE original with temporary file using a safe file-system operation /     REPORT \"Update completed\" / END IF |\n| --- |\n\n\nA production design also needs a backup/recovery plan, unique temporary names, permission checks, locking or concurrency control, disk-space checks, error handling and a defined recovery procedure if replacement fails. When several users update the same file, locking, transactions or version checks help prevent lost updates.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-10-file-systems-and-directory-management-module",
+      "title": "10. File systems and directory management",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-10-file-systems-and-directory-management",
+          "title": "10. File systems and directory management",
+          "contentMarkdown": "A file system organises files and directories on a storage volume. It maintains metadata, maps file content to storage blocks, tracks free space and enforces naming and access rules. A directory (folder) contains entries identifying files and other directories. File paths may be absolute (starting from a root) or relative (interpreted from a current directory). File extensions often suggest content type, but the extension alone does not guarantee a file's true format.\n\nFile attributes may include name, size, type, owner, permissions, creation/modification/access times and storage location. Common file-system concepts include allocation, free-space management, fragmentation, journaling, quotas, symbolic links and mount points. The specific implementation differs among Windows, Linux, macOS and removable-storage formats.",
+          "estimatedMinutes": 37,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-11-file-protection-security-and-backup-module",
+      "title": "11. File protection, security and backup",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-11-file-protection-security-and-backup",
+          "title": "11. File protection, security and backup",
+          "contentMarkdown": "File security protects confidentiality, integrity and availability. Confidentiality means only authorised people or processes can read the data. Integrity means data remains accurate and is changed only in authorised ways. Availability means data and services remain accessible when needed.\n\nGood controls include:\n- Authentication: verify the identity of a user or process.\n- Authorisation: grant only required permissions, following the principle of least privilege.\n- Access control: use user/group permissions or role-based access control.\n- Encryption: protect data at rest and in transit, with sound key management.\n- Integrity checks: checksums, hashes, validation and audit logs can help detect corruption or unauthorised changes.\n- Backup and recovery: create protected copies, test restoration and define who is authorised to restore data.\n- Physical protection: secure devices, rooms and removable storage.\n- Secure disposal: handle drives, media and paper records so sensitive information is not casually exposed.\n\nThe 3-2-1 backup rule is a common planning guideline: keep at least three copies of important data, on at least two different types of storage, with at least one copy off-site or otherwise isolated. It is guidance, not a substitute for a risk-based backup policy. Backups should be encrypted where appropriate, protected from ransomware and tested through actual restore exercises.\n\nRPO (Recovery Point Objective) is the maximum acceptable amount of data loss measured in time. RTO (Recovery Time Objective) is the target time to restore a service after disruption. For example, an RPO of one hour means the organisation aims not to lose more than about one hour of changes; an RTO of four hours means it aims to restore the service within four hours. These are targets that must be supported by real backup/replication and recovery capabilities.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-12-file-management-in-practice-module",
+      "title": "12. File management in practice",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-12-file-management-in-practice",
+          "title": "12. File management in practice",
+          "contentMarkdown": "A good file-management policy uses meaningful filenames, consistent folder structures, version control, access rules, retention periods and clear ownership. Avoid filenames such as final_final_new2.docx. A more useful scheme may include project name, date, document type and version, for example StudentRecords_2026-11-19_v03.xlsx. Do not put passwords or highly sensitive personal information in filenames.\n\nMaintain a controlled directory structure; restrict access to confidential records; separate working files from published copies; document what a file contains; and delete or archive data according to the organisation's retention rules. For shared work, use a controlled versioning system or document management platform rather than making uncontrolled copies that may diverge.",
+          "estimatedMinutes": 34,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-13-practical-laboratory-checklist-module",
+      "title": "13. Practical/laboratory checklist",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-13-practical-laboratory-checklist",
+          "title": "13. Practical/laboratory checklist",
+          "contentMarkdown": "- Explain the bit-to-database data hierarchy with a student-record example.\n- Create a file, write records, read them back, seek to a location and close the file correctly in a programming language.\n- Compare sequential, direct, indexed, indexed-sequential and hashed access.\n- Explain heap and sequential organisation and when each may be useful.\n- Calculate blocking factor and number of blocks for fixed-length records.\n- Demonstrate how an index or hash table helps retrieve a record.\n- Explain single, double and multiple buffering with a diagram.\n- Demonstrate a controlled update and explain how a temporary file/backup helps recover from failure.\n- Set file permissions on a test folder and explain least privilege.\n- Describe a backup and restore test, including RPO and RTO.",
+          "estimatedMinutes": 41,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "instructions": "- Explain the bit-to-database data hierarchy with a student-record example.\n- Create a file, write records, read them back, seek to a location and close the file correctly in a programming language.\n- Compare sequential, direct, indexed, indexed-sequential and hashed access.\n- Explain heap and sequential organisation and when each may be useful.\n- Calculate blocking factor and number of blocks for fixed-length records.\n- Demonstrate how an index or hash table helps retrieve a record.\n- Explain single, double and multiple buffering with a diagram.\n- Demonstrate a controlled update and explain how a temporary file/backup helps recover from failure.\n- Set file permissions on a test folder and explain least privilege.\n- Describe a backup and restore test, including RPO and RTO."
+          },
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "id": "com-226-14-revision-questions-module",
+      "title": "14. Revision questions",
+      "description": "",
+      "lessons": [
+        {
+          "id": "com-226-14-revision-questions",
+          "title": "14. Revision questions",
+          "contentMarkdown": "1. Define file organisation and file management. How are they related?\n1. Explain the data hierarchy from bit to database.\n1. Differentiate a field, record, file, block and metadata.\n1. State and explain eight common file operations.\n1. Compare HDD, SSD, optical disk, tape and cloud/network storage.\n1. Differentiate sequential, direct, indexed and hashed access.\n1. Compare heap and sequential file organisation.\n1. Explain indexed-sequential organisation and the purpose of an overflow area.\n1. What is a hash collision? Describe two collision-resolution approaches.\n1. A block is 8,192 bytes and each record is 200 bytes. Calculate the blocking factor and the number of blocks required for 1,500 records, assuming unspanned records and no overhead.\n1. Explain the difference between single and double buffering.\n1. Differentiate a master file from a transaction file.\n1. Explain the risks of updating a file directly and describe a safer method.\n1. Define confidentiality, integrity and availability.\n1. Differentiate RPO from RTO and explain why restore testing matters.\n\nWorked answer for question 10: Blocking factor = floor(8,192/200) = 40 records per block. Number of blocks = ceiling(1,500/40) = ceiling(37.5) = 38 blocks. This assumes fixed-length unspanned records and ignores overhead.\n\nFinal examination preparation\n\nHow to answer common command words\n\n| Command word | What the examiner expects |\n| --- | --- |\n| Define | Give the precise meaning of a term, usually in one or two sentences. |\n| State / List | Give the required points clearly; explanation may not be needed unless requested. |\n| Explain | Describe how or why something happens, using connected reasoning. |\n| Differentiate / Distinguish | Compare two or more items by showing the specific differences. |\n| Describe | Give the main features, sequence, structure or characteristics. |\n| Discuss | Present a developed account, relevant examples, advantages, limitations and a reasoned conclusion. |\n| Calculate | Show the formula, substitution, working, answer and appropriate unit/rounding. |\n| Draw / Sketch | Use correct labels, symbols, relationships and a clear title. |\n| Evaluate | Judge strengths and weaknesses against criteria and reach a supported conclusion. |\n\n\nFinal self-check\n- I can explain each major concept without reading the notes.\n- I can reproduce important diagrams and label every component.\n- I can solve numerical questions and show every calculation step.\n- I can write, run, test and debug the required practical work.\n- I can interpret output rather than merely report a software-generated answer.\n- I can distinguish similar concepts and give a suitable example of each.\n- I have completed practice questions under exam timing.\n- I have checked my lecturer’s handouts for topics unique to this semester.\n\nGlossary of important terms\n\n| Term | Meaning |\n| --- | --- |\n| Abstraction | Showing essential features while hiding implementation details. |\n| Algorithm | A finite, ordered procedure for solving a problem. |\n| API | A defined interface through which software components communicate. |\n| Array | A fixed-size indexed collection of elements of one declared type in Java. |\n| Assembler | A translator that converts assembly-language instructions into machine code. |\n| Attribute | A named property of a class or object in UML or programming. |\n| Buffer | A temporary memory area used while transferring data. |\n| Byte | A unit of digital information commonly equal to eight bits. |\n| Class | A blueprint that defines the state and behaviour of objects. |\n| Compiler | A program that translates source code into another representation, often machine or intermediate code. |\n| Database | An organised collection of related data managed for controlled access. |\n| Encapsulation | Bundling data and related methods while controlling access to internal state. |\n| Exception | An event that disrupts normal program flow and can be handled. |\n| Field | A named data item within a record. |\n| File | A named collection of related data stored for later use. |\n| Hashing | Mapping a key to a storage address using a hash function. |\n| Hypothesis test | A statistical procedure for evaluating evidence about a population claim. |\n| Inheritance | A mechanism by which a class derives properties and behaviour from another class. |\n| JDBC | Java Database Connectivity, an API for accessing relational databases. |\n| JVM | Java Virtual Machine, which executes Java bytecode. |\n| Mean | Arithmetic average: sum of values divided by their number. |\n| Metadata | Data that describes other data, such as file size or creation time. |\n| Normalization | Structuring relational tables to reduce redundancy and update anomalies. |\n| Object | An instance of a class with state and behaviour. |\n| Population | The entire group about which a study seeks information. |\n| Primary key | A field or field combination that uniquely identifies a table row. |\n| Regression | A method for modelling or predicting an outcome from one or more predictors. |\n| Servlet | A server-side Java component that handles web requests. |\n| Standard deviation | A measure of how spread out values are around the mean. |\n| UML | Unified Modelling Language, a standard visual language for modelling systems. |\n\n\nReference base and further reading\n\nCurriculum alignment sources used to shape the course coverage:\n- National Board for Technical Education (NBTE). Curriculum and Course Specifications for National Diploma in Computer Science (April 2019). https://digitalnbte.nbte.gov.ng/Public/DownloadCurriculum/Kd3c1a39cd99be554d7b969276fe251aa.pdf\n- National Board for Technical Education (NBTE). General Studies Curriculum (May 2025), including GNS 201. https://www.digitalnbte.nbte.gov.ng/Public/DownloadCurriculum/89bd8af2d92baa588926b0d69bcb823cb.pdf\n- National Board for Technical Education (NBTE). Entrepreneurship Courses for all ND Programmes (August 2023). This is used for broad ND entrepreneurship learning outcomes; it does not establish a universal EED 216 course-code equivalence. https://www.digitalnbte.nbte.gov.ng/NBTE/Curriculum/I0925bbb912f00815defe8aa019acef5c.pdf\n\nSuggested textbooks and reference manuals (use the latest edition available to you):\n- Java: Herbert Schildt, Java: A Beginner’s Guide; Cay S. Horstmann, Core Java; Liang, Introduction to Java Programming and Data Structures; official Java API documentation.\n- Systems programming: John J. Donovan, Systems Programming; D. M. Dhamdhere, Systems Programming; William Stallings, Operating Systems: Internals and Design Principles.\n- UML: Martin Fowler, UML Distilled; Booch, Rumbaugh and Jacobson, The Unified Modeling Language User Guide.\n- Application packages: official user guides for Microsoft Access, Adobe or Corel graphics tools, Scribus/InDesign desktop publishing, and AutoCAD or another CAD package; Elmasri and Navathe, Fundamentals of Database Systems.\n- Statistics: Mario F. Triola, Elementary Statistics; Andy Field, Discovering Statistics Using IBM SPSS Statistics; Julie Pallant, SPSS Survival Manual.\n- English: Murphy, English Grammar in Use; Wren and Martin, High School English Grammar and Composition; a current academic writing and communication skills text.\n- Entrepreneurship: Hisrich, Peters and Shepherd, Entrepreneurship; Scarborough and Cornwall, Essentials of Entrepreneurship and Small Business Management.\n- Files and storage: William Stallings, Operating Systems; Silberschatz, Galvin and Gagne, Operating System Concepts; Elmasri and Navathe, Fundamentals of Database Systems.",
+          "estimatedMinutes": 60,
+          "learningObjectives": [
+            "Explain the key concepts and terminology in this topic.",
+            "Apply the methods or principles to a relevant computing or academic example.",
+            "Evaluate common errors, limitations and appropriate use cases."
+          ],
+          "workedExample": null,
+          "practiceActivity": {
+            "task": "After studying this lesson, write a one-page explanation in your own words, solve one new example, and identify one real application. Add your answer to your study notes for lecturer review."
+          },
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "prerequisites": []
+}
