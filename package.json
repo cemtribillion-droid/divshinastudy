@@ -14,7 +14,6 @@
   "dependencies": {
     "@google/genai": "^3.6.1",
     "@netlify/blobs": "^11.1.9",
-    "@supabase/supabase-js": "^2.119.2",
     "@tailwindcss/vite": "^4.3.3",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.10",

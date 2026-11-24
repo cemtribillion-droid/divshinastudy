@@ -17,10 +17,46 @@ import type {
   Topic,
   UserProfile,
 } from '../src/types';
-import {
-  DEFAULT_PLATFORM_SETTINGS,
-  SEED_DEPARTMENTS,
-} from '../src/data/defaults';
+const SEED_DEPARTMENTS: Department[] = [
+  {
+    id: 'dept-com',
+    code: 'COM',
+    name: 'Computer Technology',
+    school: 'School of Technology',
+    description: 'ND2 Computer Science & Information Technology curriculum.',
+    academic_level: 'ND2',
+    created_at: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    id: 'dept-mth',
+    code: 'MTH',
+    name: 'Mathematics & Statistics',
+    school: 'School of Science',
+    description: 'ND2 Calculus, Linear Algebra, and Quantitative Reasoning.',
+    academic_level: 'ND2',
+    created_at: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    id: 'dept-gns',
+    code: 'GNS',
+    name: 'General Studies & Entrepreneurship',
+    school: 'School of Liberal Studies',
+    description: 'ND2 Use of English, Communication Skills, and Entrepreneurship.',
+    academic_level: 'ND2',
+    created_at: '2026-01-01T00:00:00.000Z',
+  },
+];
+
+const DEFAULT_PLATFORM_SETTINGS: PlatformSettings = {
+  platform_name: 'Divshinastudy',
+  strict_academic_level: 'ND2',
+  default_cbt_question_count: 10,
+  default_exam_duration_minutes: 30,
+  pass_mark_percentage: 50,
+  allow_self_registration: true,
+  ai_tutor_enabled: true,
+  updated_at: '2026-01-01T00:00:00.000Z',
+};
 
 const SEED_COURSES: Course[] = [];
 const SEED_TOPICS: Topic[] = [];
@@ -343,8 +379,4 @@ export function recordAuditLog(
   if (db.audit_logs.length > 500) {
     db.audit_logs = db.audit_logs.slice(0, 500);
   }
-}
-
-export function isSupabaseServerConfigured(): boolean {
-  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
 }
