@@ -18,10 +18,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const refreshUser = useCallback(async (): Promise<UserProfile | null> => {
     try {
-      const res = await apiRequest<{ user: UserProfile }>('/api/auth/me');
+      const res = await apiRequest<{ authenticated?: boolean; user: UserProfile | null }>('/api/auth/me');
+      if (!res.user) {
+        setSessionToken(null);
+      }
       setUser(res.user);
       return res.user;
     } catch {
+      setSessionToken(null);
       setUser(null);
       return null;
     } finally {
@@ -32,6 +36,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     void refreshUser();
   }, [refreshUser]);
+
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      setSessionToken(null);
+      setUser(null);
+    };
+    window.addEventListener('divshinastudy:unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('divshinastudy:unauthorized', handleUnauthorized);
+  }, []);
 
   const logout = useCallback(async () => {
     try {

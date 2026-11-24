@@ -616,3 +616,125 @@ test('Netlify API handler supports admin setup, admin login, cookie/bearer auth,
     else process.env.ADMIN_PASSWORD = prevAdminPassword;
   }
 });
+
+test('Netlify connectLambda Blobs persists accounts and sessions across cold containers without AUTH_SESSION_SECRET or GEMINI_API_KEY', async () => {
+  const fs = await import('fs');
+  const os = await import('os');
+  const path = await import('path');
+  const { handler } = await import('../../netlify/functions/api');
+  const { registerRemoteDbAdapter, resetDbCacheForTesting } = await import('../../server/db');
+
+  const tempDir1 = fs.mkdtempSync(path.join(os.tmpdir(), 'divshinastudy-blob-c1-'));
+  const tempDir2 = fs.mkdtempSync(path.join(os.tmpdir(), 'divshinastudy-blob-c2-'));
+  const prevDataDir = process.env.DIVSHINASTUDY_DATA_DIR;
+  const prevSecret = process.env.AUTH_SESSION_SECRET;
+  const prevBlobsCtx = process.env.NETLIFY_BLOBS_CONTEXT;
+  const prevNetlify = process.env.NETLIFY;
+  const prevFetch = globalThis.fetch;
+
+  const blobStorage = new Map<string, string>();
+  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
+    const url = typeof input === 'string' ? input : input instanceof URL ? input.toString() : input.url;
+    if (url.startsWith('https://blobs.example.test/')) {
+      const method = (init?.method || 'GET').toUpperCase();
+      if (method === 'PUT') {
+        blobStorage.set(url, typeof init?.body === 'string' ? init.body : '');
+        return new Response('', { status: 200 });
+      }
+      if (method === 'GET') {
+        const stored = blobStorage.get(url);
+        if (!stored) return new Response('Not found', { status: 404 });
+        return new Response(stored, { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+    }
+    return prevFetch(input, init);
+  }) as typeof fetch;
+
+  const blobsEventPayload = Buffer.from(
+    JSON.stringify({ url: 'https://blobs.example.test', token: 'test-blobs-token' }),
+    'utf8'
+  ).toString('base64');
+
+  try {
+    delete process.env.AUTH_SESSION_SECRET;
+    delete process.env.NETLIFY_BLOBS_CONTEXT;
+    process.env.NETLIFY = 'true';
+    process.env.DIVSHINASTUDY_DATA_DIR = tempDir1;
+    resetDbCacheForTesting();
+
+    // Container 1: Student registers on fresh Netlify site (connectLambda sets edgeURL only, no uncachedEdgeURL)
+    const regRes = (await handler({
+      httpMethod: 'POST',
+      path: '/api/auth/register',
+      blobs: blobsEventPayload,
+      headers: {
+        'content-type': 'application/json',
+        host: 'divshinastudy.netlify.app',
+        'x-forwarded-proto': 'https',
+        'x-nf-site-id': 'site-123',
+        'x-nf-deploy-id': 'deploy-123',
+      },
+      body: JSON.stringify({
+        full_name: 'Chidi Okafor',
+        email: 'chidi@divshinastudy.edu.ng',
+        password: 'Password123!',
+        department_id: 'dept-com',
+        preferred_semester: 'Second Semester',
+        academic_level: 'ND2',
+      }),
+    })) as { statusCode: number; body: string; headers?: Record<string, string> };
+    assert.equal(regRes.statusCode, 201);
+    const { session_token } = JSON.parse(regRes.body) as { session_token: string };
+    assert.ok(session_token);
+    assert.ok(blobStorage.size > 0);
+
+    // Container 2: Simulate completely cold Lambda container with different /tmp dir and wiped memory cache
+    resetDbCacheForTesting();
+    process.env.DIVSHINASTUDY_DATA_DIR = tempDir2;
+
+    const dashRes = (await handler({
+      httpMethod: 'GET',
+      path: '/api/dashboard',
+      blobs: blobsEventPayload,
+      headers: {
+        authorization: `Bearer ${session_token}`,
+        host: 'divshinastudy.netlify.app',
+        'x-forwarded-proto': 'https',
+        'x-nf-site-id': 'site-123',
+        'x-nf-deploy-id': 'deploy-123',
+      },
+    })) as { statusCode: number; body: string };
+    assert.equal(dashRes.statusCode, 200);
+    assert.ok(JSON.parse(dashRes.body).progress);
+
+    const coursesRes = (await handler({
+      httpMethod: 'GET',
+      path: '/api/courses',
+      blobs: blobsEventPayload,
+      headers: {
+        authorization: `Bearer ${session_token}`,
+        host: 'divshinastudy.netlify.app',
+        'x-forwarded-proto': 'https',
+        'x-nf-site-id': 'site-123',
+        'x-nf-deploy-id': 'deploy-123',
+      },
+    })) as { statusCode: number; body: string };
+    assert.equal(coursesRes.statusCode, 200);
+    assert.equal(JSON.parse(coursesRes.body).courses.length, 16);
+  } finally {
+    globalThis.fetch = prevFetch;
+    registerRemoteDbAdapter(null);
+    resetDbCacheForTesting();
+    fs.rmSync(tempDir1, { recursive: true, force: true });
+    fs.rmSync(tempDir2, { recursive: true, force: true });
+    if (prevDataDir === undefined) delete process.env.DIVSHINASTUDY_DATA_DIR;
+    else process.env.DIVSHINASTUDY_DATA_DIR = prevDataDir;
+    if (prevSecret === undefined) delete process.env.AUTH_SESSION_SECRET;
+    else process.env.AUTH_SESSION_SECRET = prevSecret;
+    if (prevBlobsCtx === undefined) delete process.env.NETLIFY_BLOBS_CONTEXT;
+    else process.env.NETLIFY_BLOBS_CONTEXT = prevBlobsCtx;
+    if (prevNetlify === undefined) delete process.env.NETLIFY;
+    else process.env.NETLIFY = prevNetlify;
+  }
+});
+

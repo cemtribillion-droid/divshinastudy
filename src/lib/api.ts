@@ -1,11 +1,35 @@
+const SESSION_STORAGE_KEY = 'divshinastudy_session_token';
 let memorySessionToken: string | null = null;
 
 export function getSessionToken(): string | null {
-  return memorySessionToken;
+  if (memorySessionToken) return memorySessionToken;
+  if (typeof window !== 'undefined') {
+    try {
+      const stored = window.localStorage.getItem(SESSION_STORAGE_KEY);
+      if (stored) {
+        memorySessionToken = stored;
+        return stored;
+      }
+    } catch {
+      // Ignore localStorage read errors in restricted environments
+    }
+  }
+  return null;
 }
 
 export function setSessionToken(token: string | null): void {
   memorySessionToken = token;
+  if (typeof window !== 'undefined') {
+    try {
+      if (token) {
+        window.localStorage.setItem(SESSION_STORAGE_KEY, token);
+      } else {
+        window.localStorage.removeItem(SESSION_STORAGE_KEY);
+      }
+    } catch {
+      // Ignore localStorage write errors in restricted environments
+    }
+  }
 }
 
 export class ApiError extends Error {
@@ -63,6 +87,9 @@ export async function apiRequest<T>(url: string, options: RequestInit = {}): Pro
   if (!response.ok) {
     if (response.status === 401) {
       setSessionToken(null);
+      if (typeof window !== 'undefined' && url !== '/api/auth/login' && url !== '/api/auth/register') {
+        window.dispatchEvent(new Event('divshinastudy:unauthorized'));
+      }
     }
     const message =
       (data && typeof data.error === 'string' ? data.error : null) ||

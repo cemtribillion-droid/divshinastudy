@@ -59,7 +59,15 @@ export const handler = async (
   let blobsAvailable = Boolean(process.env.NETLIFY_BLOBS_CONTEXT);
   if (typeof event.blobs === 'string' && event.blobs.length > 0) {
     try {
-      connectLambda(event as unknown as Parameters<typeof connectLambda>[0]);
+      const headers = event.headers ?? {};
+      const normalizedHeaders: Record<string, string | undefined> = { ...headers };
+      for (const [k, v] of Object.entries(headers)) {
+        normalizedHeaders[k.toLowerCase()] = v;
+      }
+      connectLambda({
+        ...event,
+        headers: normalizedHeaders,
+      } as unknown as Parameters<typeof connectLambda>[0]);
       blobsAvailable = true;
     } catch (err) {
       console.warn('[Divshinastudy Netlify] connectLambda skipped:', err instanceof Error ? err.message : err);
@@ -70,8 +78,22 @@ export const handler = async (
     registerRemoteDbAdapter({
       async load() {
         const store = getStore(BLOB_STORE_NAME);
-        const data = await store.get(BLOB_DB_KEY, { type: 'json', consistency: 'strong' });
-        return (data as Partial<PrepWiseDatabase> | null) ?? null;
+        try {
+          const data = await store.get(BLOB_DB_KEY, { type: 'json', consistency: 'strong' });
+          return (data as Partial<PrepWiseDatabase> | null) ?? null;
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : String(err);
+          const name = err instanceof Error ? err.name : '';
+          if (
+            name === 'BlobsConsistencyError' ||
+            msg.includes('uncachedEdgeURL') ||
+            msg.includes('strong consistency')
+          ) {
+            const data = await store.get(BLOB_DB_KEY, { type: 'json', consistency: 'eventual' });
+            return (data as Partial<PrepWiseDatabase> | null) ?? null;
+          }
+          throw err;
+        }
       },
       async save(db) {
         const store = getStore(BLOB_STORE_NAME);

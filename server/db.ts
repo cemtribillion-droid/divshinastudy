@@ -82,6 +82,7 @@ export interface PrepWiseDatabase {
   audit_logs: AuditLog[];
   platform_settings: PlatformSettings;
   auth_secret?: string;
+  revision?: number;
 }
 
 export interface RemoteDbAdapter {
@@ -243,6 +244,7 @@ function reconcileDbState(parsed: Partial<PrepWiseDatabase>): { db: PrepWiseData
     audit_logs: parsed.audit_logs ?? [],
     platform_settings: syncedSettings,
     auth_secret: parsed.auth_secret,
+    revision: typeof parsed.revision === 'number' ? parsed.revision : 0,
   };
 
   const changed =
@@ -262,7 +264,17 @@ export async function syncDbFromRemoteStore(): Promise<void> {
   try {
     const remote = await remoteAdapter.load();
     if (remote && typeof remote === 'object') {
+      const remoteRev = typeof remote.revision === 'number' ? remote.revision : 0;
+      const localRev = typeof cachedDb?.revision === 'number' ? cachedDb.revision : 0;
+      if (cachedDb && localRev > remoteRev) {
+        // Keep newer in-memory DB when an eventual-consistency edge read returns an older snapshot
+        remoteDirty = true;
+        return;
+      }
       const { db, changed } = reconcileDbState(remote);
+      if (!db.auth_secret && cachedDb?.auth_secret) {
+        db.auth_secret = cachedDb.auth_secret;
+      }
       cachedDb = db;
       remoteDirty = changed;
       writeLocalFileSafely(db);
@@ -334,6 +346,7 @@ export function readDb(): PrepWiseDatabase {
 }
 
 export function writeDb(db: PrepWiseDatabase): void {
+  db.revision = Math.max((db.revision ?? 0) + 1, Date.now());
   cachedDb = db;
   remoteDirty = true;
   writeLocalFileSafely(db);
