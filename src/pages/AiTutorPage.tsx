@@ -1,169 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Bot, BookOpen, MessageSquarePlus, Send, Sparkles, Trash2 } from 'lucide-react';
+import { Bot, BookOpen, ExternalLink, Globe, MessageSquarePlus, Send, Sparkles, Trash2 } from 'lucide-react';
 import { AppShell } from '../components/AppShell';
+import { MarkdownContent } from '../components/MarkdownContent';
 import { apiRequest, ApiError } from '../lib/api';
 import type { AiLearningHistory, Course, QuestionPublic } from '../types';
 
-type TutorMode = 'explain_question' | 'hint' | 'step_by_step' | 'revision_chat' | 'theory_feedback';
+type TutorMode =
+  | 'ask_anything'
+  | 'revision_chat'
+  | 'step_by_step'
+  | 'explain_question'
+  | 'deep_explain'
+  | 'quiz_me'
+  | 'fact_check'
+  | 'code_debug'
+  | 'hint'
+  | 'theory_feedback';
 
-function renderInlineMarkdown(text: string): React.ReactNode[] {
-  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
-  return parts.map((part, idx) => {
-    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
-      const inner = part.slice(2, -2);
-      if (inner.startsWith('`') && inner.endsWith('`') && inner.length > 2) {
-        return (
-          <code
-            key={idx}
-            className="px-1.5 py-0.5 rounded bg-[#F3EFFC] text-[#4C1D95] font-mono font-semibold text-[12px]"
-          >
-            {inner.slice(1, -1)}
-          </code>
-        );
-      }
-      return (
-        <strong key={idx} className="font-semibold text-[#1A1635]">
-          {inner}
-        </strong>
-      );
-    }
-    if (part.startsWith('`') && part.endsWith('`') && part.length > 2) {
-      return (
-        <code
-          key={idx}
-          className="px-1.5 py-0.5 rounded bg-[#F3EFFC] text-[#4C1D95] font-mono text-[12px]"
-        >
-          {part.slice(1, -1)}
-        </code>
-      );
-    }
-    return <React.Fragment key={idx}>{part}</React.Fragment>;
-  });
-}
-
-function renderTutorMarkdown(markdown: string): React.ReactNode {
-  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
-  const blocks: React.ReactNode[] = [];
-  let i = 0;
-  let keyCounter = 0;
-
-  while (i < lines.length) {
-    const line = lines[i];
-    const trimmed = line.trim();
-
-    if (!trimmed) {
-      i += 1;
-      continue;
-    }
-
-    // Fenced code blocks
-    if (trimmed.startsWith('```')) {
-      const lang = trimmed.slice(3).trim();
-      const codeLines: string[] = [];
-      i += 1;
-      while (i < lines.length && !lines[i].trim().startsWith('```')) {
-        codeLines.push(lines[i]);
-        i += 1;
-      }
-      if (i < lines.length && lines[i].trim().startsWith('```')) {
-        i += 1;
-      }
-      blocks.push(
-        <div key={`code-${keyCounter++}`} className="rounded-xl overflow-hidden border border-[#2E2554] bg-[#16122B]">
-          {lang && (
-            <div className="px-3 py-1 bg-[#221C42] text-[11px] font-mono uppercase tracking-wider text-[#C4B5FD]">
-              {lang}
-            </div>
-          )}
-          <pre className="p-3.5 overflow-x-auto text-xs font-mono text-[#F5F3FF] leading-relaxed">
-            <code>{codeLines.join('\n')}</code>
-          </pre>
-        </div>
-      );
-      continue;
-    }
-
-    // Headings
-    const headingMatch = trimmed.match(/^(#{1,4})\s+(.+)$/);
-    if (headingMatch) {
-      const level = headingMatch[1].length;
-      const headingText = headingMatch[2];
-      const headingClass =
-        level <= 2
-          ? 'font-display text-base font-bold text-[#1A1635] pt-1'
-          : 'font-display text-sm font-bold text-[#4C1D95] pt-1';
-      blocks.push(
-        <h4 key={`h-${keyCounter++}`} className={headingClass}>
-          {renderInlineMarkdown(headingText)}
-        </h4>
-      );
-      i += 1;
-      continue;
-    }
-
-    // Unordered list
-    if (/^[-*•]\s+/.test(trimmed)) {
-      const items: string[] = [];
-      while (i < lines.length && /^[-*•]\s+/.test(lines[i].trim())) {
-        items.push(lines[i].trim().replace(/^[-*•]\s+/, ''));
-        i += 1;
-      }
-      blocks.push(
-        <ul key={`ul-${keyCounter++}`} className="list-disc pl-5 space-y-1.5 text-sm text-[#1A1635]">
-          {items.map((item, idx) => (
-            <li key={idx} className="leading-relaxed">
-              {renderInlineMarkdown(item)}
-            </li>
-          ))}
-        </ul>
-      );
-      continue;
-    }
-
-    // Ordered list
-    if (/^\d+[.)]\s+/.test(trimmed)) {
-      const items: string[] = [];
-      while (i < lines.length && /^\d+[.)]\s+/.test(lines[i].trim())) {
-        items.push(lines[i].trim().replace(/^\d+[.)]\s+/, ''));
-        i += 1;
-      }
-      blocks.push(
-        <ol key={`ol-${keyCounter++}`} className="list-decimal pl-5 space-y-1.5 text-sm text-[#1A1635]">
-          {items.map((item, idx) => (
-            <li key={idx} className="leading-relaxed">
-              {renderInlineMarkdown(item)}
-            </li>
-          ))}
-        </ol>
-      );
-      continue;
-    }
-
-    // Paragraph (group contiguous non-empty lines that aren't special blocks)
-    const paraLines: string[] = [];
-    while (i < lines.length) {
-      const nextTrimmed = lines[i].trim();
-      if (
-        !nextTrimmed ||
-        nextTrimmed.startsWith('```') ||
-        /^(#{1,4})\s+/.test(nextTrimmed) ||
-        /^[-*•]\s+/.test(nextTrimmed) ||
-        /^\d+[.)]\s+/.test(nextTrimmed)
-      ) {
-        break;
-      }
-      paraLines.push(nextTrimmed);
-      i += 1;
-    }
-    blocks.push(
-      <p key={`p-${keyCounter++}`} className="text-sm text-[#1A1635] leading-relaxed">
-        {renderInlineMarkdown(paraLines.join(' '))}
-      </p>
-    );
+function isSafeHttpUrl(uri: string): boolean {
+  try {
+    const parsed = new URL(uri);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
   }
-
-  return <div className="space-y-3">{blocks}</div>;
 }
 
 export function AiTutorPage() {
@@ -172,11 +33,13 @@ export function AiTutorPage() {
   const [questions, setQuestions] = useState<QuestionPublic[]>([]);
   const [history, setHistory] = useState<AiLearningHistory[]>([]);
 
-  const [selectedCourse, setSelectedCourse] = useState(searchParams.get('course') || 'MTH 209');
+  const [selectedCourse, setSelectedCourse] = useState(searchParams.get('course') || '');
+  const [customSubject, setCustomSubject] = useState('');
   const [selectedQuestionId, setSelectedQuestionId] = useState(searchParams.get('questionId') || '');
-  const [mode, setMode] = useState<TutorMode>(searchParams.get('questionId') ? 'step_by_step' : 'revision_chat');
+  const [mode, setMode] = useState<TutorMode>(searchParams.get('questionId') ? 'step_by_step' : 'ask_anything');
   const [prompt, setPrompt] = useState('');
   const [studentDraft, setStudentDraft] = useState('');
+  const [enableWebSearch, setEnableWebSearch] = useState(true);
   const [sending, setSending] = useState(false);
   const [clearing, setClearing] = useState(false);
   const [error, setError] = useState('');
@@ -191,16 +54,21 @@ export function AiTutorPage() {
         setCourses(cRes.courses);
         setQuestions(qRes.questions);
         setHistory(hRes.history);
-        if (cRes.courses.length > 0 && !cRes.courses.some((c) => c.code === selectedCourse)) {
-          setSelectedCourse(cRes.courses[0].code);
+        const paramCourse = searchParams.get('course');
+        if (paramCourse && cRes.courses.some((c) => c.code === paramCourse)) {
+          setSelectedCourse(paramCourse);
+        } else if (cRes.courses.length > 0 && selectedCourse && !cRes.courses.some((c) => c.code === selectedCourse)) {
+          setSelectedCourse('');
         }
       })
       .catch((err) => {
-        setError(err instanceof ApiError ? err.message : 'Unable to load ND2 tutor resources.');
+        setError(err instanceof ApiError ? err.message : 'Unable to load AI Tutor resources.');
       });
   }, []);
 
-  const courseQuestions = questions.filter((q) => !selectedCourse || q.course_code === selectedCourse);
+  const courseQuestions = selectedCourse
+    ? questions.filter((q) => q.course_code === selectedCourse)
+    : [];
   const activeQuestion = questions.find((q) => q.id === selectedQuestionId);
   const activeCourseObj = courses.find((c) => c.code === selectedCourse);
 
@@ -218,30 +86,53 @@ export function AiTutorPage() {
         },
         {
           label: 'Explain underlying concept',
-          text: `Teach the core ND2 concept tested by ${activeQuestion.course_code} Q${activeQuestion.question_number} with a similar worked example.`,
+          text: `Teach the core concept tested by ${activeQuestion.course_code} Q${activeQuestion.question_number} with a similar worked example.`,
           mode: 'explain_question',
+        },
+      ]
+    : selectedCourse
+    ? [
+        {
+          label: 'Teach core concepts',
+          text: `Teach the core exam concepts in ${selectedCourse}${activeCourseObj ? ` (${activeCourseObj.title})` : ''} with clear examples.`,
+          mode: 'deep_explain',
+        },
+        {
+          label: 'Worked exam example',
+          text: `Give me a realistic worked exam problem for ${selectedCourse} and walk through every step.`,
+          mode: 'step_by_step',
+        },
+        {
+          label: 'Practice quiz (3 Qs)',
+          text: `Give me 3 practice questions for ${selectedCourse} with worked solutions so I can check my understanding.`,
+          mode: 'quiz_me',
+        },
+        {
+          label: 'Common exam pitfalls',
+          text: `What are the most common mistakes students make in ${selectedCourse} exams and how do I avoid them?`,
+          mode: 'revision_chat',
         },
       ]
     : [
         {
-          label: 'Teach core concepts',
-          text: `Teach the core ND2 exam concepts in ${selectedCourse}${activeCourseObj ? ` (${activeCourseObj.title})` : ''} with clear examples.`,
-          mode: 'revision_chat',
-        },
-        {
-          label: 'Worked exam example',
-          text: `Give me a realistic ND2 worked exam problem for ${selectedCourse} and walk through every step.`,
+          label: 'Solve math step-by-step',
+          text: 'Solve the integral of x * e^x dx step by step using integration by parts and explain why it works.',
           mode: 'step_by_step',
         },
         {
-          label: 'Practice check (3 Qs)',
-          text: `Give me 3 short ND2 practice questions for ${selectedCourse} with worked solutions so I can check my understanding.`,
-          mode: 'revision_chat',
+          label: 'Explain a science concept',
+          text: 'Explain cellular respiration vs photosynthesis, showing equations and where each stage occurs.',
+          mode: 'deep_explain',
         },
         {
-          label: 'Common exam pitfalls',
-          text: `What are the most common mistakes ND2 students make in ${selectedCourse} exams and how do I avoid them?`,
-          mode: 'revision_chat',
+          label: 'Programming & algorithms',
+          text: 'Explain recursion vs iteration with a clean Python or Java example and compare memory usage.',
+          mode: 'code_debug',
+        },
+        {
+          label: 'Quiz me (3 Qs)',
+          text: 'Teach the core principles of supply and demand elasticity and quiz me with 3 questions.',
+          mode: 'quiz_me',
         },
       ];
 
@@ -250,13 +141,13 @@ export function AiTutorPage() {
     const effectivePrompt =
       (overridePrompt ?? prompt).trim() ||
       (chosenMode === 'theory_feedback' && studentDraft.trim()
-        ? `Please review my ${selectedCourse} draft answer and teach me how to improve it.`
+        ? `Please review my draft answer${selectedCourse ? ` for ${selectedCourse}` : ''}.`
         : activeQuestion
         ? `Please help me understand ${activeQuestion.course_code} Q${activeQuestion.question_number}.`
         : '');
 
     if (!effectivePrompt) {
-      setError('Enter a question or select a quick teaching prompt to begin.');
+      setError('Enter any academic or general knowledge question to begin.');
       return;
     }
 
@@ -268,11 +159,12 @@ export function AiTutorPage() {
         body: JSON.stringify({
           mode: chosenMode,
           prompt: effectivePrompt,
-          course_code: selectedCourse,
+          subject: customSubject.trim() || undefined,
+          course_code: selectedCourse || undefined,
           question_id: selectedQuestionId || undefined,
           topic_id: searchParams.get('topic') || undefined,
-          module_id: searchParams.get('module') || undefined,
           student_draft: chosenMode === 'theory_feedback' ? studentDraft : undefined,
+          enable_web_search: enableWebSearch,
         }),
       });
       setHistory((prev) => [res.record, ...prev]);
@@ -313,9 +205,9 @@ export function AiTutorPage() {
       <div className="space-y-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <h1 className="font-display text-2xl font-bold text-[#1A1635]">ND2 AI Academic Tutor</h1>
+            <h1 className="font-display text-2xl font-bold text-[#1A1635]">Divshinastudy AI Tutor & Knowledge Agent</h1>
             <p className="text-sm text-[#5E5780] mt-1">
-              Structured teachings, step-by-step worked solutions, and draft feedback grounded in your ND2 curriculum.
+              Ask any academic or general knowledge question, attach an uploaded ND2 course/question if desired, and review saved explanations.
             </p>
           </div>
           {history.length > 0 && (
@@ -339,8 +231,8 @@ export function AiTutorPage() {
                 <Bot className="w-5 h-5" />
               </div>
               <div>
-                <h2 className="font-display text-base font-bold text-[#1A1635]">Study Context</h2>
-                <p className="text-xs text-[#6D658F]">Official keys are shown alongside AI teachings</p>
+                <h2 className="font-display text-base font-bold text-[#1A1635]">Study & Knowledge Context</h2>
+                <p className="text-xs text-[#6D658F]">Works across all academic subjects & general knowledge</p>
               </div>
             </div>
 
@@ -353,7 +245,7 @@ export function AiTutorPage() {
             <form onSubmit={handleAsk} className="space-y-3.5">
               <div>
                 <label htmlFor="tutor-course" className="block text-xs font-semibold text-[#1A1635] mb-1">
-                  ND2 Course
+                  Subject Scope / ND2 Course
                 </label>
                 <select
                   id="tutor-course"
@@ -364,6 +256,7 @@ export function AiTutorPage() {
                   }}
                   className="w-full px-3 py-2 rounded-xl border border-[#DED9F2] bg-white text-xs"
                 >
+                  <option value="">General Academic & Knowledge (Any Subject)</option>
                   {courses.map((c) => (
                     <option key={c.id} value={c.code}>
                       {c.code} — {c.title}
@@ -372,24 +265,42 @@ export function AiTutorPage() {
                 </select>
               </div>
 
-              <div>
-                <label htmlFor="tutor-question" className="block text-xs font-semibold text-[#1A1635] mb-1">
-                  Past Question (Optional)
-                </label>
-                <select
-                  id="tutor-question"
-                  value={selectedQuestionId}
-                  onChange={(e) => setSelectedQuestionId(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-[#DED9F2] bg-white text-xs"
-                >
-                  <option value="">General {selectedCourse} Revision</option>
-                  {courseQuestions.map((q) => (
-                    <option key={q.id} value={q.id}>
-                      {q.examination_year} Q{q.question_number}: {q.question_text.slice(0, 65)}...
-                    </option>
-                  ))}
-                </select>
-              </div>
+              {!selectedCourse && (
+                <div>
+                  <label htmlFor="tutor-subject" className="block text-xs font-semibold text-[#1A1635] mb-1">
+                    Discipline / Topic Focus (Optional)
+                  </label>
+                  <input
+                    id="tutor-subject"
+                    type="text"
+                    value={customSubject}
+                    onChange={(e) => setCustomSubject(e.target.value)}
+                    placeholder="e.g. Calculus, Organic Chemistry, Python, Economics, History..."
+                    className="w-full px-3 py-2 rounded-xl border border-[#DED9F2] bg-white text-xs"
+                  />
+                </div>
+              )}
+
+              {courseQuestions.length > 0 && (
+                <div>
+                  <label htmlFor="tutor-question" className="block text-xs font-semibold text-[#1A1635] mb-1">
+                    Past Question (Optional)
+                  </label>
+                  <select
+                    id="tutor-question"
+                    value={selectedQuestionId}
+                    onChange={(e) => setSelectedQuestionId(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl border border-[#DED9F2] bg-white text-xs"
+                  >
+                    <option value="">General {selectedCourse} Revision</option>
+                    {courseQuestions.map((q) => (
+                      <option key={q.id} value={q.id}>
+                        {q.examination_year} Q{q.question_number}: {q.question_text.slice(0, 65)}...
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
 
               {activeQuestion && (
                 <div className="p-3 rounded-xl bg-[#FAF9FE] border border-[#E5E0F5] text-xs text-[#1A1635] whitespace-pre-line">
@@ -402,7 +313,7 @@ export function AiTutorPage() {
 
               <div>
                 <label htmlFor="tutor-mode" className="block text-xs font-semibold text-[#1A1635] mb-1">
-                  Tutoring Mode
+                  Agent Response Mode
                 </label>
                 <select
                   id="tutor-mode"
@@ -410,8 +321,13 @@ export function AiTutorPage() {
                   onChange={(e) => setMode(e.target.value as TutorMode)}
                   className="w-full px-3 py-2 rounded-xl border border-[#DED9F2] bg-white text-xs"
                 >
-                  <option value="revision_chat">Interactive ND2 Teaching</option>
+                  <option value="ask_anything">Ask Anything (Direct + Detailed)</option>
                   <option value="step_by_step">Full Step-by-Step Worked Solution</option>
+                  <option value="deep_explain">Deep Concept Explanation</option>
+                  <option value="quiz_me">Quiz Me (3 Practice Questions)</option>
+                  <option value="fact_check">Research & Fact-Check</option>
+                  <option value="code_debug">Code & Debugging Mentor</option>
+                  <option value="revision_chat">Interactive Academic Coaching</option>
                   <option value="explain_question">Explain Concept & Answer</option>
                   <option value="hint">Give a Conceptual Hint Only</option>
                   <option value="theory_feedback">Review My Theory Draft</option>
@@ -435,7 +351,7 @@ export function AiTutorPage() {
               )}
 
               <div>
-                <div className="text-[11px] font-semibold text-[#6D658F] mb-1.5">Quick Study Prompts</div>
+                <div className="text-[11px] font-semibold text-[#6D658F] mb-1.5">Quick Prompts</div>
                 <div className="flex flex-wrap gap-1.5">
                   {quickPrompts.map((qp) => (
                     <button
@@ -465,10 +381,21 @@ export function AiTutorPage() {
                   required={!activeQuestion && !(mode === 'theory_feedback' && studentDraft.trim())}
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
-                  placeholder="Ask e.g. 'Explain Java try-catch-finally with an example' or 'How do I rationalize √(x²+7)-4?'"
+                  placeholder="Ask any academic or knowledge question — e.g. 'Explain Java try-catch-finally' or 'How does Newton's 2nd Law apply to inclined planes?'"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-[#DED9F2] text-sm"
                 />
               </div>
+
+              <label className="inline-flex items-center gap-2 text-xs text-[#4A436D] cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={enableWebSearch}
+                  onChange={(e) => setEnableWebSearch(e.target.checked)}
+                  className="accent-[#6B34E8] rounded"
+                />
+                <Globe className="w-3.5 h-3.5 text-[#6B34E8]" />
+                <span>Enable live web grounding citations</span>
+              </label>
 
               <button
                 type="submit"
@@ -476,74 +403,103 @@ export function AiTutorPage() {
                 className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#7B3FE4] to-[#6327E3] text-white text-sm font-semibold inline-flex items-center justify-center gap-2 disabled:opacity-60"
               >
                 <Send className="w-4 h-4" />
-                <span>{sending ? 'Generating Explanation...' : 'Ask Divshinastudy AI Tutor'}</span>
+                <span>{sending ? 'Generating Answer...' : 'Ask Divshinastudy AI Tutor'}</span>
               </button>
             </form>
           </div>
 
-          {/* Grounded Conversation & Official vs AI Split */}
+          {/* Grounded Conversation History */}
           <div className="lg:col-span-7 space-y-4">
             {history.length === 0 ? (
               <div className="prepwise-card p-10 text-center space-y-2">
                 <Sparkles className="w-7 h-7 text-[#6B34E8] mx-auto" />
-                <h2 className="font-display text-base font-bold text-[#1A1635]">Ask Your First ND2 Question</h2>
+                <h2 className="font-display text-base font-bold text-[#1A1635]">Ask Your First Question</h2>
                 <p className="text-xs text-[#6D658F] max-w-md mx-auto">
-                  Select any ND2 course or past question on the left, or click a quick study prompt to receive structured explanations, worked steps, and self-check practice.
+                  Type any academic or general knowledge question on the left, or click a quick prompt to receive structured explanations, worked solutions, and practice questions.
                 </p>
               </div>
             ) : (
-              history.map((entry) => (
-                <div key={entry.id} className="prepwise-card p-6 space-y-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#6D658F]">
-                    <span className="font-semibold capitalize text-[#4C1D95]">{entry.mode.replace(/_/g, ' ')}</span>
-                    <span>{entry.source_citation || 'ND2 General Revision'}</span>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-[#FAF9FE] border border-[#E5E0F5] text-sm font-medium text-[#1A1635]">
-                    {entry.prompt}
-                  </div>
-
-                  {entry.official_answer && (
-                    <div className="p-4 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] space-y-1">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-800">
-                        <BookOpen className="w-3.5 h-3.5" />
-                        <span>
-                          {entry.verification_status === 'unverified'
-                            ? 'Source Document Status (Unverified)'
-                            : 'Official Source Document Answer'}
-                        </span>
-                      </div>
-                      <p className="text-xs text-emerald-950 whitespace-pre-line leading-relaxed">
-                        {entry.official_answer}
-                      </p>
+              history.map((entry) => {
+                const safeSources = Array.isArray(entry.sources)
+                  ? entry.sources.filter((s) => s?.uri && isSafeHttpUrl(s.uri))
+                  : [];
+                return (
+                  <div key={entry.id} className="prepwise-card p-6 space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#6D658F]">
+                      <span className="font-semibold capitalize text-[#4C1D95]">{entry.mode.replace(/_/g, ' ')}</span>
+                      <span>{entry.source_citation || entry.subject || 'General Academic & Knowledge'}</span>
                     </div>
-                  )}
 
-                  <div className="p-4 rounded-xl bg-white border border-[#E5E0F5] space-y-2.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-[#6B34E8]">
-                        <Bot className="w-3.5 h-3.5" />
-                        <span>AI Tutor Teaching</span>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (entry.question_id) {
-                            setSelectedQuestionId(entry.question_id);
-                          }
-                          setMode('revision_chat');
-                          setPrompt(`Follow-up on "${entry.prompt.slice(0, 60)}": `);
-                        }}
-                        className="text-[11px] font-semibold text-[#6B34E8] hover:underline inline-flex items-center gap-1"
-                      >
-                        <MessageSquarePlus className="w-3.5 h-3.5" />
-                        <span>Ask Follow-up</span>
-                      </button>
+                    <div className="p-3.5 rounded-xl bg-[#FAF9FE] border border-[#E5E0F5] text-sm font-medium text-[#1A1635]">
+                      {entry.prompt}
                     </div>
-                    {renderTutorMarkdown(entry.ai_explanation)}
+
+                    {entry.official_answer && (
+                      <div className="p-4 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] space-y-1">
+                        <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-800">
+                          <BookOpen className="w-3.5 h-3.5" />
+                          <span>
+                            {entry.verification_status === 'unverified'
+                              ? 'Source Document Status (Unverified)'
+                              : 'Official Source Document Answer'}
+                          </span>
+                        </div>
+                        <p className="text-xs text-emerald-950 whitespace-pre-line leading-relaxed">
+                          {entry.official_answer}
+                        </p>
+                      </div>
+                    )}
+
+                    <div className="p-4 rounded-xl bg-white border border-[#E5E0F5] space-y-2.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-1.5 text-xs font-bold text-[#6B34E8]">
+                          <Bot className="w-3.5 h-3.5" />
+                          <span>Divshinastudy AI Agent</span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (entry.question_id) {
+                              setSelectedQuestionId(entry.question_id);
+                            }
+                            setMode('revision_chat');
+                            setPrompt(`Follow-up on "${entry.prompt.slice(0, 60)}": `);
+                          }}
+                          className="text-[11px] font-semibold text-[#6B34E8] hover:underline inline-flex items-center gap-1"
+                        >
+                          <MessageSquarePlus className="w-3.5 h-3.5" />
+                          <span>Ask Follow-up</span>
+                        </button>
+                      </div>
+
+                      <MarkdownContent markdown={entry.ai_explanation} />
+
+                      {safeSources.length > 0 && (
+                        <div className="pt-3 mt-3 border-t border-[#F0EDF8] space-y-2">
+                          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#5E5780]">
+                            <Globe className="w-3.5 h-3.5 text-[#6B34E8]" />
+                            <span>Verified Web Sources</span>
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {safeSources.map((src) => (
+                              <a
+                                key={src.uri}
+                                href={src.uri}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#FAF9FE] border border-[#E5E0F5] text-[11px] font-medium text-[#4C1D95] hover:bg-[#F1ECFE] max-w-[260px]"
+                              >
+                                <span className="truncate">{src.title}</span>
+                                <ExternalLink className="w-3 h-3 shrink-0" />
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
         </div>

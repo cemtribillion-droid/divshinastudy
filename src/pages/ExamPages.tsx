@@ -27,7 +27,7 @@ export function ExamInstructionsPage() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [attempts, setAttempts] = useState<ExamAttempt[]>([]);
   const [courseQuestions, setCourseQuestions] = useState<QuestionPublic[]>([]);
-  const [selectedCourse, setSelectedCourse] = useState(searchParams.get('course') || 'COM 226');
+  const [selectedCourse, setSelectedCourse] = useState(searchParams.get('course') || '');
   const [selectedYear, setSelectedYear] = useState(searchParams.get('year') || 'all');
   const [mode, setMode] = useState<ExamMode>('cbt');
   const [questionCount, setQuestionCount] = useState(10);
@@ -44,8 +44,7 @@ export function ExamInstructionsPage() {
         setCourses(cRes.courses);
         setAttempts(aRes.attempts);
         if (!searchParams.get('course') && cRes.courses.length > 0) {
-          const com226 = cRes.courses.find((c) => c.code === 'COM 226') || cRes.courses[0];
-          setSelectedCourse(com226.code);
+          setSelectedCourse(cRes.courses[0].code);
         }
       })
       .catch((err) => {
@@ -171,6 +170,25 @@ export function ExamInstructionsPage() {
               </div>
             )}
 
+            {courses.length === 0 ? (
+              <div className="p-6 rounded-2xl bg-[#FAF9FE] border border-[#E5E0F5] text-center space-y-3">
+                <p className="text-sm font-semibold text-[#1A1635]">
+                  No examination courses are currently published.
+                </p>
+                <p className="text-xs text-[#5E5780] max-w-md mx-auto">
+                  Once an administrator adds ND2 courses and past questions, you can configure timed CBT and Theory examinations here. Meanwhile, you can practice any topic with the AI Knowledge Agent.
+                </p>
+                <div className="pt-1">
+                  <Link
+                    to="/ai-agent"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#7B3FE4] to-[#6327E3] text-white text-xs font-semibold"
+                  >
+                    <Bot className="w-3.5 h-3.5" />
+                    <span>Open AI Knowledge Agent</span>
+                  </Link>
+                </div>
+              </div>
+            ) : (
             <form onSubmit={handleStartExam} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -308,13 +326,14 @@ export function ExamInstructionsPage() {
 
               <button
                 type="submit"
-                disabled={starting || (courseQuestions.length > 0 && currentModeCount === 0)}
+                disabled={starting || !selectedCourse || (courseQuestions.length > 0 && currentModeCount === 0)}
                 className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#7B3FE4] to-[#6327E3] text-white text-sm font-semibold inline-flex items-center justify-center gap-2 hover:opacity-95 disabled:opacity-60"
               >
                 <PlaySquare className="w-4 h-4" />
                 <span>{starting ? 'Preparing Examination Paper...' : 'Start Timed Examination'}</span>
               </button>
             </form>
+            )}
           </div>
 
           <div className="lg:col-span-5 prepwise-card p-6 space-y-4">

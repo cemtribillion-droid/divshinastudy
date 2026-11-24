@@ -18,9 +18,11 @@ import {
   computePerformanceSeries,
 } from './analytics';
 import { detectPdfMetadata, extractQuestionDraftsFromText } from './pdfParser';
-import { CURRICULUM_ATTACHMENTS, CURRICULUM_BY_CODE } from '../data/curriculumAttachments';
-import { SEED_COURSES, SEED_QUESTIONS } from '../data/nd2QuestionBank';
-import { buildTutorPromptContext, getGeminiClient } from '../../server/gemini';
+import {
+  buildTutorPromptContext,
+  extractGroundingSources,
+  getGeminiClient,
+} from '../../server/gemini';
 import type { Course, ExamAttempt, Question, StudentAnswer, StudentProgress, Topic } from '../types';
 
 test('ND2 strict scope validation accepts ND2 and rejects ND1, ND3, HND1, HND2', () => {
@@ -232,38 +234,27 @@ Explain system troubleshooting and power supply faults.
   assert.equal(drafts[1].question_type, 'theory');
 });
 
-test('All 8 ND2 curriculum attachments load cleanly with modules, questions, and zero disallowed levels', () => {
-  const expectedCodes = ['COM 211', 'COM 212', 'COM 213', 'COM 215', 'COM 216', 'COM 226', 'EED 216', 'GNS 201'];
-  assert.equal(CURRICULUM_ATTACHMENTS.length, 8);
+test('AI Agent builds universal academic/knowledge and course-grounded prompt contexts and requires GEMINI_API_KEY', () => {
+  // 1. Universal academic / general knowledge context without any course attached
+  const generalCtx = buildTutorPromptContext({
+    mode: 'quiz_me',
+    subject: 'Physics & Engineering',
+    studentPrompt: 'Explain Newtons Second Law and test me',
+  });
+  assert.ok(generalCtx.systemInstruction.includes('Divshinastudy AI Academic & Knowledge Agent'));
+  assert.ok(generalCtx.systemInstruction.includes('Physics & Engineering'));
+  assert.ok(generalCtx.userMessage.includes('Interactive Practice Check'));
+  assert.equal(generalCtx.sourceCitation, 'Physics & Engineering');
+  assert.equal(generalCtx.officialAnswer, null);
 
-  for (const code of expectedCodes) {
-    const attachment = CURRICULUM_BY_CODE[code];
-    assert.ok(attachment, `Missing curriculum attachment for ${code}`);
-    assert.ok(attachment.modules.length >= 7, `Expected >= 7 modules for ${code}`);
+  const factCheckCtx = buildTutorPromptContext({
+    mode: 'fact_check',
+    studentPrompt: 'Compare lithium-ion and solid-state batteries',
+  });
+  assert.ok(factCheckCtx.userMessage.includes('Research & Verification'));
+  assert.equal(factCheckCtx.sourceCitation, 'General Academic & Knowledge');
 
-    const course = SEED_COURSES.find((c) => c.code === code);
-    assert.ok(course, `Missing course record for ${code}`);
-    assert.equal(course.academic_level, 'ND2');
-
-    const courseQuestions = SEED_QUESTIONS.filter((q) => q.course_code === code);
-    assert.ok(courseQuestions.length >= 10, `Expected >= 10 questions for ${code}, got ${courseQuestions.length}`);
-    assert.ok(
-      courseQuestions.some((q) => q.question_type === 'mcq'),
-      `Expected CBT MCQ question(s) for ${code}`
-    );
-
-    const allModuleText = JSON.stringify(attachment);
-    assert.equal(containsDisallowedAcademicLevel(allModuleText), false, `Disallowed level found in ${code}`);
-  }
-
-  // Ensure original COM 226 PDF troubleshooting questions were preserved alongside File Organisation content
-  const com226PdfQuestions = SEED_QUESTIONS.filter(
-    (q) => q.course_code === 'COM 226' && q.source_document === 'ND_2_PQ_compressed.pdf'
-  );
-  assert.ok(com226PdfQuestions.length >= 10);
-});
-
-test('AI Tutor builds strictly-ND2 prompt context with syllabus, draft, and recent history and requires GEMINI_API_KEY', () => {
+  // 2. Course-grounded context when course, topic, draft, and recent history are provided
   const course: Course = {
     id: 'c-com211',
     code: 'COM 211',
@@ -301,15 +292,34 @@ test('AI Tutor builds strictly-ND2 prompt context with syllabus, draft, and rece
     ],
   });
 
-  assert.ok(ctx.systemInstruction.includes('ND2'));
-  assert.equal(containsDisallowedAcademicLevel(ctx.systemInstruction), false);
   assert.ok(ctx.systemInstruction.includes('COM 211'));
   assert.ok(ctx.systemInstruction.includes('Exception Handling'));
   assert.ok(ctx.systemInstruction.includes('Student Draft Answer'));
   assert.ok(ctx.systemInstruction.includes('What is OOP?'));
   assert.ok(ctx.userMessage.includes('Step-by-Step Worked Solution'));
   assert.ok(ctx.userMessage.includes('Explain try-catch-finally in Java'));
-  assert.equal(ctx.sourceCitation, 'COM 211 — Introduction to Java Programming II (ND2 First Semester)');
+  assert.equal(ctx.sourceCitation, 'COM 211 — Introduction to Java Programming II (First Semester)');
+
+  // 3. Grounding URL sanitization & deduplication
+  const extractedSources = extractGroundingSources({
+    candidates: [
+      {
+        groundingMetadata: {
+          groundingChunks: [
+            { web: { uri: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', title: 'MDN Web Docs' } },
+            { web: { uri: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', title: 'Duplicate' } },
+            { web: { uri: 'javascript:alert(1)', title: 'Malicious' } },
+            { web: { uri: 'not-a-valid-url', title: 'Broken' } },
+            { web: { uri: 'http://example.org/physics', title: 'Physics Ref' } },
+          ],
+        },
+      },
+    ],
+  } as unknown as Parameters<typeof extractGroundingSources>[0]);
+  assert.deepEqual(extractedSources, [
+    { title: 'MDN Web Docs', uri: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+    { title: 'Physics Ref', uri: 'http://example.org/physics' },
+  ]);
 
   const prevGemini = process.env.GEMINI_API_KEY;
   const prevAi = process.env.AI_API_KEY;
@@ -323,109 +333,6 @@ test('AI Tutor builds strictly-ND2 prompt context with syllabus, draft, and rece
     if (prevAi === undefined) delete process.env.AI_API_KEY;
     else process.env.AI_API_KEY = prevAi;
   }
-});
-
-test('All 9 ND2 past-question courses have complete, clean, strictly-ND2 questions matching sessions_available', () => {
-  const pastPaperCourses = [
-    'MTH 209',
-    'COM 226',
-    'COM 223',
-    'COM 225',
-    'COM 217',
-    'COM 224',
-    'COM 222',
-    'COM 227',
-    'COM 220',
-  ];
-
-  const seenIds = new Set<string>();
-  for (const q of SEED_QUESTIONS) {
-    assert.equal(seenIds.has(q.id), false, `Duplicate question id detected: ${q.id}`);
-    seenIds.add(q.id);
-    assert.equal(q.academic_level, 'ND2', `Question ${q.id} is not ND2`);
-    assert.equal(
-      containsDisallowedAcademicLevel(
-        `${q.question_text} ${q.topic_name} ${q.official_solution_excerpt || ''} ${(q.options || []).map((o) => o.text).join(' ')}`
-      ),
-      false,
-      `Disallowed level found in question ${q.id}`
-    );
-    assert.equal(
-      /\.(pdf|json)\b/i.test(
-        `${q.question_text} ${q.topic_name} ${q.official_solution_excerpt || ''} ${q.verified_by || ''}`
-      ),
-      false,
-      `Public filename leaked in question ${q.id}`
-    );
-  }
-
-  for (const code of pastPaperCourses) {
-    const course = SEED_COURSES.find((c) => c.code === code);
-    assert.ok(course, `Missing course ${code} in SEED_COURSES`);
-    assert.equal(course.academic_level, 'ND2');
-
-    const pdfQuestions = SEED_QUESTIONS.filter(
-      (q) => q.course_code === code && q.source_document === 'ND_2_PQ_compressed.pdf'
-    );
-    assert.ok(pdfQuestions.length >= 6, `Expected >= 6 PDF questions for ${code}, got ${pdfQuestions.length}`);
-
-    const courseAllQuestions = SEED_QUESTIONS.filter((q) => q.course_code === code);
-    const questionYears = new Set(courseAllQuestions.map((q) => q.examination_year));
-    for (const session of course.sessions_available) {
-      assert.ok(
-        questionYears.has(session),
-        `Course ${code} lists session "${session}" in sessions_available but has no questions for it`
-      );
-    }
-    for (const y of questionYears) {
-      assert.ok(
-        course.sessions_available.includes(y),
-        `Course ${code} has questions for "${y}" missing from sessions_available`
-      );
-    }
-  }
-});
-
-test('COM 211, COM 212, GNS 201, and EED 216 include full 60-question Practice Bank sets with hidden keys stripped publicly', () => {
-  const mixedCourses = ['COM 211', 'COM 212'];
-  const objectiveOnlyCourses = ['GNS 201', 'EED 216'];
-
-  for (const code of mixedCourses) {
-    const bank = SEED_QUESTIONS.filter(
-      (q) => q.course_code === code && q.examination_year === '2024/2025 Practice Bank'
-    );
-    assert.equal(bank.length, 60, `Expected 60 Practice Bank questions for ${code}, got ${bank.length}`);
-    assert.equal(bank.filter((q) => q.question_type === 'mcq').length, 20);
-    assert.equal(bank.filter((q) => q.question_type === 'true_false').length, 20);
-    assert.equal(bank.filter((q) => q.question_type === 'fill_gap').length, 10);
-    assert.equal(bank.filter((q) => q.question_type === 'theory').length, 10);
-  }
-
-  for (const code of objectiveOnlyCourses) {
-    const bank = SEED_QUESTIONS.filter(
-      (q) => q.course_code === code && q.examination_year === '2024/2025 Practice Bank'
-    );
-    assert.equal(bank.length, 60, `Expected 60 Practice Bank questions for ${code}, got ${bank.length}`);
-    assert.equal(bank.filter((q) => q.question_type === 'mcq').length, 30);
-    assert.equal(bank.filter((q) => q.question_type === 'true_false').length, 20);
-    assert.equal(bank.filter((q) => q.question_type === 'fill_gap').length, 10);
-    assert.equal(bank.filter((q) => q.question_type === 'theory').length, 0);
-  }
-
-  for (const code of [...mixedCourses, ...objectiveOnlyCourses]) {
-    const course = SEED_COURSES.find((c) => c.code === code);
-    assert.ok(course?.sessions_available.includes('2024/2025 Practice Bank'));
-  }
-
-  const gnsThesis = SEED_QUESTIONS.find((q) => q.id === 'q-gns201-pb-56');
-  assert.ok(gnsThesis);
-  assert.equal(gradeObjectiveAnswer(gnsThesis, 'Thesis').isCorrect, true);
-  assert.equal(gradeObjectiveAnswer(gnsThesis, 'thesis statement').isCorrect, true);
-
-  const eedBreakEven = SEED_QUESTIONS.find((q) => q.id === 'q-eed216-pb-56');
-  assert.ok(eedBreakEven);
-  assert.equal(gradeObjectiveAnswer(eedBreakEven, 'Break-even').isCorrect, true);
-  assert.equal(gradeObjectiveAnswer(eedBreakEven, 'break even').isCorrect, true);
 });
 
 test('Netlify API handler supports admin setup, admin login, cookie/bearer auth, and stateless cold starts', async () => {
@@ -584,6 +491,37 @@ test('Netlify API handler supports admin setup, admin login, cookie/bearer auth,
     })) as { statusCode: number; body: string };
     assert.equal(envLoginRes.statusCode, 200);
     assert.equal(JSON.parse(envLoginRes.body).user.role, 'admin');
+
+    // 7. Verify AI Agent status & input validation endpoints
+    const aiStatusRes = (await handler({
+      httpMethod: 'GET',
+      path: '/api/ai/status',
+      headers: { host: 'divshinastudy.netlify.app' },
+    })) as { statusCode: number; body: string };
+    assert.equal(aiStatusRes.statusCode, 200);
+    const aiStatus = JSON.parse(aiStatusRes.body);
+    assert.equal(aiStatus.enabled, true);
+    assert.ok(Array.isArray(aiStatus.capabilities));
+    assert.ok(aiStatus.capabilities.includes('general_knowledge'));
+
+    const emptyAgentRes = (await handler({
+      httpMethod: 'POST',
+      path: '/api/ai/agent',
+      headers: { 'content-type': 'application/json', host: 'divshinastudy.netlify.app' },
+      body: JSON.stringify({ prompt: '   ' }),
+    })) as { statusCode: number; body: string };
+    assert.equal(emptyAgentRes.statusCode, 400);
+
+    const badAttachmentRes = (await handler({
+      httpMethod: 'POST',
+      path: '/api/ai/agent',
+      headers: { 'content-type': 'application/json', host: 'divshinastudy.netlify.app' },
+      body: JSON.stringify({
+        prompt: 'Explain this file',
+        attachment: { mimeType: 'application/x-msdownload', data: 'abc' },
+      }),
+    })) as { statusCode: number; body: string };
+    assert.equal(badAttachmentRes.statusCode, 400);
   } finally {
     resetDbCacheForTesting();
     fs.rmSync(tempDataDir, { recursive: true, force: true });

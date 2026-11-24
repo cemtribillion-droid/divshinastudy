@@ -8,6 +8,7 @@ import {
   Lock,
   LogOut,
   ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 import { apiRequest, ApiError } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
@@ -29,13 +30,21 @@ interface PublicCatalogResponse {
 
 export function LandingPage() {
   const { user, loading, logout } = useAuth();
+  const navigate = useNavigate();
   const [catalog, setCatalog] = useState<PublicCatalogResponse | null>(null);
+  const [quickQuestion, setQuickQuestion] = useState('');
 
   useEffect(() => {
     apiRequest<PublicCatalogResponse>('/api/public/catalog')
       .then(setCatalog)
       .catch(() => {});
   }, []);
+
+  const handleQuickAsk = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = quickQuestion.trim();
+    navigate(trimmed ? `/ai-agent?q=${encodeURIComponent(trimmed)}` : '/ai-agent');
+  };
 
   return (
     <div className="min-h-screen bg-[#F5F4FB] text-[#1A1635]">
@@ -49,7 +58,10 @@ export function LandingPage() {
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-[#4A436D]" aria-label="Landing navigation">
             <a href="#curriculum" className="hover:text-[#6B34E8] transition-colors whitespace-nowrap shrink-0">ND2 Courses</a>
             <a href="#engines" className="hover:text-[#6B34E8] transition-colors whitespace-nowrap shrink-0">Exam Engine</a>
-            <a href="#tutor" className="hover:text-[#6B34E8] transition-colors whitespace-nowrap shrink-0">AI Tutor</a>
+            <Link to="/ai-agent" className="hover:text-[#6B34E8] transition-colors whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 text-[#6B34E8] font-semibold">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>AI Agent</span>
+            </Link>
             {!loading && !user && (
               <Link to="/admin/login" className="hover:text-[#6B34E8] transition-colors whitespace-nowrap shrink-0">Admin</Link>
             )}
@@ -103,7 +115,7 @@ export function LandingPage() {
               Practise real ND2 past examination questions, sit timed CBT and Theory papers, review official worked solutions, and learn step-by-step with your grounded AI academic tutor.
             </p>
             {!loading && (
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
                 {user ? (
                   <>
                     <Link
@@ -114,26 +126,28 @@ export function LandingPage() {
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                     <Link
-                      to="/ai-tutor"
+                      to="/ai-agent"
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/15 border border-white/25 text-white text-sm font-semibold hover:bg-white/20 transition-colors whitespace-nowrap"
                     >
-                      <span>Launch AI Tutor</span>
+                      <Sparkles className="w-4 h-4" />
+                      <span>Ask AI Agent</span>
                     </Link>
                   </>
                 ) : (
                   <>
                     <Link
-                      to="/register"
+                      to="/ai-agent"
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#271968] text-sm font-bold hover:bg-[#F5F3FF] transition-colors whitespace-nowrap"
                     >
-                      <span>Create ND2 Student Account</span>
+                      <Sparkles className="w-4 h-4 text-[#6B34E8]" />
+                      <span>Ask AI Agent</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                     <Link
-                      to="/login"
+                      to="/register"
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/15 border border-white/25 text-white text-sm font-semibold hover:bg-white/20 transition-colors whitespace-nowrap"
                     >
-                      <span>Sign In to Continue</span>
+                      <span>Create Student Account</span>
                     </Link>
                   </>
                 )}
@@ -146,8 +160,43 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* Universal AI Knowledge Agent Quick-Ask Bar */}
+      <section id="tutor" className="max-w-7xl mx-auto px-4 sm:px-8 pb-6">
+        <div className="prepwise-card p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-[#DDD6FE]">
+          <div className="space-y-1.5 max-w-xl">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6B34E8]">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Universal Academic & Knowledge Agent</span>
+            </div>
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-[#1A1635]">
+              Ask Any Academic or General Knowledge Question
+            </h2>
+            <p className="text-sm text-[#5E5780]">
+              Get step-by-step math solutions, science breakdowns, code debugging, essay guidance, or web-verified knowledge answers across any subject.
+            </p>
+          </div>
+          <form onSubmit={handleQuickAsk} className="flex-1 flex flex-col sm:flex-row gap-2.5 max-w-xl w-full">
+            <input
+              type="text"
+              value={quickQuestion}
+              onChange={(e) => setQuickQuestion(e.target.value)}
+              placeholder="Ask anything — e.g. 'Derive the quadratic formula' or 'Explain TCP vs UDP'..."
+              aria-label="Ask the Divshinastudy AI Agent a question"
+              className="flex-1 px-4 py-3 rounded-xl border border-[#DED9F2] bg-[#FAF9FE] text-sm text-[#1A1635] focus:outline-none focus:ring-2 focus:ring-[#7B3FE4]/25 focus:border-[#7B3FE4]"
+            />
+            <button
+              type="submit"
+              className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#7B3FE4] to-[#6327E3] text-white text-sm font-semibold inline-flex items-center justify-center gap-2 hover:opacity-95 whitespace-nowrap"
+            >
+              <span>Ask AI Agent</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </form>
+        </div>
+      </section>
+
       {/* 3 Core Pillars */}
-      <section id="engines" className="max-w-7xl mx-auto px-4 sm:px-8 py-8">
+      <section id="engines" className="max-w-7xl mx-auto px-4 sm:px-8 py-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="prepwise-card p-6 space-y-3">
             <div className="w-11 h-11 rounded-xl bg-[#EDE9FE] text-[#6B34E8] flex items-center justify-center">
@@ -158,22 +207,26 @@ export function LandingPage() {
               Switch between objective CBT drills (MCQ, True/False, Fill-in-Gap) and full Theory essays with persistent timers and instant review.
             </p>
           </div>
-          <div id="tutor" className="prepwise-card p-6 space-y-3">
+          <Link to="/ai-agent" className="prepwise-card p-6 space-y-3 hover:border-[#C4B5FD] transition-colors block">
             <div className="w-11 h-11 rounded-xl bg-[#E0F2FE] text-[#0284C7] flex items-center justify-center">
               <Bot className="w-5 h-5" />
             </div>
-            <h2 className="font-display text-lg font-bold text-[#1A1635]">Grounded AI Academic Tutor</h2>
+            <h2 className="font-display text-lg font-bold text-[#1A1635]">AI Academic & Knowledge Agent</h2>
             <p className="text-sm text-[#5E5780] leading-relaxed">
-              Request hints, step-by-step derivations, or theory draft feedback anchored directly to verified ND2 past questions and official answer keys.
+              Solve problems step-by-step, analyze uploaded diagrams or PDFs, generate practice quizzes, and verify facts with live web citations.
             </p>
-          </div>
+            <div className="inline-flex items-center gap-1 text-xs font-semibold text-[#6B34E8]">
+              <span>Open AI Agent</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </Link>
           <div className="prepwise-card p-6 space-y-3">
             <div className="w-11 h-11 rounded-xl bg-[#DCFCE7] text-[#059669] flex items-center justify-center">
               <BookOpen className="w-5 h-5" />
             </div>
-            <h2 className="font-display text-lg font-bold text-[#1A1635]">Authentic ND2 Past Papers</h2>
+            <h2 className="font-display text-lg font-bold text-[#1A1635]">ND2 Course & Question Vault</h2>
             <p className="text-sm text-[#5E5780] leading-relaxed">
-              Every course and question carries exact academic session, semester, and source page citations without invented filler questions.
+              Organize verified ND2 courses, past papers, and PDF-imported question sets managed cleanly from the Administrator Console.
             </p>
           </div>
         </div>
@@ -183,46 +236,74 @@ export function LandingPage() {
       <section id="curriculum" className="max-w-7xl mx-auto px-4 sm:px-8 py-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>
-            <h2 className="font-display text-2xl font-bold text-[#1A1635]">Verified ND2 Curriculum</h2>
+            <h2 className="font-display text-2xl font-bold text-[#1A1635]">ND2 Courses & Study Bank</h2>
             <p className="text-sm text-[#5E5780] mt-1">
-              Exclusively scoped to National Diploma 2 (ND2) First & Second Semester courses.
+              Published ND2 First & Second Semester courses appear here as administrators upload papers.
             </p>
           </div>
           {!loading && (
             <Link
-              to={user ? '/questions' : '/register'}
+              to={user ? '/questions' : '/ai-agent'}
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#6B34E8] hover:underline whitespace-nowrap"
             >
-              <span>{user ? 'Open Practice Question Library' : 'Register to access all questions'}</span>
+              <span>{user ? 'Open Practice Question Library' : 'Ask the AI Knowledge Agent'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {(catalog?.courses ?? []).map((course) => (
-            <div key={course.id} className="prepwise-card p-5 flex flex-col justify-between gap-3">
-              <div>
-                <div className="text-xs font-medium text-[#6D658F]">
-                  {course.code} · {course.semester} · {course.credit_units} Units
-                </div>
-                <h3 className="font-display text-base font-bold text-[#1A1635] mt-1">{course.title}</h3>
-                <p className="text-xs text-[#6D658F] mt-1">Department of {course.department_name}</p>
-              </div>
-              <div className="pt-3 border-t border-[#F0EDF8] flex items-center justify-between text-xs text-[#5E5780] tabular-nums">
-                <span>{course.question_count} Past Questions</span>
-                <span>{course.sessions_available.join(', ')}</span>
-              </div>
+        {(catalog?.courses ?? []).length === 0 ? (
+          <div className="prepwise-card p-8 text-center space-y-3">
+            <BookOpen className="w-8 h-8 text-[#6B34E8] mx-auto" />
+            <h3 className="font-display text-lg font-bold text-[#1A1635]">
+              Course Library Ready for Uploads
+            </h3>
+            <p className="text-sm text-[#5E5780] max-w-lg mx-auto">
+              No ND2 courses have been published yet. Administrators can add courses or import past-paper PDFs from the Admin Console, and anyone can ask the AI Knowledge Agent any academic question right away.
+            </p>
+            <div className="pt-1 flex flex-wrap justify-center gap-3">
+              <Link
+                to="/ai-agent"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#7B3FE4] to-[#6327E3] text-white text-xs font-semibold"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Open AI Knowledge Agent</span>
+              </Link>
+              <Link
+                to="/admin/login"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-[#DED9F2] bg-white text-xs font-semibold text-[#1A1635]"
+              >
+                <span>Administrator Login</span>
+              </Link>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(catalog?.courses ?? []).map((course) => (
+              <div key={course.id} className="prepwise-card p-5 flex flex-col justify-between gap-3">
+                <div>
+                  <div className="text-xs font-medium text-[#6D658F]">
+                    {course.code} · {course.semester} · {course.credit_units} Units
+                  </div>
+                  <h3 className="font-display text-base font-bold text-[#1A1635] mt-1">{course.title}</h3>
+                  <p className="text-xs text-[#6D658F] mt-1">Department of {course.department_name}</p>
+                </div>
+                <div className="pt-3 border-t border-[#F0EDF8] flex items-center justify-between text-xs text-[#5E5780] tabular-nums">
+                  <span>{course.question_count} Past Questions</span>
+                  <span>{course.sessions_available.join(', ')}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       <footer className="border-t border-[#E5E0F5] bg-white/70 mt-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6D658F]">
-          <span>Divshinastudy · ND2 Academic Preparation Platform</span>
+          <span>Divshinastudy · Academic Preparation & AI Knowledge Platform</span>
           {!loading && (
             <div className="flex items-center gap-6">
+              <Link to="/ai-agent" className="hover:text-[#1A1635]">AI Agent</Link>
               {user ? (
                 <>
                   <Link to="/dashboard" className="hover:text-[#1A1635]">Dashboard</Link>

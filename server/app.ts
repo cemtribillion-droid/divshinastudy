@@ -10,8 +10,13 @@ import {
   writeDb,
   type StoredUserRecord,
 } from './db';
-import { generateGroundedTutorResponse } from './gemini';
-import { CURRICULUM_BY_CODE } from '../src/data/curriculumAttachments';
+import {
+  generateGroundedTutorResponse,
+  isGeminiConfigured,
+  type AgentAttachmentInput,
+  type AgentMode,
+  type TutorHistoryTurn,
+} from './gemini';
 import {
   assertND2Level,
   containsDisallowedAcademicLevel,
@@ -666,11 +671,10 @@ export function createExpressApp(): express.Express {
                 userTopicProgress.reduce((acc, p) => acc + p.mastery_percentage, 0) / courseTopics.length
               )
             : 0;
-        const curriculum = CURRICULUM_BY_CODE[course.code.toUpperCase()];
         return {
           ...course,
           topic_count: courseTopics.length,
-          module_count: curriculum?.modules.length ?? 0,
+          module_count: 0,
           question_count: courseQuestions.length,
           objective_count: courseQuestions.filter((q) => q.question_type !== 'theory').length,
           theory_count: courseQuestions.filter((q) => q.question_type === 'theory').length,
@@ -711,12 +715,11 @@ export function createExpressApp(): express.Express {
       .filter((q) => q.course_id === course.id)
       .map((q) => toPublicQuestion(q));
 
-    const curriculum = CURRICULUM_BY_CODE[course.code.toUpperCase()];
     res.json({
       course,
       topics,
       questions,
-      modules: curriculum?.modules ?? [],
+      modules: [],
     });
   });
 
@@ -1170,7 +1173,222 @@ export function createExpressApp(): express.Express {
     res.json({ attempt, answers: attemptAnswers, questions });
   });
 
-  // ================= AI ACADEMIC TUTOR =================
+  // ================= AI ACADEMIC & KNOWLEDGE AGENT =================
+  const VALID_AGENT_MODES = new Set<AgentMode>([
+    'ask_anything',
+    'step_by_step',
+    'deep_explain',
+    'quiz_me',
+    'fact_check',
+    'code_debug',
+    'explain_question',
+    'hint',
+    'revision_chat',
+    'theory_feedback',
+  ]);
+  const ALLOWED_AGENT_MIMES = new Set([
+    'image/png',
+    'image/jpeg',
+    'image/webp',
+    'application/pdf',
+  ]);
+  const agentRateBuckets = new Map<string, number[]>();
+
+  function checkAgentRateLimit(ip: string): boolean {
+    const now = Date.now();
+    const windowMs = 60 * 1000;
+    const recent = (agentRateBuckets.get(ip) ?? []).filter((ts) => now - ts < windowMs);
+    if (recent.length >= 25) {
+      agentRateBuckets.set(ip, recent);
+      return false;
+    }
+    recent.push(now);
+    agentRateBuckets.set(ip, recent);
+    if (agentRateBuckets.size > 500) {
+      for (const [k, timestamps] of agentRateBuckets.entries()) {
+        if (timestamps.every((ts) => now - ts >= windowMs)) {
+          agentRateBuckets.delete(k);
+        }
+      }
+    }
+    return true;
+  }
+
+  function sanitizeAgentAttachment(raw: unknown): AgentAttachmentInput | undefined {
+    if (!raw || typeof raw !== 'object') return undefined;
+    const candidate = raw as { mimeType?: unknown; data?: unknown; name?: unknown };
+    const mimeType = typeof candidate.mimeType === 'string' ? candidate.mimeType.trim().toLowerCase() : '';
+    const data = typeof candidate.data === 'string' ? candidate.data.trim() : '';
+    if (!mimeType || !data) return undefined;
+    if (!ALLOWED_AGENT_MIMES.has(mimeType)) {
+      throw new Error('Unsupported attachment type. Upload PNG, JPEG, WEBP, or PDF files only.');
+    }
+    if (data.length > 4_200_000) {
+      throw new Error('Attachment is too large. Please upload a file under 3 MB.');
+    }
+    return {
+      mimeType: mimeType as AgentAttachmentInput['mimeType'],
+      data,
+      name: typeof candidate.name === 'string' ? candidate.name.slice(0, 120) : undefined,
+    };
+  }
+
+  app.get('/api/ai/status', (_req, res) => {
+    const db = readDb();
+    res.json({
+      enabled: db.platform_settings.ai_tutor_enabled,
+      configured: isGeminiConfigured(),
+      capabilities: [
+        'academic_qa',
+        'general_knowledge',
+        'step_by_step',
+        'web_grounding',
+        'code_help',
+        'image_analysis',
+      ],
+    });
+  });
+
+  app.post('/api/ai/agent', async (req, res) => {
+    const db = readDb();
+    if (!db.platform_settings.ai_tutor_enabled) {
+      res.status(503).json({ error: 'AI Academic & Knowledge Agent is currently disabled by platform settings.' });
+      return;
+    }
+
+    const clientIp = req.ip || (req.headers['x-forwarded-for'] as string | undefined)?.split(',')[0]?.trim() || 'unknown';
+    if (!checkAgentRateLimit(clientIp)) {
+      res.status(429).json({ error: 'Too many questions sent in a short time. Please wait a minute and try again.' });
+      return;
+    }
+
+    const body = (req.body ?? {}) as {
+      mode?: string;
+      prompt?: unknown;
+      subject?: unknown;
+      enable_web_search?: unknown;
+      history?: unknown;
+      attachment?: unknown;
+      course_code?: unknown;
+      question_id?: unknown;
+      save_to_history?: unknown;
+    };
+
+    const promptText = typeof body.prompt === 'string' ? body.prompt.trim() : '';
+    if (!promptText) {
+      res.status(400).json({ error: 'Please enter an academic or general knowledge question.' });
+      return;
+    }
+    if (promptText.length > 4000) {
+      res.status(400).json({ error: 'Question is too long (maximum 4,000 characters).' });
+      return;
+    }
+
+    const mode: AgentMode =
+      typeof body.mode === 'string' && VALID_AGENT_MODES.has(body.mode as AgentMode)
+        ? (body.mode as AgentMode)
+        : 'ask_anything';
+
+    const subject =
+      typeof body.subject === 'string' && body.subject.trim()
+        ? body.subject.trim().slice(0, 80)
+        : undefined;
+
+    const enableWebSearch = typeof body.enable_web_search === 'boolean' ? body.enable_web_search : true;
+
+    let attachment: AgentAttachmentInput | undefined;
+    try {
+      attachment = sanitizeAgentAttachment(body.attachment);
+    } catch (attachErr) {
+      res.status(400).json({ error: attachErr instanceof Error ? attachErr.message : 'Invalid attachment.' });
+      return;
+    }
+
+    const recentHistory: TutorHistoryTurn[] = [];
+    if (Array.isArray(body.history)) {
+      for (const item of body.history.slice(-4)) {
+        if (item && typeof item === 'object') {
+          const turn = item as { prompt?: unknown; ai_explanation?: unknown; answer?: unknown };
+          const p = typeof turn.prompt === 'string' ? turn.prompt.trim().slice(0, 1500) : '';
+          const a =
+            typeof turn.ai_explanation === 'string'
+              ? turn.ai_explanation.trim().slice(0, 1500)
+              : typeof turn.answer === 'string'
+              ? turn.answer.trim().slice(0, 1500)
+              : '';
+          if (p && a) {
+            recentHistory.unshift({ prompt: p, ai_explanation: a });
+          }
+        }
+      }
+    }
+
+    const authUser = getAuthenticatedUser(req);
+    const question =
+      authUser && typeof body.question_id === 'string'
+        ? db.questions.find((q) => q.id === body.question_id)
+        : undefined;
+    const course =
+      authUser && typeof body.course_code === 'string'
+        ? db.courses.find((c) => c.code === body.course_code || c.id === body.course_code)
+        : question
+        ? db.courses.find((c) => c.id === question.course_id)
+        : undefined;
+    const courseTopics = course ? db.topics.filter((t) => t.course_id === course.id) : [];
+
+    try {
+      const result = await generateGroundedTutorResponse({
+        mode,
+        studentPrompt: promptText,
+        subject,
+        course,
+        question,
+        courseTopics,
+        recentHistory,
+        attachment,
+        enableWebSearch,
+      });
+
+      const createdAt = new Date().toISOString();
+      const responseId = `agent-${crypto.randomUUID()}`;
+
+      if (authUser && body.save_to_history !== false) {
+        db.ai_learning_history.unshift({
+          id: responseId,
+          user_id: authUser.id,
+          course_id: course?.id,
+          question_id: question?.id,
+          mode,
+          subject,
+          prompt: promptText,
+          official_answer: result.officialAnswer,
+          ai_explanation: result.aiExplanation,
+          source_citation: result.sourceCitation ?? undefined,
+          verification_status: question?.verification_status,
+          sources: result.sources,
+          tools_used: result.toolsUsed,
+          created_at: createdAt,
+        });
+        writeDb(db);
+      }
+
+      res.json({
+        id: responseId,
+        answer: result.aiExplanation,
+        sources: result.sources,
+        tools_used: result.toolsUsed,
+        citation: result.sourceCitation,
+        mode,
+        subject: subject ?? null,
+        created_at: createdAt,
+      });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'AI Agent service failed.';
+      const statusCode = /rate limit/i.test(msg) ? 429 : /not configured/i.test(msg) ? 503 : 502;
+      res.status(statusCode).json({ error: msg });
+    }
+  });
+
   app.get('/api/ai/history', requireAuth, (req: AuthedRequest, res) => {
     const db = readDb();
     const history = db.ai_learning_history
@@ -1197,20 +1415,35 @@ export function createExpressApp(): express.Express {
     const {
       mode = 'revision_chat',
       prompt,
+      subject,
       course_code,
       topic_id,
       question_id,
-      module_id,
       student_draft,
+      enable_web_search,
+      attachment: rawAttachment,
     } = req.body as {
-      mode?: 'explain_question' | 'hint' | 'step_by_step' | 'revision_chat' | 'theory_feedback';
+      mode?: AgentMode;
       prompt?: string;
+      subject?: string;
       course_code?: string;
       topic_id?: string;
       question_id?: string;
-      module_id?: string;
       student_draft?: string;
+      enable_web_search?: boolean;
+      attachment?: unknown;
     };
+
+    const safeMode: AgentMode = VALID_AGENT_MODES.has(mode) ? mode : 'revision_chat';
+    const trimmedSubject = typeof subject === 'string' && subject.trim() ? subject.trim().slice(0, 80) : undefined;
+
+    let attachment: AgentAttachmentInput | undefined;
+    try {
+      attachment = sanitizeAgentAttachment(rawAttachment);
+    } catch (attachErr) {
+      res.status(400).json({ error: attachErr instanceof Error ? attachErr.message : 'Invalid attachment.' });
+      return;
+    }
 
     const question = question_id ? db.questions.find((q) => q.id === question_id) : undefined;
     const course =
@@ -1222,7 +1455,7 @@ export function createExpressApp(): express.Express {
 
     const effectivePrompt =
       prompt?.trim() ||
-      (mode === 'theory_feedback' && student_draft?.trim()
+      (safeMode === 'theory_feedback' && student_draft?.trim()
         ? `Please review my draft answer${question ? ` for ${question.course_code} Q${question.question_number}` : course ? ` for ${course.code}` : ''}.`
         : question
         ? `Please help me understand ${question.course_code} Q${question.question_number}.`
@@ -1235,34 +1468,6 @@ export function createExpressApp(): express.Express {
 
     const courseTopics = course ? db.topics.filter((t) => t.course_id === course.id) : [];
 
-    let lessonContext: string | undefined;
-    if (course) {
-      const curriculum = CURRICULUM_BY_CODE[course.code.toUpperCase()];
-      if (curriculum) {
-        const promptLower = effectivePrompt.toLowerCase();
-        const matchedModule =
-          (module_id ? curriculum.modules.find((m) => m.id === module_id) : undefined) ||
-          curriculum.modules.find((m) =>
-            m.lessons.some(
-              (l) =>
-                l.title.toLowerCase().includes(promptLower) ||
-                promptLower.split(/\s+/).some((word) => word.length >= 4 && l.title.toLowerCase().includes(word))
-            )
-          ) ||
-          curriculum.modules[0];
-        const lesson = matchedModule?.lessons[0];
-        if (lesson) {
-          const parts = [
-            `Module "${matchedModule.title}" (${course.code}):`,
-            lesson.learningObjectives?.length ? `Objectives: ${lesson.learningObjectives.join('; ')}` : '',
-            lesson.contentMarkdown.slice(0, 1400),
-            lesson.workedExample ? `Worked Example: ${lesson.workedExample.slice(0, 600)}` : '',
-          ].filter(Boolean);
-          lessonContext = parts.join('\n');
-        }
-      }
-    }
-
     const recentHistory = db.ai_learning_history
       .filter((h) => h.user_id === req.authUser!.id && (!course || h.course_id === course.id))
       .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
@@ -1271,15 +1476,17 @@ export function createExpressApp(): express.Express {
 
     try {
       const result = await generateGroundedTutorResponse({
-        mode,
+        mode: safeMode,
         studentPrompt: effectivePrompt,
+        subject: trimmedSubject,
         course,
         topic,
         question,
         studentDraft: student_draft,
-        lessonContext,
         courseTopics,
         recentHistory,
+        attachment,
+        enableWebSearch: typeof enable_web_search === 'boolean' ? enable_web_search : true,
       });
 
       const entry = {
@@ -1287,12 +1494,15 @@ export function createExpressApp(): express.Express {
         user_id: req.authUser!.id,
         course_id: course?.id,
         question_id: question?.id,
-        mode,
+        mode: safeMode,
+        subject: trimmedSubject,
         prompt: effectivePrompt,
         official_answer: result.officialAnswer,
         ai_explanation: result.aiExplanation,
         source_citation: result.sourceCitation ?? undefined,
         verification_status: question?.verification_status,
+        sources: result.sources,
+        tools_used: result.toolsUsed,
         created_at: new Date().toISOString(),
       };
       db.ai_learning_history.unshift(entry);

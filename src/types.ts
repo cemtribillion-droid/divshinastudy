@@ -154,17 +154,35 @@ export interface SavedQuestion {
   created_at: string;
 }
 
+export interface GroundingSource {
+  title: string;
+  uri: string;
+}
+
 export interface AiLearningHistory {
   id: string;
   user_id: string;
   course_id?: string;
   question_id?: string;
-  mode: 'explain_question' | 'hint' | 'step_by_step' | 'revision_chat' | 'theory_feedback';
+  mode:
+    | 'explain_question'
+    | 'hint'
+    | 'step_by_step'
+    | 'revision_chat'
+    | 'theory_feedback'
+    | 'ask_anything'
+    | 'deep_explain'
+    | 'quiz_me'
+    | 'fact_check'
+    | 'code_debug';
+  subject?: string;
   prompt: string;
   official_answer?: string | null;
   ai_explanation: string;
   source_citation?: string;
   verification_status?: VerificationStatus;
+  sources?: GroundingSource[];
+  tools_used?: string[];
   created_at: string;
 }
 

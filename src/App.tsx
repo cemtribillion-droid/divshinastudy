@@ -21,6 +21,7 @@ import {
   LiveExamRunnerPage,
 } from './pages/ExamPages';
 import { AiTutorPage } from './pages/AiTutorPage';
+import { AiAgentPage } from './pages/AiAgentPage';
 import {
   ProfileSettingsPage,
   ProgressAnalyticsPage,
@@ -89,8 +90,9 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Public Authentication & Landing */}
+          {/* Public Authentication, Landing & Universal AI Agent */}
           <Route path="/" element={<LandingPage />} />
+          <Route path="/ai-agent" element={<AiAgentPage />} />
           <Route path="/register" element={<RedirectIfAuthenticated><RegisterPage /></RedirectIfAuthenticated>} />
           <Route path="/login" element={<RedirectIfAuthenticated><LoginPage /></RedirectIfAuthenticated>} />
           <Route path="/admin/login" element={<RedirectIfAuthenticated><LoginPage adminOnly /></RedirectIfAuthenticated>} />

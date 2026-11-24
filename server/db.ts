@@ -19,11 +19,12 @@ import type {
 } from '../src/types';
 import {
   DEFAULT_PLATFORM_SETTINGS,
-  SEED_COURSES,
   SEED_DEPARTMENTS,
-  SEED_QUESTIONS,
-  SEED_TOPICS,
-} from '../src/data/nd2QuestionBank';
+} from '../src/data/defaults';
+
+const SEED_COURSES: Course[] = [];
+const SEED_TOPICS: Topic[] = [];
+const SEED_QUESTIONS: Question[] = [];
 
 export interface StoredUserRecord extends UserProfile {
   password_hash: string;
