@@ -2,6 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import crypto from 'crypto';
+import seedCatalog from './seedCatalog.json';
 import type {
   AiLearningHistory,
   AuditLog,
@@ -30,7 +31,7 @@ const SEED_DEPARTMENTS: Department[] = [
   {
     id: 'dept-mth',
     code: 'MTH',
-    name: 'Mathematics & Statistics',
+    name: 'Mathematics',
     school: 'School of Science',
     description: 'ND2 Calculus, Linear Algebra, and Quantitative Reasoning.',
     academic_level: 'ND2',
@@ -58,9 +59,9 @@ const DEFAULT_PLATFORM_SETTINGS: PlatformSettings = {
   updated_at: '2026-01-01T00:00:00.000Z',
 };
 
-const SEED_COURSES: Course[] = [];
-const SEED_TOPICS: Topic[] = [];
-const SEED_QUESTIONS: Question[] = [];
+const SEED_COURSES = seedCatalog.courses as Course[];
+const SEED_TOPICS = seedCatalog.topics as Topic[];
+const SEED_QUESTIONS = seedCatalog.questions as Question[];
 
 export interface StoredUserRecord extends UserProfile {
   password_hash: string;
@@ -154,7 +155,7 @@ function reconcileDbState(parsed: Partial<PrepWiseDatabase>): { db: PrepWiseData
   const initial = createInitialDb();
 
   const mergeById = <T extends { id: string }>(existing: T[] | undefined, seeded: T[]): { list: T[]; changed: boolean } => {
-    if (!existing?.length) return { list: seeded, changed: false };
+    if (!existing?.length) return { list: seeded, changed: seeded.length > 0 };
     const seen = new Set(existing.map((item) => item.id));
     const additions = seeded.filter((item) => !seen.has(item.id));
     return {

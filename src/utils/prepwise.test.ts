@@ -522,6 +522,87 @@ test('Netlify API handler supports admin setup, admin login, cookie/bearer auth,
       }),
     })) as { statusCode: number; body: string };
     assert.equal(badAttachmentRes.statusCode, 400);
+
+    // 8. Verify seeded courses and questions load on Netlify without GEMINI_API_KEY
+    const prevGemini = process.env.GEMINI_API_KEY;
+    const prevAiKey = process.env.AI_API_KEY;
+    delete process.env.GEMINI_API_KEY;
+    delete process.env.AI_API_KEY;
+    try {
+      const publicCatalogRes = (await handler({
+        httpMethod: 'GET',
+        path: '/api/public/catalog',
+        headers: { host: 'divshinastudy.netlify.app' },
+      })) as { statusCode: number; body: string };
+      assert.equal(publicCatalogRes.statusCode, 200);
+      const catalog = JSON.parse(publicCatalogRes.body);
+      assert.equal(catalog.courses.length, 16);
+      const totalQuestions = catalog.courses.reduce(
+        (sum: number, c: { question_count: number }) => sum + c.question_count,
+        0
+      );
+      assert.equal(totalQuestions, 615);
+
+      // Authenticated courses and questions also work without Gemini
+      const coursesRes = (await handler({
+        httpMethod: 'GET',
+        path: '/api/courses',
+        headers: {
+          authorization: `Bearer ${adminToken}`,
+          host: 'divshinastudy.netlify.app',
+        },
+      })) as { statusCode: number; body: string };
+      assert.equal(coursesRes.statusCode, 200);
+      assert.equal(JSON.parse(coursesRes.body).courses.length, 16);
+
+      const questionsRes = (await handler({
+        httpMethod: 'GET',
+        path: '/api/questions',
+        headers: {
+          authorization: `Bearer ${adminToken}`,
+          host: 'divshinastudy.netlify.app',
+        },
+      })) as { statusCode: number; body: string };
+      assert.equal(questionsRes.statusCode, 200);
+      assert.equal(JSON.parse(questionsRes.body).questions.length, 615);
+
+      // Simulate an already-deployed empty Netlify DB file and confirm reconciliation backfills catalog
+      fs.writeFileSync(
+        path.join(tempDataDir, 'prepwise-db.json'),
+        JSON.stringify({
+          departments: [],
+          courses: [],
+          topics: [],
+          questions: [],
+          users: [],
+          exam_attempts: [],
+          student_answers: [],
+          student_progress: [],
+          saved_questions: [],
+          ai_learning_history: [],
+          pdf_imports: [],
+          audit_logs: [],
+        })
+      );
+      resetDbCacheForTesting();
+      const backfilledCatalogRes = (await handler({
+        httpMethod: 'GET',
+        path: '/api/public/catalog',
+        headers: { host: 'divshinastudy.netlify.app' },
+      })) as { statusCode: number; body: string };
+      assert.equal(backfilledCatalogRes.statusCode, 200);
+      const backfilledCatalog = JSON.parse(backfilledCatalogRes.body);
+      assert.equal(backfilledCatalog.courses.length, 16);
+      assert.equal(
+        backfilledCatalog.courses.reduce((sum: number, c: { question_count: number }) => sum + c.question_count, 0),
+        615
+      );
+    } finally {
+      if (prevGemini === undefined) delete process.env.GEMINI_API_KEY;
+      else process.env.GEMINI_API_KEY = prevGemini;
+      if (prevAiKey === undefined) delete process.env.AI_API_KEY;
+      else process.env.AI_API_KEY = prevAiKey;
+    }
   } finally {
     resetDbCacheForTesting();
     fs.rmSync(tempDataDir, { recursive: true, force: true });
